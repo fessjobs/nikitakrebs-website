@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generates the vehicle artwork for KREBS AUTOMOBILE.
+"""Generates the vehicle artwork for KREBS PERFORMANCE.
 
 One parametric side view. Each model is a silhouette in normalised
 coordinates (u = along the car, v = 0 at the sill, 1 at the roof), mapped onto
@@ -83,11 +83,25 @@ MODELS = {
 }
 
 
-def geometry(m):
+# Ausbaustufen. "drop" senkt die Karosserie gegenüber den Rädern ab, "gap"
+# ist der verbleibende Radhausspalt, "rim" das Felgen-/Reifen-Verhältnis.
+TUNE = {
+    0: dict(drop=0,  rim=.76, gap=5, splitter=False, skirt=False, diffuser=False,
+            wing=False, tint=.00, label="Serie"),
+    1: dict(drop=10, rim=.82, gap=3, splitter=False, skirt=True,  diffuser=False,
+            wing=False, tint=.22, label="Stufe 1"),
+    2: dict(drop=18, rim=.85, gap=2, splitter=True,  skirt=True,  diffuser=True,
+            wing=False, tint=.40, label="Stufe 2"),
+    3: dict(drop=25, rim=.87, gap=1, splitter=True,  skirt=True,  diffuser=True,
+            wing=True,  tint=.55, label="Stufe 3"),
+}
+
+
+def geometry(m, drop=0):
     """Normalised profile -> pixel geometry."""
     wr = LEN * m["wheel"] / 2
-    sill = GROUND - wr * 0.62
-    roof = GROUND - LEN * m["height"]
+    sill = GROUND - wr * 0.62 + drop
+    roof = GROUND - LEN * m["height"] + drop
     belt = roof + (sill - roof) * (1 - m["belt"])
     fx = X0 + LEN * m["f_ovh"]
     return dict(wr=wr, sill=sill, roof=roof, belt=belt, fx=fx,
@@ -96,8 +110,8 @@ def geometry(m):
 
 
 # ------------------------------------------------------------------ wheel
-def wheel(cx, cy, r, style, rim_col, tyre_col, i=0):
-    rim = r * 0.76
+def wheel(cx, cy, r, style, rim_col, tyre_col, i=0, ratio=0.76, caliper=None):
+    rim = r * ratio
     o = []
     if style == "line":
         o.append(f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="{r:.0f}"/>')
@@ -115,6 +129,14 @@ def wheel(cx, cy, r, style, rim_col, tyre_col, i=0):
             o.append(f'<path d="{d}"/>')
         else:
             o.append(f'<path d="{d}" fill="#0B0B0C" fill-opacity=".20"/>')
+    if caliper and style != "line":
+        cr = rim * .60
+        a0, a1 = -0.75, 0.75
+        x0, y0 = cx + math.cos(a0) * cr, cy + math.sin(a0) * cr
+        x1, y1 = cx + math.cos(a1) * cr, cy + math.sin(a1) * cr
+        o.append(f'<path d="M {x0:.1f} {y0:.1f} A {cr:.1f} {cr:.1f} 0 0 1 '
+                 f'{x1:.1f} {y1:.1f}" stroke="{caliper}" stroke-width="{rim*.22:.1f}" '
+                 f'stroke-linecap="round" fill="none"/>')
     hub = f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="{r*.13:.0f}"'
     o.append(hub + ('/>' if style == "line" else f' fill="#0B0B0C" fill-opacity=".45"/>'))
     return "".join(o)
@@ -122,13 +144,15 @@ def wheel(cx, cy, r, style, rim_col, tyre_col, i=0):
 
 # ------------------------------------------------------------------ render
 def render(model, paint="#1E2A4A", glass_col="#121A2C", accent="#6AAEFD",
-           style="solid", stroke="#0B0B0C", ground=True, shadow=True, crop=None):
+           style="solid", stroke="#0B0B0C", ground=True, shadow=True, crop=None,
+           tune=0, caliper="#D6392E"):
     m = MODELS[model]
-    g = geometry(m)
+    t = TUNE[tune]
+    g = geometry(m, t["drop"])
     pt, wr, sill, belt = g["pt"], g["wr"], g["sill"], g["belt"]
-    arch = wr + 5
+    arch = wr + t["gap"]
     outline = [pt(u, v) for u, v in m["profile"]]
-    uid = model + paint.lstrip("#") + style
+    uid = model + paint.lstrip("#") + style + str(tune)
 
     # greenhouse: the roof run of the outline, pulled in and down a touch, then
     # closed along the beltline. Points below the belt are clamped onto it, so
@@ -167,8 +191,8 @@ def render(model, paint="#1E2A4A", glass_col="#121A2C", accent="#6AAEFD",
                      f'{g["cy"]:.1f} A {arch:.1f} {arch:.1f} 0 0 1 {cx+arch:.1f} '
                      f'{g["cy"]:.1f} L {cx+arch:.1f} {sill:.1f}"/>')
         s.append(f'<path d="{glass_d}"/>')
-        s.append(wheel(g["fx"], g["cy"], wr, "line", "", "", 0))
-        s.append(wheel(g["rx"], g["cy"], wr, "line", "", "", 1))
+        s.append(wheel(g["fx"], g["cy"], wr, "line", "", "", 0, t["rim"]))
+        s.append(wheel(g["rx"], g["cy"], wr, "line", "", "", 1, t["rim"]))
         s.append('</g>')
         s.append(f'<path d="M {X0-20} {GROUND+.5} L {X0+LEN+20} {GROUND+.5}" '
                  f'stroke="{stroke}" stroke-opacity=".35" stroke-width="2"/>')
@@ -194,8 +218,9 @@ def render(model, paint="#1E2A4A", glass_col="#121A2C", accent="#6AAEFD",
         s.append(f'<ellipse cx="{X0 + LEN/2:.0f}" cy="{GROUND + 7}" '
                  f'rx="{LEN*.47:.0f}" ry="16" fill="url(#sh{uid})"/>')
 
-    s.append(wheel(g["fx"], g["cy"], wr, "solid", "#DCDEE3", "#17181C", 0))
-    s.append(wheel(g["rx"], g["cy"], wr, "solid", "#DCDEE3", "#17181C", 1))
+    cal = caliper if tune else None
+    s.append(wheel(g["fx"], g["cy"], wr, "solid", "#DCDEE3", "#17181C", 0, t["rim"], cal))
+    s.append(wheel(g["rx"], g["cy"], wr, "solid", "#DCDEE3", "#17181C", 1, t["rim"], cal))
     # body and every piece of trim share one mask, so nothing escapes the
     # silhouette and the wheel arches stay open
     s.append(f'<g mask="url(#bc{uid})">')
@@ -230,13 +255,44 @@ def render(model, paint="#1E2A4A", glass_col="#121A2C", accent="#6AAEFD",
              f'stroke="{deep}" stroke-width="2.5"/>')
     s.append('</g>')
 
-    s.append(f'<path d="{glass_d}" fill="{glass_col}"/>')
+    s.append(f'<path d="{glass_d}" fill="{shade(glass_col, -t["tint"])}"/>')
     bp = glass_pts[0][0] + (glass_pts[-1][0] - glass_pts[0][0]) * .52
     s.append(f'<path d="M {bp:.0f} {min(p[1] for p in glass_pts)+10:.0f} '
              f'L {bp:.0f} {belt:.0f}" stroke="{paint}" stroke-width="11"/>')
     # mirror sits on the body side, outside the silhouette by design
     mxp, myp = pt(.352, .705)
     s.append(f'<path d="M {mxp:.0f} {myp:.0f} l -30 -4 l -3 15 l 32 4 Z" fill="{dark}"/>')
+
+    carbon = "#1A1C20"
+    fx, rx = g["fx"], g["rx"]
+    if t["skirt"]:
+        s.append(f'<path d="M {fx+arch+2:.0f} {sill-5:.0f} L {rx-arch-2:.0f} '
+                 f'{sill-5:.0f} L {rx-arch-6:.0f} {sill+9:.0f} '
+                 f'L {fx+arch+6:.0f} {sill+9:.0f} Z" fill="{carbon}"/>')
+    if t["splitter"]:
+        nx = outline[0][0]
+        s.append(f'<path d="M {nx-16:.0f} {sill-1:.0f} L {fx-arch-4:.0f} {sill-5:.0f} '
+                 f'L {fx-arch-8:.0f} {sill+10:.0f} L {nx-22:.0f} {sill+11:.0f} Z" '
+                 f'fill="{carbon}"/>')
+    if t["diffuser"]:
+        tx0 = max(X0 + LEN * .88, rx + arch + 4)
+        s.append(f'<path d="M {tx0:.0f} {sill-3:.0f} L {outline[-1][0]+14:.0f} '
+                 f'{sill+1:.0f} L {outline[-1][0]+8:.0f} {sill+13:.0f} '
+                 f'L {tx0:.0f} {sill+13:.0f} Z" fill="{carbon}"/>')
+        for k in range(4):
+            fxx = tx0 + 18 + k * 26
+            s.append(f'<path d="M {fxx:.0f} {sill+1:.0f} L {fxx+5:.0f} {sill+12:.0f}" '
+                     f'stroke="{shade(carbon, .28)}" stroke-width="3"/>')
+    if t["wing"]:
+        wx, wy = pt(.93, .42)
+        top = wy - (sill - g["roof"]) * .30
+        s.append(f'<path d="M {wx-96:.0f} {top+9:.0f} L {wx+54:.0f} {top:.0f} '
+                 f'L {wx+56:.0f} {top+12:.0f} L {wx-94:.0f} {top+21:.0f} Z" '
+                 f'fill="{carbon}"/>')
+        for ux in (wx - 66, wx + 24):
+            s.append(f'<path d="M {ux:.0f} {top+14:.0f} L {ux+7:.0f} {wy+6:.0f} '
+                     f'L {ux+19:.0f} {wy+6:.0f} L {ux+12:.0f} {top+12:.0f} Z" '
+                     f'fill="{carbon}"/>')
 
     if ground:
         s.append(f'<path d="M {X0-30} {GROUND+.5} L {X0+LEN+30} {GROUND+.5}" '
@@ -256,25 +312,34 @@ PAINTS = {
 
 # rear axle sits at X0 + LEN*(f_ovh + wbase); crops are expressed in that space
 DETAILS = {
-    "rad":   ("k1", "nachtblau", (700, 250, 360, 230)),
-    "front": ("k1", "nachtblau", (40, 210, 400, 200)),
-    "heck":  ("k4", "silber",    (860, 200, 320, 200)),
-    "glas":  ("kx", "graphit",   (420, 80, 440, 240)),
-    "profil": ("k4", "nachtblau", (180, 120, 700, 300)),
+    "rad":    ("k1", "nachtblau", (690, 290, 370, 190)),
+    "front":  ("k1", "nachtblau", (40, 250, 400, 200)),
+    "heck":   ("k4", "silber",    (840, 230, 340, 210)),
+    "fluegel":("k1", "graphit",   (830, 180, 360, 220)),
+    "profil": ("k4", "nachtblau", (180, 150, 700, 300)),
 }
 
 if __name__ == "__main__":
     n = 0
+    # Serienwagen und Vollausbau je Modell und Farbe
     for model in MODELS:
         for name, (paint, glass) in PAINTS.items():
-            with open(os.path.join(HERE, f"{model}-{name}.svg"), "w") as fh:
-                fh.write(render(model, paint, glass))
-            n += 1
+            for tune, suffix in ((0, ""), (3, "-tuned")):
+                fn = f"{model}-{name}{suffix}.svg"
+                with open(os.path.join(HERE, fn), "w") as fh:
+                    fh.write(render(model, paint, glass, tune=tune))
+                n += 1
         with open(os.path.join(HERE, f"{model}-linie.svg"), "w") as fh:
             fh.write(render(model, style="line"))
         n += 1
+    # die drei Ausbaustufen am selben Wagen
+    for tune in (1, 2, 3):
+        with open(os.path.join(HERE, f"stufe-{tune}.svg"), "w") as fh:
+            fh.write(render("k1", *PAINTS["nachtblau"], tune=tune))
+        n += 1
     for key, (model, paint, box) in DETAILS.items():
         with open(os.path.join(HERE, f"detail-{key}.svg"), "w") as fh:
-            fh.write(render(model, *PAINTS[paint], crop=box, ground=False, shadow=False))
+            fh.write(render(model, *PAINTS[paint], crop=box, ground=False,
+                            shadow=False, tune=3))
         n += 1
     print(f"wrote {n} svg files")
