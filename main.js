@@ -151,13 +151,6 @@
   });
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) setMenu(false); });
 
-  /* ---------- signature: Scroll-Stopper — Intro bleibt stehen, Unterschrift schreibt sich mit dem Scroll ---------- */
-  const sig = $('[data-signature]');
-  if (sig) {
-    gsap.timeline({ scrollTrigger: { trigger: '.intro', start: 'bottom bottom', end: () => isTouch ? '+=55%' : '+=90%', pin: true, scrub: isTouch ? true : 0.5, anticipatePin: 1, invalidateOnRefresh: true } })
-      .to(sig, { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'none' });
-  }
-
   /* ---------- partner logo marquee: constant, infinite ---------- */
   (function () {
     const track = $('[data-marquee-slow]');

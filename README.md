@@ -1,64 +1,58 @@
-# KREBS PERFORMANCE
+# MTM — Motoren Technik Mayer
 
-Statische One-Page-Landing für eine (fiktive) Tuning-Manufaktur, im Aufbau
-einer Veredler-Seite: Leistungsstufen, Produktbereiche, Referenzfahrzeuge.
-Technisch unverändert GSAP + ScrollTrigger + Lenis via CDN.
+Statische Landingpage für MTM Motoren-Technik-Mayer GmbH, Wettstetten.
+Aufbau nach dem bestehenden Auftritt: schwarze Servicezeile, graues
+Navigationsband mit Untermenüs, Slider mit Leistungszahlen, Kachelraster.
+Technik: GSAP + ScrollTrigger + Lenis via CDN, sonst keine Abhängigkeiten.
 
 - `index.html` / `style.css` / `main.js` – die Seite
-- `assets/car/` – die Fahrzeug-Zeichnungen (SVG), erzeugt von `assets/car/_build.py`
-- `assets/parts/` – die zwölf Produktkacheln (SVG), erzeugt von `assets/parts/_build.py`
-- `assets/img/`, `assets/logos/`, `assets/gallery/`, `assets/video/` – Bestand
-  früherer Versionen, von der Seite aktuell nicht referenziert
+- `impressum.html`, `datenschutz.html`, `agb.html`, `barrierefreiheit.html`
+- `assets/car/`, `assets/parts/` – **Blindmuster**, siehe unten
 - Lokal: `python3 -m http.server 5190` und http://127.0.0.1:5190
 - Deploy: `npx vercel --prod --yes`
 
-## Fahrzeug-Zeichnungen
+## Was noch vom Kunden kommen muss
 
-Alle Autos auf der Seite sind ein einziges parametrisches Seitenprofil.
-Jedes Modell ist als Silhouette in normierten Koordinaten hinterlegt
-(u = Fahrzeuglänge, v = 0 an der Schwelle, 1 am Dach); Radstand, Überhänge,
-Raddurchmesser und Höhe werden daraus wie in einer Paketzeichnung abgeleitet.
+Diese Punkte sind im Quelltext als Platzhalter markiert und müssen vor dem
+Livegang ersetzt werden:
 
-Darüber liegen vier Ausbaustufen (`TUNE`): Stufe 0 ist Serie, die Stufen 1–3
-senken die Karosserie gegenüber den Rädern ab, vergrößern die Felge, verengen
-den Radhausspalt und ergänzen Bremssattel, Schweller, Splitter, Diffusor und
-Heckflügel.
+1. **Logo.** `assets/img/logo-platzhalter.svg` ist ein gestricheltes
+   Blindelement. Das MTM-Wappen an dieser Stelle einsetzen — auch als
+   Favicon und für das OG-Bild.
+2. **Alle Bilder.** Sämtliche Fahrzeug- und Produktaufnahmen sind SVG-
+   Zeichnungen aus `assets/car/` und `assets/parts/`. Sie halten die
+   Bildplätze offen und ersetzen keine Fotografie. Jedes `alt` beginnt
+   deshalb mit „Platzhalter:".
+3. **Garantie.** Der Abschnitt `#garantie` enthält nur eine Hilfszeile; die
+   Garantiebedingungen im Wortlaut fehlen.
+4. **AGB und Barrierefreiheit.** Beide Seiten sind Rümpfe, damit die
+   Verlinkung nicht ins Leere läuft.
+5. **Impressum und Datenschutz prüfen.** Anschrift, Geschäftsführer,
+   Handelsregister und Kontakt wurden aus öffentlich zugänglichen Quellen
+   übernommen, nicht von mtm-online.de selbst — die Domain war aus der
+   Entwicklungsumgebung nicht erreichbar. Vor dem Livegang gegen das
+   eigene Impressum abgleichen. Umsatzsteuer-ID fehlt.
+6. **Kennzahlen im Slider.** „8xx PS / 1xxx NM" für den RS5 B10 stammt aus
+   dem Entwurf des Kunden und ist bewusst unscharf.
 
-    python3 assets/car/_build.py
+## Zeichnungen
 
-erzeugt 3 Modelle × 6 Lackierungen × (Serie + Vollausbau), je eine technische
-Linienzeichnung pro Modell, die drei Stufen am selben Wagen und fünf
-Detail-Ausschnitte — 47 SVG-Dateien. Neue Farbe: in `PAINTS` ergänzen und das
-Skript erneut laufen lassen.
+Beide Bildstrecken sind parametrisch erzeugt und lassen sich anpassen,
+solange noch keine Fotos vorliegen:
 
-## Produktkacheln
+    python3 assets/car/_build.py      # Fahrzeuge, 3 Modelle × 6 Lacke × Serie/Umbau
+    python3 assets/parts/_build.py    # 12 Produktkacheln
 
-    python3 assets/parts/_build.py
-
-zeichnet die zwölf Kacheln des Produktrasters — Steuergerät, Gelenkwelle,
-Abgasanlage, Kolben, zwei Räder, Fahrwerk, Bremsanlage, Werkzeug, Sportsitz,
-Gutachten und Turbolader. Gleiche Bildsprache wie die Fahrzeuge: flache
-Flächen, Stahltöne, Blau als Markenakzent, Rot nur am Bremssattel.
+Die Fahrzeuge sind ein einziges Seitenprofil in normierten Koordinaten;
+Radstand, Überhänge, Raddurchmesser und Höhe werden daraus wie in einer
+Paketzeichnung abgeleitet. Vier Ausbaustufen senken die Karosserie ab,
+vergrößern die Felge und ergänzen Bremssattel, Schweller, Splitter,
+Diffusor und Heckflügel.
 
 ## Farben
 
-Die Palette liegt vollständig in den `:root`-Variablen von `style.css`:
-Weiß als Grund, Schwarz und ein Grauband für das Chrom, Rot als Akzent.
-`--accent-text` ist der rote Ton für Schrift auf Weiß, `--accent-light` der
-hellere für Schrift auf Schwarz — beide braucht es, weil ein Rot nicht auf
-beiden Gründen lesbar bleibt. Die Generatoren nehmen den Akzent als
-Parameter (`accent`, `ACCENT`), Farbwechsel laufen also durch beide Skripte.
-
-Das Wappen liegt als `assets/img/krebs-wappen.svg`. Es kommt ohne Schrift
-aus — das „K" ist aus Flächen gebaut, weil eine über `<img>` eingebundene
-SVG keine externen Schriften nachladen kann.
-
-## Hinweis
-
-Der Seitenaufbau — Servicezeile, dunkle Hauptnavigation, Slider mit
-Leistungszahlen, Kachelraster — ist an den Aufbau gängiger Veredler-Seiten
-angelehnt. Marke, Pakete, Preise, Produktnamen und technische Daten sind
-erfunden; Zeichnungen und Texte sind eigene. Impressum und
-Datenschutz nennen weiterhin den tatsächlichen Betreiber der Domain — vor
-einem echten Livegang müssen beide auf den wirklichen Anbieter angepasst
-werden.
+Die Palette liegt in den `:root`-Variablen von `style.css`: Weiß als Grund,
+Schwarz und ein Grauband für das Chrom, Rot als Akzent. `--accent-text` ist
+der rote Ton für Schrift auf Weiß, `--accent-light` der hellere für Schrift
+auf Schwarz — beide braucht es, weil ein Rot nicht auf beiden Gründen
+lesbar bleibt. Die Generatoren nehmen den Akzent als Parameter.

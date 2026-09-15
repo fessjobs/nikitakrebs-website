@@ -92,8 +92,6 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .intro__story p{margin:0 0 14px;break-inside:avoid}
 .intro__story strong{color:var(--ink);font-weight:700}
 @media(max-width:760px){.intro__story{columns:1}}
-.intro__sig{max-width:min(340px,34vh);margin:28px auto 0}
-.intro__sig img{width:100%;height:auto;clip-path:inset(0 100% 0 0)}
 .sig-text{font-family:var(--script);font-weight:600;font-size:96px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
 
 /* ---------- marquee ---------- */
@@ -252,7 +250,6 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .footer__cols a,.footer__cols span{display:block;font-size:14px;font-weight:600;margin-bottom:9px;color:var(--ink)}
 .footer__cols a:hover{color:var(--accent)}
 .footer__bottom{position:relative;margin-top:clamp(50px,6vw,90px);padding-top:22px;border-top:1.5px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:600;color:var(--ink-2)}
-.footer__sig{height:54px;width:auto;opacity:.9}
 .footer__bottom a:hover{color:var(--accent)}
 
 /* ---------- reveal ---------- */
@@ -324,9 +321,6 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .collage__quote em{font-style:italic;font-weight:400}
 .collage__quote em{color:var(--accent-text)}
 .collage.is-dark .collage__quote em{color:var(--accent-light)}
-.collage__sig{height:44px;width:auto;margin-top:18px;opacity:.9}
-.collage__quote--1 .collage__sig{display:block}
-.collage.is-dark .collage__quote--1 .collage__sig{filter:invert(1)}
 
 
 /* ---------- socials fan ---------- */
@@ -415,7 +409,6 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .hz__case--bottom{align-self:flex-end}
 .hz__quote{max-width:520px;margin-top:auto;padding-top:30px}
 .hz__quote p{font-family:var(--serif);font-size:clamp(22px,2vw,32px);line-height:1.15;color:var(--ink)}
-.hz__quote img{height:38px;width:auto;margin-top:14px}
 .hz__title{display:flex;flex-direction:column;line-height:.95}
 .hz__title-serif{font-family:var(--serif);text-transform:uppercase;font-size:clamp(40px,4.6vw,76px);letter-spacing:-.01em}
 .hz__follow{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:20px;letter-spacing:.02em;border-bottom:2px solid var(--ink);align-self:flex-start;padding-bottom:2px;transition:color .3s,border-color .3s}
