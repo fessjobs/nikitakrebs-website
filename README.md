@@ -6,6 +6,7 @@ Technisch unverändert GSAP + ScrollTrigger + Lenis via CDN.
 
 - `index.html` / `style.css` / `main.js` – die Seite
 - `assets/car/` – die Fahrzeug-Zeichnungen (SVG), erzeugt von `assets/car/_build.py`
+- `assets/parts/` – die zwölf Produktkacheln (SVG), erzeugt von `assets/parts/_build.py`
 - `assets/img/`, `assets/logos/`, `assets/gallery/`, `assets/video/` – Bestand
   früherer Versionen, von der Seite aktuell nicht referenziert
 - Lokal: `python3 -m http.server 5190` und http://127.0.0.1:5190
@@ -30,9 +31,21 @@ Linienzeichnung pro Modell, die drei Stufen am selben Wagen und fünf
 Detail-Ausschnitte — 47 SVG-Dateien. Neue Farbe: in `PAINTS` ergänzen und das
 Skript erneut laufen lassen.
 
+## Produktkacheln
+
+    python3 assets/parts/_build.py
+
+zeichnet die zwölf Kacheln des Produktrasters — Steuergerät, Gelenkwelle,
+Abgasanlage, Kolben, zwei Räder, Fahrwerk, Bremsanlage, Werkzeug, Sportsitz,
+Gutachten und Turbolader. Gleiche Bildsprache wie die Fahrzeuge: flache
+Flächen, Stahltöne, Blau als Markenakzent, Rot nur am Bremssattel.
+
 ## Hinweis
 
-Marke, Pakete, Preise und technische Daten sind erfunden. Impressum und
+Der Seitenaufbau — Servicezeile, dunkle Hauptnavigation, Slider mit
+Leistungszahlen, Kachelraster — ist an den Aufbau gängiger Veredler-Seiten
+angelehnt. Marke, Pakete, Preise, Produktnamen und technische Daten sind
+erfunden; Zeichnungen und Texte sind eigene. Impressum und
 Datenschutz nennen weiterhin den tatsächlichen Betreiber der Domain — vor
 einem echten Livegang müssen beide auf den wirklichen Anbieter angepasst
 werden.

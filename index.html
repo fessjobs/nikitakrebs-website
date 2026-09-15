@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F5F4EF">
+<meta name="theme-color" content="#0B0B0C">
 <meta name="color-scheme" content="light">
 <title>KREBS PERFORMANCE — Leistungssteigerung, Fahrwerk &amp; Räder</title>
-<meta name="description" content="KREBS PERFORMANCE — Tuning-Manufaktur aus Hamburg. Leistungssteigerung auf eigenem Rollenprüfstand, Abgasanlagen, Gewindefahrwerke und Räder. Drei Ausbaustufen, alles mit Teilegutachten.">
+<meta name="description" content="KREBS PERFORMANCE — Tuning-Manufaktur aus Hamburg. Leistungssteigerung auf eigenem Rollenprüfstand, Abgasanlagen, Gewindefahrwerke, Schmiederäder und Bremsanlagen. Drei Ausbaustufen, alles mit Teilegutachten.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="KREBS PERFORMANCE — Leistungssteigerung, Fahrwerk &amp; Räder">
 <meta property="og:description" content="Tuning-Manufaktur aus Hamburg. Leistungssteigerung, Abgasanlage, Fahrwerk, Räder — in drei Ausbaustufen.">
@@ -27,74 +27,193 @@
   <div class="preloader__mark"><img src="assets/img/nk-mark.png" alt=""></div>
 </div>
 
-<!-- ============ NAV ============ -->
-<header class="nav" data-nav>
-  <a class="nav__logo" href="#top" aria-label="KREBS PERFORMANCE">
-    <img src="assets/img/nk-mark.png" alt="KREBS" width="1483" height="938">
+<!-- ============ KOPFBEREICH: Servicezeile + Hauptnavigation ============ -->
+<header class="site-head" data-nav>
+  <a class="site-head__mark" href="#top" aria-label="KREBS PERFORMANCE, zur Startseite">
+    <img src="assets/img/nk-mark.png" alt="" width="1483" height="938">
   </a>
-  <div class="nav__right">
-    <a class="btn btn--accent nav__cta" href="#kontakt">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 12 18 6"/></svg>
-      <span>Termin</span>
-    </a>
+
+  <div class="topbar">
+    <div class="topbar__contact">
+      <a href="tel:+494073927400"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>(040) 739 274-0</a>
+      <a href="mailto:termin@krebs-performance.de"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>termin@krebs-performance.de</a>
+    </div>
+    <nav class="topbar__links" aria-label="Service">
+      <a href="#werkstatt">Presse</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="#kontakt">Anfahrt</a>
+      <a href="#kontakt">Newsletter</a>
+    </nav>
+  </div>
+
+  <div class="mainnav">
+    <nav class="mainnav__list" aria-label="Hauptnavigation">
+      <div class="mainnav__item mainnav__item--drop">
+        <a href="#umbauten">Fahrzeuge <i aria-hidden="true"></i></a>
+        <div class="mainnav__drop">
+          <a href="#umbauten">Coupé K1</a>
+          <a href="#umbauten">Limousine K4</a>
+          <a href="#umbauten">Crossover KX</a>
+        </div>
+      </div>
+      <div class="mainnav__item mainnav__item--drop">
+        <a href="#motor">Produkte <i aria-hidden="true"></i></a>
+        <div class="mainnav__drop">
+          <a href="#motor">Motorentechnik</a>
+          <a href="#abgas">Abgasanlage &amp; Fahrwerk</a>
+          <a href="#raeder">Räder &amp; Bremsen</a>
+        </div>
+      </div>
+      <div class="mainnav__item"><a href="#stufen">Stufen</a></div>
+      <div class="mainnav__item"><a href="#umbauten">Umbauten</a></div>
+      <div class="mainnav__item"><a href="#pruefstand">Prüfstand</a></div>
+      <div class="mainnav__item mainnav__item--drop">
+        <a href="#werkstatt">Unternehmen <i aria-hidden="true"></i></a>
+        <div class="mainnav__drop">
+          <a href="#werkstatt">Die Werkstatt</a>
+          <a href="#leistungen">Leistungen</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#kontakt">Termin</a>
+        </div>
+      </div>
+    </nav>
+    <a class="mainnav__cta" href="#kontakt">Termin</a>
     <button class="nav__burger" data-menu-toggle aria-label="Menü öffnen" aria-expanded="false">
       <span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- ============ MENU ============ -->
+<!-- ============ MENU (mobil) ============ -->
 <div class="menu" data-menu aria-hidden="true">
   <div class="menu__inner">
     <nav class="menu__links">
-      <a href="#werkstatt" data-menu-link data-img="assets/car/detail-profil.svg"><small>01</small>Werkstatt</a>
-      <a href="#stufen" data-menu-link data-img="assets/car/stufe-3.svg"><small>02</small>Stufen</a>
-      <a href="#motor" data-menu-link data-img="assets/car/detail-rad.svg"><small>03</small>Produkte</a>
-      <a href="#umbauten" data-menu-link data-img="assets/car/k4-karminrot-tuned.svg"><small>04</small>Umbauten</a>
-      <a href="#kontakt" data-menu-link data-img="assets/car/kx-graphit-tuned.svg"><small>05</small>Termin</a>
+      <a href="#stufen" data-menu-link><small>01</small>Stufen</a>
+      <a href="#motor" data-menu-link><small>02</small>Produkte</a>
+      <a href="#umbauten" data-menu-link><small>03</small>Umbauten</a>
+      <a href="#werkstatt" data-menu-link><small>04</small>Werkstatt</a>
+      <a href="#kontakt" data-menu-link><small>05</small>Termin</a>
     </nav>
     <div class="menu__foot">
-      <a href="#stufen">Stufe 1 · 2 · 3</a>
+      <a href="tel:+494073927400">(040) 739 274-0</a>
       <a href="#pruefstand">Prüfstand</a>
-      <a href="#kontakt">Termin vereinbaren</a>
+      <a href="mailto:termin@krebs-performance.de">termin@krebs-performance.de</a>
     </div>
   </div>
 </div>
 
 <main id="top">
 
-<!-- ============ HERO ============ -->
-<section class="hero" data-hero data-hero-mode="photo">
-  <div class="hero__topo" aria-hidden="true">
-    <svg viewBox="0 0 1920 1000" preserveAspectRatio="xMidYMid slice">
-      <g fill="none" stroke="#0B0B0C" stroke-opacity=".14" stroke-width="1.3" stroke-linecap="round" data-topo-lines></g>
-      <g fill="#0B0B0C" fill-opacity=".045">
-        <path d="M230 150c110-60 260-20 310 90s0 240-120 260-230-40-260-150 10-160 70-200z"/>
-        <path d="M1560 560c90-40 210 0 240 100s-30 200-130 210-200-40-220-140 40-140 110-170z"/>
-      </g>
-    </svg>
-  </div>
+<h1 class="sr-only">KREBS PERFORMANCE — Leistungssteigerung, Abgasanlagen, Fahrwerk und Räder aus Hamburg</h1>
 
-  <div class="hero__grid" aria-hidden="true" data-hero-grid></div>
-  <div class="hero__marq hero__marq--1" aria-hidden="true" data-hero-marq="1"><span>LEISTUNG · ABGASANLAGE · FAHRWERK · RÄDER · LEISTUNG · ABGASANLAGE ·&nbsp;</span><span>LEISTUNG · ABGASANLAGE · FAHRWERK · RÄDER · LEISTUNG · ABGASANLAGE ·&nbsp;</span></div>
-  <div class="hero__marq hero__marq--2" aria-hidden="true" data-hero-marq="-1"><span>+212 PS · −25 MM · 21 ZOLL · MIT GUTACHTEN ·&nbsp;</span><span>+212 PS · −25 MM · 21 ZOLL · MIT GUTACHTEN ·&nbsp;</span></div>
-  <div class="hero__frame" aria-hidden="false" data-hero-frame>
-    <div class="hero__frame-video" data-hero-frame-video aria-hidden="true"></div>
-    <div class="hero__figure" data-hero-figure>
-      <img class="hero__head" src="assets/car/k1-nachtblau-tuned.svg" alt="Coupé im Vollausbau: tiefergelegt, 21-Zoll-Räder, Frontsplitter und Heckflügel" width="1200" height="500" fetchpriority="high" data-head>
-      <div class="hero__fade"></div>
+<!-- ============ SLIDER ============ -->
+<section class="hero-slider" aria-label="Aktuelle Umbauten und Produkte">
+  <div class="slider" data-slider aria-roledescription="Karussell">
+    <div class="slider__stage">
+      <article class="slide is-active" data-slide role="group"
+               aria-roledescription="Folie" aria-label="1 von 5">
+        <div class="slide__text">
+          <h2 class="slide__title">Stufe 3 — Coupé K1</h2>
+          <div class="slide__figs"><div class="fig"><b>612</b><span>PS</span></div><div class="fig"><b>810</b><span>NM</span></div><div class="fig"><b>R6</b><span>biturbo</span></div></div>
+          <p class="slide__status">Ab sofort buchbar</p>
+        </div>
+        <div class="slide__media"><img class="slide__car" src="assets/car/k1-nachtblau-tuned.svg" alt="Coupé K1 im Vollausbau" loading="eager"></div>
+      </article>
+      <article class="slide" data-slide role="group"
+               aria-roledescription="Folie" aria-label="2 von 5" aria-hidden="true">
+        <div class="slide__text">
+          <h2 class="slide__title">Stufe 2 — Limousine K4</h2>
+          <div class="slide__figs"><div class="fig"><b>554</b><span>PS</span></div><div class="fig"><b>730</b><span>NM</span></div><div class="fig"><b>V6</b><span>biturbo</span></div></div>
+          <p class="slide__status">Drei Tage Standzeit</p>
+        </div>
+        <div class="slide__media"><img class="slide__car" src="assets/car/k4-silber-tuned.svg" alt="Limousine K4 in Ausbaustufe 2" loading="lazy"></div>
+      </article>
+      <article class="slide" data-slide role="group"
+               aria-roledescription="Folie" aria-label="3 von 5" aria-hidden="true">
+        <div class="slide__text">
+          <h2 class="slide__title">Stufe 3 — Crossover KX</h2>
+          <div class="slide__figs"><div class="fig"><b>598</b><span>PS</span></div><div class="fig"><b>780</b><span>NM</span></div><div class="fig"><b>4×4</b><span>Allrad</span></div></div>
+          <p class="slide__status">Mit Anhängerfreigabe</p>
+        </div>
+        <div class="slide__media"><img class="slide__car" src="assets/car/kx-graphit-tuned.svg" alt="Crossover KX im Vollausbau" loading="lazy"></div>
+      </article>
+      <article class="slide" data-slide role="group"
+               aria-roledescription="Folie" aria-label="4 von 5" aria-hidden="true">
+        <div class="slide__text">
+          <h2 class="slide__title">Schmiederad Elbe</h2>
+          <div class="slide__figs"><div class="fig"><b>21</b><span>ZOLL</span></div><div class="fig"><b>−4</b><span>KG/RAD</span></div><div class="fig"><b>6</b><span>FARBEN</span></div></div>
+          <p class="slide__status">Mit Festigkeitsgutachten</p>
+        </div>
+        <div class="slide__media"><img class="slide__car" src="assets/parts/rad-elbe.svg" alt="Schmiederad Elbe, fünf Doppelspeichen" loading="lazy"></div>
+      </article>
+      <article class="slide" data-slide role="group"
+               aria-roledescription="Folie" aria-label="5 von 5" aria-hidden="true">
+        <div class="slide__text">
+          <h2 class="slide__title">Klappenabgasanlage</h2>
+          <div class="slide__figs"><div class="fig"><b>76</b><span>MM</span></div><div class="fig"><b>+11</b><span>PS</span></div><div class="fig"><b>1.4301</b><span>STAHL</span></div></div>
+          <p class="slide__status">Von Hand geschweißt</p>
+        </div>
+        <div class="slide__media"><img class="slide__car" src="assets/parts/abgasanlage.svg" alt="Klappenabgasanlage aus Edelstahl" loading="lazy"></div>
+      </article>
     </div>
+    <button class="slider__arrow slider__arrow--prev" type="button" data-slide-prev aria-label="Vorherige Folie"></button>
+    <button class="slider__arrow slider__arrow--next" type="button" data-slide-next aria-label="Nächste Folie"></button>
+    <div class="slider__dots"><button type="button" data-slide-dot aria-label="Folie 1" aria-current="true"></button><button type="button" data-slide-dot aria-label="Folie 2"></button><button type="button" data-slide-dot aria-label="Folie 3"></button><button type="button" data-slide-dot aria-label="Folie 4"></button><button type="button" data-slide-dot aria-label="Folie 5"></button></div>
   </div>
-  <div class="hero__title" aria-hidden="true">
-    <span class="hero__title-word" data-split>KREBS</span>
-    <span class="hero__title-word hero__title-word--2" data-split>PERFORMANCE</span>
-  </div>
+</section>
 
-  <h1 class="sr-only">KREBS PERFORMANCE — Leistungssteigerung, Abgasanlagen, Fahrwerk und Räder aus Hamburg</h1>
-
-  <div class="hero__scroll" data-hero-scroll>
-    <span>Scroll</span>
-    <i></i>
+<!-- ============ PRODUKTRASTER ============ -->
+<section class="tiles" aria-label="Produkte und Leistungen">
+  <div class="tiles__grid">
+      <a class="tile" href="#motor" data-reveal>
+        <img src="assets/parts/steuergeraet.svg" alt="Kennfeldoptimierung" loading="lazy">
+        <span class="tile__cap"><b>Kennfeldoptimierung</b><span>Software vom Prüfstand</span></span>
+      </a>
+      <a class="tile" href="#abgas" data-reveal>
+        <img src="assets/parts/antriebstechnik.svg" alt="Antriebstechnik" loading="lazy">
+        <span class="tile__cap"><b>Antriebstechnik</b><span>Kraft, die ankommt</span></span>
+      </a>
+      <a class="tile" href="#abgas" data-reveal>
+        <img src="assets/parts/abgasanlage.svg" alt="Abgasanlagen" loading="lazy">
+        <span class="tile__cap"><b>Abgasanlagen</b><span>Klang aus Edelstahl</span></span>
+      </a>
+      <a class="tile" href="#werkstatt" data-reveal>
+        <img src="assets/parts/kolben.svg" alt="Entwicklung" loading="lazy">
+        <span class="tile__cap"><b>Entwicklung</b><span>Lösungen nach Maß</span></span>
+      </a>
+      <a class="tile" href="#raeder" data-reveal>
+        <img src="assets/parts/rad-elbe.svg" alt="Schmiederad Elbe" loading="lazy">
+        <span class="tile__cap"><b>Schmiederad Elbe</b><span>Fünf Doppelspeichen</span></span>
+      </a>
+      <a class="tile" href="#raeder" data-reveal>
+        <img src="assets/parts/rad-harburg.svg" alt="Leichtrad Harburg" loading="lazy">
+        <span class="tile__cap"><b>Leichtrad Harburg</b><span>Zehn Speichen, 8,4 kg</span></span>
+      </a>
+      <a class="tile" href="#abgas" data-reveal>
+        <img src="assets/parts/fahrwerk.svg" alt="Fahrwerke" loading="lazy">
+        <span class="tile__cap"><b>Fahrwerke</b><span>25 bis 55 Millimeter</span></span>
+      </a>
+      <a class="tile" href="#raeder" data-reveal>
+        <img src="assets/parts/bremsanlage.svg" alt="Bremsanlagen" loading="lazy">
+        <span class="tile__cap"><b>Bremsanlagen</b><span>Zweimal hintereinander</span></span>
+      </a>
+      <a class="tile" href="#leistungen" data-reveal>
+        <img src="assets/parts/wartung.svg" alt="Wartung &amp; Reparatur" loading="lazy">
+        <span class="tile__cap"><b>Wartung &amp; Reparatur</b><span>Service aus Harburg</span></span>
+      </a>
+      <a class="tile" href="#leistungen" data-reveal>
+        <img src="assets/parts/individual.svg" alt="Individual" loading="lazy">
+        <span class="tile__cap"><b>Individual</b><span>Einzelstücke nach Wunsch</span></span>
+      </a>
+      <a class="tile" href="#stufen" data-reveal>
+        <img src="assets/parts/turbolader.svg" alt="Leistungssteigerung" loading="lazy">
+        <span class="tile__cap"><b>Leistungssteigerung</b><span>Motorentechnik</span></span>
+      </a>
+      <a class="tile" href="#raeder" data-reveal>
+        <img src="assets/parts/teilegutachten.svg" alt="Teilegutachten" loading="lazy">
+        <span class="tile__cap"><b>Teilegutachten</b><span>Papiere liegen bei</span></span>
+      </a>
   </div>
 </section>
 

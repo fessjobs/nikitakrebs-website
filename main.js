@@ -33,8 +33,7 @@
     });
   });
 
-  /* ---------- preloader + hero intro ---------- */
-  gsap.set('[data-hero-figure]', { xPercent: -50 });
+  /* ---------- preloader + Einstieg ---------- */
   const pre = $('[data-preloader]');
   const intro = gsap.timeline({ defaults: { ease: 'power4.out' } });
   intro
@@ -42,213 +41,65 @@
     .to('.preloader__mark', { opacity: 0, scale: 1.15, duration: 0.5, ease: 'power3.in' }, '+=0.35')
     .to(pre, { yPercent: -100, duration: 0.9, ease: 'power4.inOut' }, '-=0.2')
     .set(pre, { display: 'none' })
-    .from('.hero__title .ch', { yPercent: 60, opacity: 0, duration: 1, stagger: 0.03 }, '-=0.7')
-    .from('[data-hero-figure]', { yPercent: 18, opacity: 0, duration: 1.3 }, '-=0.9')
-    .from('.nav__logo, .nav__right > *', { opacity: 0, duration: 0.7, stagger: 0.08 }, '-=0.9')
-    .from('[data-hero-scroll]', { y: 20, opacity: 0, duration: 0.7 }, '-=0.6');
+    .from('.site-head__mark, .topbar > *, .mainnav__item, .mainnav__cta',
+      { y: -16, opacity: 0, duration: 0.6, stagger: 0.05 }, '-=0.6')
+    .from('.slide.is-active .slide__text > *',
+      { y: 26, opacity: 0, duration: 0.8, stagger: 0.09 }, '-=0.35')
+    .from('.slide.is-active .slide__car', { x: 70, opacity: 0, duration: 1 }, '-=0.75');
 
-  /* ---------- hero scroll transition: pin, darken, frame the portrait, marquee text (wie Norris) ---------- */
+  /* ---------- Slider: Pfeile, Punkte, Tastatur, Selbstlauf ---------- */
   (function () {
-    const hero = $('[data-hero]'), fig = $('[data-hero-figure]'), frame = $('[data-hero-frame]'), title = $('.hero__title');
-    const marqs = $$('[data-hero-marq]');
-    if (!hero || !fig) return;
-    const tl = gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: () => isTouch ? '+=100%' : '+=140%', pin: true, scrub: isTouch ? true : 0.6, anticipatePin: 1, invalidateOnRefresh: true, fastScrollEnd: true,
-      onUpdate: (st) => { hero.classList.toggle('is-framed', st.progress > 0.35); $('[data-nav]').classList.toggle('is-dark', st.progress > 0.35); if (themeMeta) { const c = st.progress > 0.35 ? '#1B2540' : '#F5F4EF'; if (themeMeta.getAttribute('content') !== c) { themeMeta.setAttribute('content', c); document.documentElement.style.backgroundColor = c; } } } } });
-    const mobile = () => innerWidth <= 760;
-    const fw = () => mobile() ? innerWidth * 0.88 : Math.min(innerWidth * 0.46, 760), fh = () => mobile() ? innerHeight * 0.6 : Math.min(innerHeight * 0.58, 560);
-    // explicit start values → no jump when the scrub timeline first renders during the intro animation
-    tl.fromTo(hero, { backgroundColor: '#F5F4EF' }, { backgroundColor: '#1B2540', duration: 1, ease: 'none' }, 0)
-      .to(title, { opacity: 0, yPercent: -20, duration: 0.5, ease: 'none' }, 0)
-      .to('.hero__topo', { opacity: 0, duration: 0.5 }, 0)
-      .fromTo('[data-hero-scroll]', { opacity: 1 }, { opacity: 0, duration: 0.3, ease: 'none' }, 0)
-      .fromTo(frame, { width: '100%', height: '100%', left: 0, top: 0, borderRadius: 0, backgroundColor: 'rgba(230,229,224,0)' },
-        { width: fw, height: fh, left: () => (innerWidth - fw()) / 2, top: () => (innerHeight - fh()) / 2, borderRadius: 6, backgroundColor: 'rgba(230,229,224,1)', duration: 1, ease: 'power2.inOut' }, 0)
-      .to('[data-hero-frame-video]', { opacity: isTouch ? 0 : 0.9, duration: 0.6 }, 0.3)
-      .fromTo(fig, { scale: 1, yPercent: 0 }, { scale: () => mobile() ? 0.72 : 0.56, yPercent: () => mobile() ? 0 : 4, duration: 1, ease: 'power2.inOut' }, 0)
-      .to('.hero__fade', { opacity: 0, duration: 0.4 }, 0.1)
-      .to('[data-hero-grid]', { opacity: 1, duration: 0.6 }, 0.35)
-      .to(marqs, { opacity: 1, duration: 0.35 }, 0.5);
-    // Fließband: oben links→rechts, unten rechts→links, dauerhaft
-    marqs.forEach((m) => {
-      const dir = parseFloat(m.dataset.heroMarq) || 1;
-      const run = () => {
-        const half = m.scrollWidth / 2;
-        gsap.fromTo(m, dir > 0 ? { x: -half } : { x: 0 }, { x: dir > 0 ? 0 : -half, duration: half / 70, ease: 'none', repeat: -1 });
-      };
-      if (document.readyState === 'complete') run(); else addEventListener('load', run);
-    });
-  })();
+    const root = $('[data-slider]');
+    if (!root) return;
+    const slides = $$('[data-slide]', root), dots = $$('[data-slide-dot]', root);
+    if (slides.length < 2) return;
+    const DELAY = 6500;
+    let cur = 0, timer = null;
 
-  /* ---------- hero: topo lines — draw on, then drift independently; mouse moves each at its own depth ---------- */
-  // procedural contour lines (Lando-style topo map)
-  (function genTopo() {
-    const g = $('[data-topo-lines]');
-    if (!g) return;
-    const N = isTouch ? 4 : 7, W = 1920, H = 1000;
-    const rnd = (seed) => { let x = Math.sin(seed) * 10000; return x - Math.floor(x); };
-    for (let k = 0; k < N; k++) {
-      const base = -80 + (k / (N - 1)) * (H + 160);
-      const a1 = 60 + rnd(k + 1) * 60, a2 = 10 + rnd(k + 7) * 14, f1 = 0.0016 + rnd(k + 3) * 0.0008, f2 = 0.004 + rnd(k + 5) * 0.002;
-      const ph1 = rnd(k + 11) * Math.PI * 2, ph2 = rnd(k + 13) * Math.PI * 2;
-      let d = '';
-      for (let x = -60; x <= W + 60; x += 40) {
-        const cx = (x - W / 2) / (W / 2); const bulge = Math.exp(-cx * cx * 2.2) * (k < N / 2 ? -1 : 1) * 110;
-        const y = base + bulge + Math.sin(x * f1 + ph1) * a1 + Math.sin(x * f2 + ph2) * a2;
-        d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    const stop = () => { clearInterval(timer); timer = null; };
+    const start = () => { stop(); if (!reduced) timer = setInterval(() => show(cur + 1, 1), DELAY); };
+
+    function show(next, dir) {
+      next = (next + slides.length) % slides.length;
+      if (next === cur) return;
+      slides[cur].classList.remove('is-active');
+      slides[cur].setAttribute('aria-hidden', 'true');
+      slides[next].classList.add('is-active');
+      slides[next].removeAttribute('aria-hidden');
+      dots.forEach((d, k) => k === next
+        ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current'));
+      cur = next;
+      if (!reduced) {
+        gsap.fromTo($$('.slide__text > *', slides[cur]), { y: 22, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.07, ease: 'power3.out' });
+        gsap.fromTo($('.slide__car', slides[cur]), { x: dir < 0 ? -60 : 60, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
       }
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', d);
-      g.appendChild(path);
+      start();
     }
-    // a few closed contour rings
-    (isTouch ? [[1600, 640, 170]] : [[300, 260, 190], [1600, 640, 170]]).forEach(([cx, cy, r], i) => {
-      for (let ring = 0; ring < (isTouch ? 2 : 3); ring++) {
-        const rr = r - ring * 34; let d = '';
-        for (let a = 0; a <= 360; a += 12) {
-          const t = a * Math.PI / 180, wob = 1 + Math.sin(t * 3 + i) * 0.08 + Math.cos(t * 5 + ring) * 0.05;
-          const x = cx + Math.cos(t) * rr * wob * 1.25, y = cy + Math.sin(t) * rr * wob;
-          d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
-        }
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('d', d + ' Z'); g.appendChild(path);
-      }
+
+    $('[data-slide-next]', root).addEventListener('click', () => show(cur + 1, 1));
+    $('[data-slide-prev]', root).addEventListener('click', () => show(cur - 1, -1));
+    dots.forEach((d, k) => d.addEventListener('click', () => show(k, k > cur ? 1 : -1)));
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1, 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1, -1); }
     });
-  })();
-
-  const topoPaths = $$('.hero__topo path');
-  topoPaths.forEach((p, i) => {
-    const isLine = p.parentElement.getAttribute('fill') === 'none';
-    if (isLine) {
-      const len = p.getTotalLength();
-      gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
-      // draw in, hold, erase from the other end, repeat — like a pen writing the line
-      const dur = 2.6 + (i % 5) * 0.6;
-      if (isTouch) { gsap.to(p, { strokeDashoffset: 0, duration: dur, ease: 'power2.inOut', delay: 1.8 + i * 0.3 }); return; }
-      gsap.timeline({ repeat: -1, delay: 1.8 + (i % 7) * 0.45 })
-        .to(p, { strokeDashoffset: 0, duration: dur, ease: 'power2.inOut' })
-        .to(p, { strokeDashoffset: -len, duration: dur, ease: 'power2.inOut' }, '+=' + (0.8 + (i % 3) * 0.5))
-        .set(p, { strokeDashoffset: len }, '+=' + (0.6 + (i % 4) * 0.4));
-    } else {
-      if (isTouch) return;
-      // blobs: slow breathing + rotation
-      gsap.set(p, { transformOrigin: '50% 50%' });
-      gsap.to(p, { scale: 1.12, rotation: i % 2 ? 8 : -8, duration: 6 + i * 2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-    }
-    if (!isTouch) gsap.to(p, { x: (i % 2 ? 1 : -1) * (12 + (i % 6) * 4), y: (i % 3 - 1) * 10, duration: 7 + (i % 5) * 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: (i % 6) * 0.4 });
-  });
-  if (!isTouch) {
-    const fig = $('[data-hero-figure]');
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / innerWidth - 0.5), y = (e.clientY / innerHeight - 0.5);
-      gsap.to(fig, { x: x * 14, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
-      topoPaths.forEach((p, i) => {
-        const depth = 0.3 + (i % 5) * 0.25;
-        gsap.to(p, { xPercent: x * -2.2 * depth, yPercent: y * -2 * depth, duration: 1.4 + i * 0.1, ease: 'power3.out', overwrite: 'auto' });
-      });
-    });
-  }
-
-  /* ---------- hero: Three.js mannequin bust (placeholder until 3D scan) + wireframe dome ---------- */
-  (function hero3D() {
-    const canvas = $('[data-gl]');
-    const hero = $('[data-hero]');
-    if (!canvas || typeof THREE === 'undefined' || reduced) return;
-    const MODE = hero.dataset.heroMode || 'mannequin'; // 'mannequin' | 'photo'
-    const head = $('[data-head]');
-    if (MODE === 'mannequin') $('[data-hero-figure]').style.display = 'none';
-
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    const scene = new THREE.Scene();
-    const cam = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    cam.position.z = 8;
-
-    // lights
-    scene.add(new THREE.HemisphereLight(0xffffff, 0xd8d6cf, 1.1));
-    const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(3, 5, 6); scene.add(key);
-    const rim = new THREE.DirectionalLight(0x6aaefd, 0.7); rim.position.set(-5, 2, -3); scene.add(rim);
-
-    // mannequin
-    const bust = new THREE.Group();
-    const skin = new THREE.MeshStandardMaterial({ color: 0xe4e2da, roughness: 0.55, metalness: 0.02 });
-    const headM = new THREE.Mesh(new THREE.SphereGeometry(0.9, 64, 48), skin);
-    headM.scale.set(0.92, 1.18, 1); headM.position.y = 1.0; bust.add(headM);
-    const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.33, 0.4, 0.9, 32), skin);
-    neck.position.y = -0.15; bust.add(neck);
-    const shoulders = new THREE.Mesh(new THREE.CapsuleGeometry(0.62, 2.2, 12, 32), skin);
-    shoulders.rotation.z = Math.PI / 2; shoulders.position.y = -1.05; bust.add(shoulders);
-    const chest = new THREE.Mesh(new THREE.CylinderGeometry(1.35, 1.5, 1.6, 48), skin);
-    chest.position.y = -1.85; chest.scale.z = 0.55; bust.add(chest);
-    bust.visible = MODE === 'mannequin';
-    scene.add(bust);
-
-    // wireframe dome (the "helmet")
-    const group = new THREE.Group();
-    const mat = new THREE.LineBasicMaterial({ color: 0x0b0b0c, transparent: true, opacity: 0.55 });
-    const accent = new THREE.LineBasicMaterial({ color: 0x1f6bd6, transparent: true, opacity: 0.9 });
-    group.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.SphereGeometry(1.35, 18, 9, 0, Math.PI * 2, 0, Math.PI / 2.2)), mat));
-    const r1 = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.TorusGeometry(1.42, 0.02, 4, 64)), accent); r1.rotation.x = Math.PI / 2; group.add(r1);
-    const b = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(0.5, 0.18, 0.18)), accent); b.position.set(0, 1.2, 0.9); group.add(b);
-    scene.add(group);
-    window.__hero = { group, cam, renderer };
-
-    let W = 0, H = 0, aspect = 1;
-    function resize() {
-      W = canvas.clientWidth; H = canvas.clientHeight; aspect = W / H;
-      renderer.setSize(W, H, false);
-      cam.aspect = aspect; cam.updateProjectionMatrix();
-      const s = aspect < 0.75 ? 0.5 : 0.62;
-      bust.scale.setScalar(s);
-      bust.position.y = -1.45 - (0.62 - s) * 0.8;
-    }
-    resize(); addEventListener('resize', resize);
-
-    let mx = 0, my = 0;
-    if (!isTouch) addEventListener('mousemove', (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; });
-
-    const v = new THREE.Vector3();
-    function screenToWorld(px, py, z) {
-      v.set((px / W) * 2 - 1, -(py / H) * 2 + 1, 0.5).unproject(cam);
-      const dir = v.sub(cam.position).normalize();
-      const dist = (z - cam.position.z) / dir.z;
-      return cam.position.clone().add(dir.multiplyScalar(dist));
-    }
-    const target = new THREE.Vector3();
-    function frame() {
-      if (MODE === 'mannequin') {
-        // bust looks toward cursor, dome rides on head top
-        bust.rotation.y += ((mx * 0.6) - bust.rotation.y) * 0.06;
-        headM.rotation.x += ((my * 0.35) - headM.rotation.x) * 0.06;
-        headM.rotation.y = bust.rotation.y * 0.4;
-        const s = bust.scale.x;
-        target.set(0, bust.position.y + (1.0 + 0.9 * 1.18 - 0.42) * s, 0);
-        group.position.lerp(target, 0.2);
-        group.scale.setScalar(0.66 * s);
-        group.rotation.y += 0.004 + mx * 0.004;
-        group.rotation.x = 0.1 + my * 0.15;
-        group.rotation.z = mx * 0.15;
-      } else if (head) {
-        const r = head.getBoundingClientRect(), c = canvas.getBoundingClientRect();
-        const hx = r.left - c.left + r.width * 0.535;
-        const hy = r.top - c.top + r.height * 0.08;
-        const p = screenToWorld(hx, hy, 0);
-        const headWorldW = screenToWorld(r.right - c.left, hy, 0).x - screenToWorld(r.left - c.left, hy, 0).x;
-        const scale = headWorldW * 0.15;
-        group.position.set(p.x, p.y - scale * 0.15, 0);
-        group.scale.setScalar(scale);
-        group.rotation.y += 0.004 + mx * 0.004;
-        group.rotation.x = 0.18 + my * 0.2;
-        group.rotation.z = mx * 0.2;
-      }
-      renderer.render(scene, cam);
-    }
-    gsap.ticker.add(frame);
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+    start();
   })();
 
   /* ---------- programmatic scroll (GSAP-driven, plays nice with Lenis) ---------- */
+  function headOffset() {
+    const head = $('.site-head');
+    return head ? head.getBoundingClientRect().height - 1 : 0;
+  }
   function scrollToEl(el) {
-    const y = el.getBoundingClientRect().top + window.scrollY;
+    const y = el.getBoundingClientRect().top + window.scrollY - headOffset();
     const from = window.scrollY, o = { v: from };
     gsap.to(o, { v: y, duration: 1.3, ease: 'power4.inOut', overwrite: true,
       onUpdate: () => { lenis ? lenis.scrollTo(o.v, { immediate: true, force: true }) : window.scrollTo(0, o.v); } });
