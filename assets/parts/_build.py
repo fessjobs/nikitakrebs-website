@@ -13,7 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 W, H = 600, 400
 
 INK, STEEL, LIGHT, DARK = "#0B0B0C", "#8A9099", "#DCDEE3", "#2A2E35"
-ACCENT, RED, BRASS = "#2F7BE0", "#C8332B", "#B08D4F"
+ACCENT, RED, BRASS = "#E30613", "#C1050F", "#B08D4F"
 
 
 def svg(body, label):
@@ -204,10 +204,10 @@ def wartung():
     pts = [(hx + math.cos(math.pi/6 + k*math.pi/3) * hr,
             hy + math.sin(math.pi/6 + k*math.pi/3) * hr) for k in range(6)]
     b.append('<path d="M ' + " L ".join(f"{x:.1f} {y:.1f}" for x, y in pts) +
-             ' Z" fill="#F5F4EF"/>')
+             ' Z" fill="#3A3F47"/>')
     # Gabelmaul
     b.append(f'<path d="M 96 250 L 150 306 L 122 334 L 68 278 Z" fill="{STEEL}"/>')
-    b.append(f'<path d="M 74 262 L 108 296 L 96 308 L 62 274 Z" fill="#F5F4EF"/>')
+    b.append(f'<path d="M 74 262 L 108 296 L 96 308 L 62 274 Z" fill="#3A3F47"/>')
     # Schraube daneben
     cx, cy, rr = 452, 274, 62
     pts = [(cx + math.cos(math.pi/6 + k*math.pi/3) * rr,
@@ -229,8 +229,8 @@ def individual():
              f'L 378 79 C 394 77 402 86 400 106 L 386 296 '
              f'C 385 308 378 313 366 313 Z" fill="{STEEL}" fill-opacity=".5"/>')
     # Kopfstützen-Durchlass
-    b.append(f'<rect x="322" y="92" width="58" height="26" rx="13" fill="#F5F4EF" '
-             f'fill-opacity=".85"/>')
+    b.append(f'<rect x="322" y="92" width="58" height="26" rx="13" fill="{LIGHT}" '
+             f'fill-opacity=".22"/>')
     # Steppnähte quer über die Lehne
     for k in range(5):
         y = 158 + k * 30

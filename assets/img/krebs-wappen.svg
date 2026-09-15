@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 262" fill="none" role="img" aria-label="KREBS PERFORMANCE Wappen">
+  <defs>
+    <clipPath id="kw-shield">
+      <path d="M14 16 C14 11 18 7 23 7 H197 C202 7 206 11 206 16 V146
+               C206 200 166 231 110 254 C54 231 14 200 14 146 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Schildkörper -->
+  <path d="M14 16 C14 11 18 7 23 7 H197 C202 7 206 11 206 16 V146
+           C206 200 166 231 110 254 C54 231 14 200 14 146 Z" fill="#101010"/>
+
+  <g clip-path="url(#kw-shield)">
+    <!-- Startflagge im Kopf des Schildes -->
+    <g fill="#FFFFFF" fill-opacity=".14">
+      <rect x="14" y="7" width="24" height="20"/><rect x="62" y="7" width="24" height="20"/>
+      <rect x="110" y="7" width="24" height="20"/><rect x="158" y="7" width="24" height="20"/>
+      <rect x="38" y="27" width="24" height="20"/><rect x="86" y="27" width="24" height="20"/>
+      <rect x="134" y="27" width="24" height="20"/><rect x="182" y="27" width="24" height="20"/>
+    </g>
+
+    <!-- K, aus Flächen gebaut, damit keine Schrift geladen werden muss -->
+    <path d="M60 64 H88 V196 H60 Z" fill="#FFFFFF"/>
+    <path d="M92 130 L142 64 H176 L122 133 Z" fill="#FFFFFF"/>
+    <path d="M92 130 L124 127 L178 196 H144 Z" fill="#FFFFFF"/>
+
+    <!-- Akzentband über dem Schildfuß -->
+    <path d="M14 206 H206 V228 H14 Z" fill="#E30613"/>
+  </g>
+
+  <!-- Einfassung -->
+  <path d="M14 16 C14 11 18 7 23 7 H197 C202 7 206 11 206 16 V146
+           C206 200 166 231 110 254 C54 231 14 200 14 146 Z"
+        stroke="#FFFFFF" stroke-width="9"/>
+</svg>

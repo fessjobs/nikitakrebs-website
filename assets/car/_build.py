@@ -143,9 +143,9 @@ def wheel(cx, cy, r, style, rim_col, tyre_col, i=0, ratio=0.76, caliper=None):
 
 
 # ------------------------------------------------------------------ render
-def render(model, paint="#1E2A4A", glass_col="#121A2C", accent="#6AAEFD",
+def render(model, paint="#1E2A4A", glass_col="#121A2C", accent="#E30613",
            style="solid", stroke="#0B0B0C", ground=True, shadow=True, crop=None,
-           tune=0, caliper="#D6392E"):
+           tune=0, caliper="#C1050F"):
     m = MODELS[model]
     t = TUNE[tune]
     g = geometry(m, t["drop"])
@@ -312,11 +312,11 @@ PAINTS = {
 
 # rear axle sits at X0 + LEN*(f_ovh + wbase); crops are expressed in that space
 DETAILS = {
-    "rad":    ("k1", "nachtblau", (690, 290, 370, 190)),
-    "front":  ("k1", "nachtblau", (40, 250, 400, 200)),
+    "rad":    ("k1", "graphit",   (690, 290, 370, 190)),
+    "front":  ("k1", "graphit",   (40, 250, 400, 200)),
     "heck":   ("k4", "silber",    (840, 230, 340, 210)),
     "fluegel":("k1", "graphit",   (830, 180, 360, 220)),
-    "profil": ("k4", "nachtblau", (180, 150, 700, 300)),
+    "profil": ("k4", "graphit",   (180, 150, 700, 300)),
 }
 
 if __name__ == "__main__":
@@ -335,7 +335,7 @@ if __name__ == "__main__":
     # die drei Ausbaustufen am selben Wagen
     for tune in (1, 2, 3):
         with open(os.path.join(HERE, f"stufe-{tune}.svg"), "w") as fh:
-            fh.write(render("k1", *PAINTS["nachtblau"], tune=tune))
+            fh.write(render("k1", *PAINTS["graphit"], tune=tune))
         n += 1
     for key, (model, paint, box) in DETAILS.items():
         with open(os.path.join(HERE, f"detail-{key}.svg"), "w") as fh:

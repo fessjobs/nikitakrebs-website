@@ -40,6 +40,19 @@ Abgasanlage, Kolben, zwei Räder, Fahrwerk, Bremsanlage, Werkzeug, Sportsitz,
 Gutachten und Turbolader. Gleiche Bildsprache wie die Fahrzeuge: flache
 Flächen, Stahltöne, Blau als Markenakzent, Rot nur am Bremssattel.
 
+## Farben
+
+Die Palette liegt vollständig in den `:root`-Variablen von `style.css`:
+Weiß als Grund, Schwarz und ein Grauband für das Chrom, Rot als Akzent.
+`--accent-text` ist der rote Ton für Schrift auf Weiß, `--accent-light` der
+hellere für Schrift auf Schwarz — beide braucht es, weil ein Rot nicht auf
+beiden Gründen lesbar bleibt. Die Generatoren nehmen den Akzent als
+Parameter (`accent`, `ACCENT`), Farbwechsel laufen also durch beide Skripte.
+
+Das Wappen liegt als `assets/img/krebs-wappen.svg`. Es kommt ohne Schrift
+aus — das „K" ist aus Flächen gebaut, weil eine über `<img>` eingebundene
+SVG keine externen Schriften nachladen kann.
+
 ## Hinweis
 
 Der Seitenaufbau — Servicezeile, dunkle Hauptnavigation, Slider mit
