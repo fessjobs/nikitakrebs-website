@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F5F4EF">
 <meta name="color-scheme" content="light">
-<title>Nikita Krebs — Gründer, Medienproduktion &amp; Software</title>
-<meta name="description" content="Nikita Krebs — Unternehmer und Gründer aus Hamburg. Gründer von incub:FRAME, Mitgründer von incub:GRID. Imagefilm, Personal Branding und Software.">
+<title>KREBS AUTOMOBILE — Elektrische Automobile aus Hamburg</title>
+<meta name="description" content="KREBS AUTOMOBILE — elektrische Automobile in Kleinserie aus Hamburg. Drei Modelle: K1 Coupé, K4 Limousine, KX Crossover. Eigener Antriebsstrang, Handmontage.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nikita Krebs — Gründer, Medienproduktion &amp; Software">
-<meta property="og:description" content="Unternehmer und Gründer aus Hamburg. Gründer von incub:FRAME, Mitgründer von incub:GRID.">
+<meta property="og:title" content="KREBS AUTOMOBILE — Elektrische Automobile aus Hamburg">
+<meta property="og:description" content="Elektrische Automobile in Kleinserie aus Hamburg. K1 Coupé, K4 Limousine, KX Crossover.">
 <meta property="og:url" content="https://nikitakrebs.de/">
 <meta property="og:image" content="https://nikitakrebs.de/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://nikitakrebs.de/">
 <link rel="icon" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/img/nikita-portrait-4.png">
+<link rel="preload" as="image" href="assets/car/k1-nachtblau.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&family=Caveat:wght@600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -29,13 +29,13 @@
 
 <!-- ============ NAV ============ -->
 <header class="nav" data-nav>
-  <a class="nav__logo" href="#top" aria-label="Nikita Krebs">
-    <img src="assets/img/nk-mark.png" alt="NK" width="1483" height="938">
+  <a class="nav__logo" href="#top" aria-label="KREBS AUTOMOBILE">
+    <img src="assets/img/nk-mark.png" alt="KREBS" width="1483" height="938">
   </a>
   <div class="nav__right">
-    <a class="btn btn--accent nav__cta" href="mailto:n.krebs@incub.live">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 8 8 6 8-6"/></svg>
-      <span>Kontakt</span>
+    <a class="btn btn--accent nav__cta" href="#kontakt">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h18l-2-6H5z"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></svg>
+      <span>Probefahrt</span>
     </a>
     <button class="nav__burger" data-menu-toggle aria-label="Menü öffnen" aria-expanded="false">
       <span></span><span></span>
@@ -47,16 +47,16 @@
 <div class="menu" data-menu aria-hidden="true">
   <div class="menu__inner">
     <nav class="menu__links">
-      <a href="#weg" data-menu-link data-img="assets/img/poster-weg-reisevideos.jpg"><small>01</small>Der Weg</a>
-      <a href="#ventures" data-menu-link data-img="assets/img/poster-weg-frame.jpg"><small>02</small>Ventures</a>
-      <a href="#arbeiten" data-menu-link data-img="assets/img/poster-work-eques-hr.jpg"><small>03</small>Cases</a>
-      <a href="#galerie" data-menu-link data-img="assets/gallery/g13.jpg"><small>04</small>Galerie</a>
-      <a href="#kontakt" data-menu-link data-img="assets/gallery/g13.jpg"><small>05</small>Kontakt</a>
+      <a href="#baureihe" data-menu-link data-img="assets/car/detail-profil.svg"><small>01</small>Baureihe</a>
+      <a href="#modelle" data-menu-link data-img="assets/car/k1-nachtblau.svg"><small>02</small>Modelle</a>
+      <a href="#design" data-menu-link data-img="assets/car/detail-rad.svg"><small>03</small>Design</a>
+      <a href="#lackierungen" data-menu-link data-img="assets/car/k4-karminrot.svg"><small>04</small>Lackierungen</a>
+      <a href="#kontakt" data-menu-link data-img="assets/car/kx-graphit.svg"><small>05</small>Probefahrt</a>
     </nav>
     <div class="menu__foot">
-      <a href="https://www.instagram.com/nikita.krbs/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/in/nikita-krebs-a7625b337/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:n.krebs@incub.live">n.krebs@incub.live</a>
+      <a href="#modelle">K1 · K4 · KX</a>
+      <a href="#technik">Technik</a>
+      <a href="#kontakt">Probefahrt buchen</a>
     </div>
   </div>
 </div>
@@ -65,7 +65,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" data-hero data-hero-mode="photo">
-    <div class="hero__topo" aria-hidden="true">
+  <div class="hero__topo" aria-hidden="true">
     <svg viewBox="0 0 1920 1000" preserveAspectRatio="xMidYMid slice">
       <g fill="none" stroke="#0B0B0C" stroke-opacity=".14" stroke-width="1.3" stroke-linecap="round" data-topo-lines></g>
       <g fill="#0B0B0C" fill-opacity=".045">
@@ -76,23 +76,21 @@
   </div>
 
   <div class="hero__grid" aria-hidden="true" data-hero-grid></div>
-  <div class="hero__marq hero__marq--1" aria-hidden="true" data-hero-marq="1"><span>MEDIEN · MARKEN · SOFTWARE · MEDIEN · MARKEN · SOFTWARE ·&nbsp;</span><span>MEDIEN · MARKEN · SOFTWARE · MEDIEN · MARKEN · SOFTWARE ·&nbsp;</span></div>
-  <div class="hero__marq hero__marq--2" aria-hidden="true" data-hero-marq="-1"><span>GRÜNDER · HAMBURG · INCUB:FRAME · INCUB:GRID ·&nbsp;</span><span>GRÜNDER · HAMBURG · INCUB:FRAME · INCUB:GRID ·&nbsp;</span></div>
+  <div class="hero__marq hero__marq--1" aria-hidden="true" data-hero-marq="1"><span>ELEKTRISCH · HANDGEBAUT · HAMBURG · ELEKTRISCH · HANDGEBAUT · HAMBURG ·&nbsp;</span><span>ELEKTRISCH · HANDGEBAUT · HAMBURG · ELEKTRISCH · HANDGEBAUT · HAMBURG ·&nbsp;</span></div>
+  <div class="hero__marq hero__marq--2" aria-hidden="true" data-hero-marq="-1"><span>0–100 IN 3,2 S · 540 KM · 800 VOLT ·&nbsp;</span><span>0–100 IN 3,2 S · 540 KM · 800 VOLT ·&nbsp;</span></div>
   <div class="hero__frame" aria-hidden="false" data-hero-frame>
-    <video class="hero__frame-video" muted loop playsinline autoplay preload="metadata" data-hero-frame-video><source src="assets/video/collage-bg.mp4" type="video/mp4"></video>
-  <div class="hero__figure" data-hero-figure>
-    <img class="hero__head" src="assets/img/nikita-portrait-4.webp" srcset="assets/img/nikita-portrait-4-1000.webp 1000w, assets/img/nikita-portrait-4.webp 1856w" sizes="(max-width:760px) 100vw, 900px" alt="Nikita Krebs" width="1856" height="2304" fetchpriority="high" data-head>
-    <div class="hero__fade"></div>
-  </div>
+    <div class="hero__frame-video" data-hero-frame-video aria-hidden="true"></div>
+    <div class="hero__figure" data-hero-figure>
+      <img class="hero__head" src="assets/car/k1-nachtblau.svg" alt="KREBS K1 Coupé in Nachtblau, Seitenansicht" width="1200" height="500" fetchpriority="high" data-head>
+      <div class="hero__fade"></div>
+    </div>
   </div>
   <div class="hero__title" aria-hidden="true">
-    <span class="hero__title-word" data-split>NIKITA</span>
-    <span class="hero__title-word hero__title-word--2" data-split>KREBS</span>
+    <span class="hero__title-word" data-split>KREBS</span>
+    <span class="hero__title-word hero__title-word--2" data-split>AUTOMOBILE</span>
   </div>
 
-
-  <h1 class="sr-only">Nikita Krebs — Gründer von incub:FRAME, Mitgründer von incub:GRID</h1>
-
+  <h1 class="sr-only">KREBS AUTOMOBILE — elektrische Automobile in Kleinserie aus Hamburg</h1>
 
   <div class="hero__scroll" data-hero-scroll>
     <span>Scroll</span>
@@ -103,26 +101,20 @@
 <!-- ============ INTRO / SIGNATURE ============ -->
 <section class="intro" data-nav-theme="light">
   <div class="intro__inner">
-    <p class="intro__eyebrow" data-reveal>Unternehmer &amp; Gründer · Hamburg</p>
-    <h2 class="intro__h" data-reveal>Medien, Marken<br>und Software.</h2>
-    <p class="intro__p" data-reveal>Gründer von incub:FRAME, Mitgründer von incub:GRID. Unternehmer aus Hamburg.</p>
+    <p class="intro__eyebrow" data-reveal>Manufaktur &amp; Kleinserie · Hamburg</p>
+    <h2 class="intro__h" data-reveal>Drei Modelle.<br>Ein Antrieb.</h2>
+    <p class="intro__p" data-reveal>Eigener Antriebsstrang, 800-Volt-Architektur, Handmontage in Hamburg-Harburg. Jedes Fahrzeug wird bestellt, nicht gelagert.</p>
     <div class="intro__sig" data-reveal>
-      <img src="assets/img/signature.png" alt="Unterschrift Nikita Krebs" data-signature>
+      <img src="assets/img/signature.png" alt="Unterschrift der Manufaktur" data-signature>
     </div>
   </div>
 </section>
 
-
-
-
-
-
-
-<!-- ============ DER WEG (Lando.exe → Nikita.exe) ============ -->
-<section class="exe" id="weg" data-nav-theme="dark" data-exe>
+<!-- ============ BAUREIHE (Zeitachse) ============ -->
+<section class="exe" id="baureihe" data-nav-theme="dark" data-exe>
   <div class="exe__head">
-    <span class="exe__tag">Meine Story</span>
-    <h2 class="sec-h sec-h--light" data-reveal>Vom ersten Paar Sneaker<br>zum eigenen Unternehmen.</h2>
+    <span class="exe__tag">Die Baureihe</span>
+    <h2 class="sec-h sec-h--light" data-reveal>Vom ersten Prototyp<br>zur eigenen Baureihe.</h2>
   </div>
   <div class="exe__wrap">
   <div class="exe__journey" aria-hidden="true">
@@ -131,284 +123,325 @@
   </div>
   <ol class="exe__list">
     <li class="exe__row" data-exe-row>
+      <div class="exe__year">2019</div>
+      <div class="exe__text"><h3>Prototyp K0</h3><p>Ein umgebautes Fahrgestell, ein gekaufter Motor, ein Akku aus Modulen. Der erste Wagen fuhr 40 Kilometer weit — und bewies, dass die Rechnung aufgeht.</p></div>
+      <div class="exe__media exe__media--p"><img src="assets/car/detail-profil.svg" alt="Karosserieprofil des Prototyps" loading="lazy"></div>
+    </li>
+    <li class="exe__row" data-exe-row>
+      <div class="exe__year">2021</div>
+      <div class="exe__text"><h3>Eigener Antriebsstrang</h3><p>Schluss mit Zukaufteilen. Motor, Inverter und Batteriesteuerung entstehen ab jetzt im Haus — 800 Volt von Anfang an, weil Nachrüsten teurer ist.</p></div>
+      <div class="exe__media"><img src="assets/car/detail-rad.svg" alt="Rad und Antriebseinheit" loading="lazy"></div>
+    </li>
+    <li class="exe__row" data-exe-row>
       <div class="exe__year">2022</div>
-      <div class="exe__text"><h3>Sneaker-Reselling</h3><p>Kaufen, verkaufen, Marge verstehen. Das erste eigene Geschäft, gelernt an Angebot, Nachfrage und Timing.</p></div>
-      <div class="exe__media exe__media--p"><video muted loop playsinline preload="none" poster="assets/img/poster-sneakerreselling.webp" data-exe-video data-autoplay><source src="assets/video/sneakerreselling.mp4" type="video/mp4"></video></div>
-    </li>
-    <li class="exe__row" data-exe-row>
-      <div class="exe__year">2023</div>
-      <div class="exe__text"><h3>Eigene Reisevideos</h3><p>Kamera in die Hand, losgezogen. Aus Reisen wurden Videos und aus Videos die Lust, das Handwerk richtig zu lernen.</p></div>
-      <div class="exe__media"><video muted loop playsinline preload="none" poster="assets/img/poster-weg-reisevideos.webp" data-exe-video data-autoplay><source src="assets/video/weg-reisevideos.mp4" type="video/mp4"></video></div>
+      <div class="exe__text"><h3>Manufaktur Hamburg-Harburg</h3><p>1.800 Quadratmeter Halle, zwölf Montageplätze, kein Fließband. Ein Fahrzeug bleibt an einem Platz, bis es fertig ist.</p></div>
+      <div class="exe__media"><img src="assets/car/detail-glas.svg" alt="Dachlinie und Säulenübergang" loading="lazy"></div>
     </li>
     <li class="exe__row" data-exe-row>
       <div class="exe__year">2024</div>
-      <div class="exe__text"><h3>TikTok-Automation</h3><p>Automatisierte Content-Formate, die skalieren. Die erste Erfahrung mit Reichweite und dem, was online wirklich zieht.</p></div>
-      <div class="exe__media"><video muted loop playsinline preload="none" poster="assets/img/poster-tiktok-automation.webp" data-exe-video data-autoplay><source src="assets/video/tiktok-automation.mp4" type="video/mp4"></video></div>
-    </li>
-    <li class="exe__row" data-exe-row>
-      <div class="exe__year">2024</div>
-      <div class="exe__text"><h3>Videoschnitt für Kunden</h3><p>Schnitt, Rhythmus und Story. Das Handwerk hinter jedem Film, vom Rohmaterial zum fertigen Ergebnis.</p></div>
-      <div class="exe__media"><video muted loop playsinline preload="none" poster="assets/img/poster-weg-videoschnitt.webp" data-exe-video data-autoplay><source src="assets/video/weg-videoschnitt.mp4" type="video/mp4"></video></div>
+      <div class="exe__text"><h3>K1 — Serienstart</h3><p>Das Coupé als erstes Serienmodell. 500 kW, 1.780 Kilogramm, Aluminium-Spaceframe. Die ersten 40 Fahrzeuge waren vor dem Start vergeben.</p></div>
+      <div class="exe__media"><img src="assets/car/k1-nachtblau.svg" alt="KREBS K1 Coupé" loading="lazy"></div>
     </li>
     <li class="exe__row" data-exe-row>
       <div class="exe__year">2025</div>
-      <div class="exe__text"><h3>Medienproduktion &amp; Personal Branding</h3><p>Aus dem Können wurde ein Angebot: Menschen und Marken sichtbar machen. Konzept, Dreh und Schnitt aus einer Hand.</p></div>
-      <div class="exe__media"><video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp" data-exe-video data-autoplay><source src="assets/video/personal-branding.mp4" type="video/mp4"></video></div>
+      <div class="exe__text"><h3>K4 — die Limousine</h3><p>Gleiche Plattform, längerer Radstand, vier Türen. Die Reichweite steigt auf 620 Kilometer, ohne dass die Batterie wächst.</p></div>
+      <div class="exe__media"><img src="assets/car/k4-silber.svg" alt="KREBS K4 Limousine" loading="lazy"></div>
     </li>
     <li class="exe__row" data-exe-row>
       <div class="exe__year">2026</div>
-      <div class="exe__text"><h3>incub:FRAME &amp; incub:GRID</h3><p>Die eigene Produktionsmarke und die Software-Agentur als Schwester. Imagefilme, Content und individuelle Software für den Mittelstand.</p></div>
-      <div class="exe__media"><video muted loop playsinline preload="none" poster="assets/img/poster-weg-frame.webp" data-exe-video data-autoplay><source src="assets/video/weg-frame.mp4" type="video/mp4"></video></div>
+      <div class="exe__text"><h3>KX — Crossover</h3><p>Höher, praktischer, gleiche Technik. Der KX macht aus der Baureihe eine Familie — und aus der Manufaktur einen Hersteller.</p></div>
+      <div class="exe__media"><img src="assets/car/kx-graphit.svg" alt="KREBS KX Crossover" loading="lazy"></div>
     </li>
   </ol>
   </div>
 </section>
 
-<!-- ============ VENTURES ============ -->
-<section class="ventures" id="ventures" data-nav-theme="light">
+<!-- ============ MODELLE ============ -->
+<section class="ventures" id="modelle" data-nav-theme="light">
   <div class="ventures__head">
-    <h2 class="sec-h" data-reveal>Drei Ventures,<br>ein Ökosystem.</h2>
+    <h2 class="sec-h" data-reveal>Drei Modelle,<br>eine Plattform.</h2>
   </div>
   <div class="ventures__grid">
-    <a class="venture" href="https://incubgrid.io" target="_blank" rel="noopener" data-reveal data-venture>
+    <a class="venture" href="#k1" data-reveal data-venture>
       <div class="venture__media venture__media--light">
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-software.webp"><source src="assets/video/software.mp4" type="video/mp4"></video>
+        <img src="assets/car/k1-nachtblau.svg" alt="KREBS K1 Coupé" loading="lazy">
       </div>
       <div class="venture__body">
-        <span class="venture__cat venture__cat--blue">Software-Agentur</span>
-        <span class="venture__name">incub:<b class="is-blue">GRID</b></span>
-        <p>Wir analysieren Abläufe und bauen die Software, die mittelständischen Unternehmen im Alltag Arbeit abnimmt.</p>
-        <span class="venture__btn">Mehr erfahren <i>→</i></span>
+        <span class="venture__cat venture__cat--blue">Coupé · 2+2 Sitze</span>
+        <span class="venture__name">KREBS <b class="is-blue">K1</b></span>
+        <p>Das Coupé, mit dem alles anfing. Tiefer Schwerpunkt, kurzer Überhang, 500 kW an der Hinterachse.</p>
+        <ul class="spec">
+          <li><b>3,2 s</b><span>0–100 km/h</span></li>
+          <li><b>540 km</b><span>Reichweite</span></li>
+          <li><b>500 kW</b><span>Leistung</span></li>
+        </ul>
+        <span class="venture__btn">Modell ansehen <i>→</i></span>
       </div>
     </a>
-    <a class="venture" href="https://incub-frame.de" target="_blank" rel="noopener" data-reveal data-venture>
-      <div class="venture__media">
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-ablauf-drehtag.webp"><source src="assets/video/ablauf-drehtag.mp4" type="video/mp4"></video>
-        <span class="venture__play"><i></i>Showreel ansehen</span>
+    <a class="venture" href="#k4" data-reveal data-venture>
+      <div class="venture__media venture__media--light">
+        <img src="assets/car/k4-silber.svg" alt="KREBS K4 Limousine" loading="lazy">
       </div>
       <div class="venture__body">
-        <span class="venture__cat venture__cat--red">Medienproduktion</span>
-        <span class="venture__name">incub:<b class="is-red">FRAME</b></span>
-        <p>Imagefilme, Content und Markenauftritte für mittelständische Unternehmen.</p>
-        <span class="venture__btn">Mehr erfahren <i>→</i></span>
+        <span class="venture__cat venture__cat--blue">Limousine · 5 Sitze</span>
+        <span class="venture__name">KREBS <b class="is-blue">K4</b></span>
+        <p>Die Reisemaschine der Baureihe. Längerer Radstand, luftgefederte Hinterachse, 620 Kilometer Reichweite.</p>
+        <ul class="spec">
+          <li><b>3,9 s</b><span>0–100 km/h</span></li>
+          <li><b>620 km</b><span>Reichweite</span></li>
+          <li><b>400 kW</b><span>Leistung</span></li>
+        </ul>
+        <span class="venture__btn">Modell ansehen <i>→</i></span>
       </div>
     </a>
-    <a class="venture" href="https://incub-venture-website.vercel.app" target="_blank" rel="noopener" data-reveal data-venture>
-      <div class="venture__media"><video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-venture.webp"><source src="assets/video/venture-hero.mp4" type="video/mp4"></video></div>
+    <a class="venture" href="#kx" data-reveal data-venture>
+      <div class="venture__media venture__media--light">
+        <img src="assets/car/kx-graphit.svg" alt="KREBS KX Crossover" loading="lazy">
+      </div>
       <div class="venture__body">
-        <span class="venture__cat venture__cat--blue">Venture-Building &amp; Beteiligungen</span>
-        <span class="venture__name">incub:<b class="is-blue">VENTURE</b></span>
-        <p>Das Ökosystem hinter den Marken. Beteiligungen und der Aufbau neuer Unternehmen mit KI im Kern.</p>
-        <span class="venture__btn">Mehr erfahren <i>→</i></span>
+        <span class="venture__cat venture__cat--blue">Crossover · 5 Sitze</span>
+        <span class="venture__name">KREBS <b class="is-blue">KX</b></span>
+        <p>Gleiche Plattform, 190 Millimeter höher. Allradantrieb, 620 Liter Kofferraum, Anhängelast 1,8 Tonnen.</p>
+        <ul class="spec">
+          <li><b>4,4 s</b><span>0–100 km/h</span></li>
+          <li><b>560 km</b><span>Reichweite</span></li>
+          <li><b>440 kW</b><span>Leistung</span></li>
+        </ul>
+        <span class="venture__btn">Modell ansehen <i>→</i></span>
       </div>
     </a>
-  </div>
   </div>
 </section>
 
-<!-- ============ EXPLAIN: FRAME ============ -->
-<section class="explain explain--dark" id="frame" data-nav-theme="dark" data-explain>
+<!-- ============ MODELL: K1 ============ -->
+<section class="explain explain--dark" id="k1" data-nav-theme="dark" data-explain>
   <div class="explain__inner">
-    <div class="explain__media" data-explain-media>
-      <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-eques-hr.webp" data-explain-video data-sound-video><source src="assets/video/imagefilm.mp4" type="video/mp4"></video>
-      <button class="sound-btn" type="button" data-sound-toggle aria-pressed="false"><i></i><span>Mit Ton ansehen</span></button>
+    <div class="explain__media explain__media--car" data-explain-media>
+      <img src="assets/car/k1-nachtblau.svg" alt="KREBS K1 Coupé in Nachtblau" loading="lazy">
     </div>
     <div class="explain__text">
-      <span class="explain__eyebrow explain__eyebrow--red">01 · Medienproduktion</span>
-      <h2 class="explain__h" data-words>Filme, die im Kopf bleiben.</h2>
-      <p class="explain__p" data-lines>Mit incub:FRAME produziere ich Imagefilme, Recruiting-Content und Markenauftritte für mittelständische Unternehmen. Konzept, Dreh und Schnitt aus einer Hand, ohne Agentur-Overhead. Das Ergebnis: Bewegtbild, das nicht im Regal landet, sondern Bewerber und Kunden bringt.</p>
-      <a class="explain__link" href="https://incub-frame.de" target="_blank" rel="noopener">incub-frame.de <i>→</i></a>
+      <span class="explain__eyebrow explain__eyebrow--blue">01 · Coupé</span>
+      <h2 class="explain__h" data-words>Leicht bleibt schnell.</h2>
+      <p class="explain__p" data-lines>Der K1 wiegt 1.780 Kilogramm, und das ist die eigentliche Ingenieursleistung. Aluminium-Spaceframe, tragende Batterie, Karosserie aus Verbundwerkstoff. Wir haben keine Leistung dazugegeben, sondern Masse weggenommen.</p>
+      <dl class="specs">
+        <div><dt>Leistung</dt><dd>500 kW (680 PS)</dd></div>
+        <div><dt>0–100 km/h</dt><dd>3,2 s</dd></div>
+        <div><dt>Reichweite</dt><dd>540 km (WLTP)</dd></div>
+        <div><dt>Laden 10–80 %</dt><dd>320 kW · 18 min</dd></div>
+        <div><dt>Leergewicht</dt><dd>1.780 kg</dd></div>
+        <div><dt>Antrieb</dt><dd>Heck, eine Maschine</dd></div>
+      </dl>
+      <a class="explain__link" href="#kontakt">Probefahrt anfragen <i>→</i></a>
     </div>
   </div>
 </section>
 
-<!-- ============ EXPLAIN: GRID ============ -->
-<section class="explain explain--light" id="grid" data-nav-theme="light" data-explain>
+<!-- ============ MODELL: K4 ============ -->
+<section class="explain explain--light" id="k4" data-nav-theme="light" data-explain>
   <div class="explain__inner explain__inner--flip">
-    <div class="explain__media explain__media--light" data-explain-media>
-      <video muted loop playsinline preload="none" poster="assets/img/poster-software.webp" data-explain-video data-autoplay><source src="assets/video/incub-grid.mp4" type="video/mp4"></video>
+    <div class="explain__media explain__media--light explain__media--car" data-explain-media>
+      <img src="assets/car/k4-silber.svg" alt="KREBS K4 Limousine in Silber" loading="lazy">
     </div>
     <div class="explain__text">
-      <span class="explain__eyebrow explain__eyebrow--blue">02 · Software-Agentur</span>
-      <h2 class="explain__h" data-words>Den Mittelstand zurück auf die Höhe der Zeit.</h2>
-      <p class="explain__p" data-lines>incub:GRID ist eine Software-Agentur für den Mittelstand. Wir analysieren Ihre Abläufe und bauen die Software, die im Alltag tatsächlich Arbeit abnimmt: Automatisierung, KI-Assistenten und individuelle Systeme. Individuell muss nicht mehr teuer heißen.</p>
-      <a class="explain__link" href="https://incubgrid.io" target="_blank" rel="noopener">incubgrid.io <i>→</i></a>
+      <span class="explain__eyebrow explain__eyebrow--blue">02 · Limousine</span>
+      <h2 class="explain__h" data-words>Weit kommen ohne Aufwand.</h2>
+      <p class="explain__p" data-lines>Der K4 fährt 620 Kilometer mit derselben Batterie wie der K1. Der Unterschied liegt im Luftwiderstand, in der Übersetzung und in einer Hinterachse, die sich bei Tempo absenkt. Reichweite ist eine Frage der Sorgfalt, nicht der Zellen.</p>
+      <dl class="specs">
+        <div><dt>Leistung</dt><dd>400 kW (544 PS)</dd></div>
+        <div><dt>0–100 km/h</dt><dd>3,9 s</dd></div>
+        <div><dt>Reichweite</dt><dd>620 km (WLTP)</dd></div>
+        <div><dt>Laden 10–80 %</dt><dd>350 kW · 16 min</dd></div>
+        <div><dt>Luftwiderstand</dt><dd>c<sub>w</sub> 0,20</dd></div>
+        <div><dt>Antrieb</dt><dd>Allrad, zwei Maschinen</dd></div>
+      </dl>
+      <a class="explain__link" href="#kontakt">Probefahrt anfragen <i>→</i></a>
     </div>
   </div>
 </section>
 
-<!-- ============ EXPLAIN: VENTURE ============ -->
-<section class="explain explain--blue" id="venture" data-nav-theme="dark" data-explain>
+<!-- ============ MODELL: KX ============ -->
+<section class="explain explain--blue" id="kx" data-nav-theme="dark" data-explain>
   <div class="explain__inner">
-    <div class="explain__media" data-explain-media>
-      <video muted loop playsinline preload="none" data-explain-video data-autoplay poster="assets/img/poster-venture.webp"><source src="assets/video/venture-hero.mp4" type="video/mp4"></video>
+    <div class="explain__media explain__media--car" data-explain-media>
+      <img src="assets/car/kx-papierweiss.svg" alt="KREBS KX Crossover in Papierweiß" loading="lazy">
     </div>
     <div class="explain__text">
-      <span class="explain__eyebrow explain__eyebrow--white">03 · Venture-Building</span>
-      <h2 class="explain__h" data-words>Das Ökosystem dahinter.</h2>
-      <p class="explain__p" data-lines>incub:VENTURE ist die Holding über FRAME und GRID: Beteiligungen und der Aufbau neuer Unternehmen mit KI im Kern. Gemeinsam mit Matthias Schapperth baue ich dort Firmen, die sich gegenseitig stärken. Software, Medien und Kapital aus einem Haus.</p>
-      <a class="explain__link" href="https://incub-venture-website.vercel.app" target="_blank" rel="noopener">incub:VENTURE <i>→</i></a>
+      <span class="explain__eyebrow explain__eyebrow--white">03 · Crossover</span>
+      <h2 class="explain__h" data-words>Höher, ohne schwerfällig zu werden.</h2>
+      <p class="explain__p" data-lines>Der KX sitzt 190 Millimeter höher als der K4 und wiegt trotzdem nur 160 Kilogramm mehr. Möglich wird das durch dieselbe tragende Batterie und einen Aufbau, der nichts doppelt macht. Ein Crossover, der sich nicht wie ein Kompromiss anfühlt.</p>
+      <dl class="specs">
+        <div><dt>Leistung</dt><dd>440 kW (598 PS)</dd></div>
+        <div><dt>0–100 km/h</dt><dd>4,4 s</dd></div>
+        <div><dt>Reichweite</dt><dd>560 km (WLTP)</dd></div>
+        <div><dt>Kofferraum</dt><dd>620 – 1.540 l</dd></div>
+        <div><dt>Anhängelast</dt><dd>1.800 kg gebremst</dd></div>
+        <div><dt>Antrieb</dt><dd>Allrad, zwei Maschinen</dd></div>
+      </dl>
+      <a class="explain__link" href="#kontakt">Probefahrt anfragen <i>→</i></a>
     </div>
   </div>
 </section>
 
-<!-- ============ CASES (horizontal, wie Lando "Photography & Film") ============ -->
-<section class="hz hz--light" id="arbeiten" data-hz data-nav-theme="light">
+<!-- ============ DESIGN & DETAIL (horizontal) ============ -->
+<section class="hz hz--light" id="design" data-hz data-nav-theme="light">
   <div class="hz__pin">
     <div class="hz__track hz__track--cases" data-hz-track>
       <div class="hz__col">
-      <figure class="hz__case hz__case--xl hz__case--top">
-        <figcaption>eques HR, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-eques-hr.webp"><source src="assets/video/work-eques-hr.mp4" type="video/mp4"></video>
-      </figure>
+        <figure class="hz__case hz__case--xl hz__case--top">
+          <figcaption>K1 · Profil</figcaption>
+          <img src="assets/car/k1-nachtblau.svg" alt="Seitenprofil des K1" loading="lazy">
+        </figure>
         <div class="hz__quote">
-          <p>Es ist egal, wo du anfängst. Entscheidend ist, wie du von dort weitergehst.</p>
+          <p>Eine Linie ist fertig, wenn nichts mehr weggenommen werden kann.</p>
           <img src="assets/img/signature.png" alt="">
         </div>
       </div>
       <div class="hz__col hz__col--narrow">
-      <figure class="hz__case hz__case--m hz__case--top">
-        <figcaption>eventcrue, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-eventcrue.webp"><source src="assets/video/work-eventcrue.mp4" type="video/mp4"></video>
-      </figure>
-      <figure class="hz__case hz__case--m hz__case--bottom">
-        <figcaption>fess.jobs, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-fessjobs.webp"><source src="assets/video/work-fessjobs.mp4" type="video/mp4"></video>
-      </figure>
+        <figure class="hz__case hz__case--m hz__case--top">
+          <figcaption>Rad · 21 Zoll, geschmiedet</figcaption>
+          <img src="assets/car/detail-rad.svg" alt="Geschmiedetes 21-Zoll-Rad" loading="lazy">
+        </figure>
+        <figure class="hz__case hz__case--m hz__case--bottom">
+          <figcaption>Bug · Lichtsignatur</figcaption>
+          <img src="assets/car/detail-front.svg" alt="Lichtsignatur am Bug" loading="lazy">
+        </figure>
       </div>
       <div class="hz__col hz__col--title">
-        <h2 class="hz__title"><span class="hz__title-serif">Cases</span><span class="hz__title-serif">&amp; Filme</span></h2>
-        <a class="hz__follow" href="https://incub-frame.de" target="_blank" rel="noopener">incub-frame.de ansehen</a>
+        <h2 class="hz__title"><span class="hz__title-serif">Design</span><span class="hz__title-serif">&amp; Detail</span></h2>
+        <a class="hz__follow" href="#lackierungen">Lackierungen ansehen</a>
       </div>
       <div class="hz__col">
-      <figure class="hz__case hz__case--l hz__case--mid">
-        <figcaption>europersonal, 2025</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-europersonal.webp"><source src="assets/video/work-europersonal.mp4" type="video/mp4"></video>
-      </figure>
+        <figure class="hz__case hz__case--l hz__case--mid">
+          <figcaption>K4 · Limousine</figcaption>
+          <img src="assets/car/k4-nachtblau.svg" alt="K4 Limousine in Nachtblau" loading="lazy">
+        </figure>
       </div>
       <div class="hz__col hz__col--narrow">
-      <figure class="hz__case hz__case--m hz__case--top">
-        <figcaption>incub:live, 2025</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp"><source src="assets/video/work-incublive.mp4" type="video/mp4"></video>
-      </figure>
-      <figure class="hz__case hz__case--s hz__case--bottom">
-        <figcaption>Personal Branding, 2025</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp"><source src="assets/video/personal-branding.mp4" type="video/mp4"></video>
-      </figure>
+        <figure class="hz__case hz__case--m hz__case--top">
+          <figcaption>Heck · Leuchtband</figcaption>
+          <img src="assets/car/detail-heck.svg" alt="Durchgehendes Leuchtband am Heck" loading="lazy">
+        </figure>
+        <figure class="hz__case hz__case--s hz__case--bottom">
+          <figcaption>Dachlinie</figcaption>
+          <img src="assets/car/detail-glas.svg" alt="Dachlinie und Säulenübergang" loading="lazy">
+        </figure>
       </div>
       <div class="hz__col hz__col--narrow">
-      <figure class="hz__case hz__case--m hz__case--top">
-        <figcaption>incub:FRAME Reel I, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-frame-01.webp"><source src="assets/video/frame-01.mp4" type="video/mp4"></video>
-      </figure>
-      <figure class="hz__case hz__case--m hz__case--bottom">
-        <figcaption>incub:FRAME Reel II, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-frame-02.webp"><source src="assets/video/frame-02.mp4" type="video/mp4"></video>
-      </figure>
+        <figure class="hz__case hz__case--m hz__case--top">
+          <figcaption>KX · Karminrot</figcaption>
+          <img src="assets/car/kx-karminrot.svg" alt="KX Crossover in Karminrot" loading="lazy">
+        </figure>
+        <figure class="hz__case hz__case--m hz__case--bottom">
+          <figcaption>K1 · Signalblau</figcaption>
+          <img src="assets/car/k1-signalblau.svg" alt="K1 Coupé in Signalblau" loading="lazy">
+        </figure>
       </div>
       <div class="hz__col">
-      <figure class="hz__case hz__case--l hz__case--mid">
-        <figcaption>Ablauf Drehtag, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-ablauf-drehtag.webp"><source src="assets/video/ablauf-drehtag.mp4" type="video/mp4"></video>
-      </figure>
+        <figure class="hz__case hz__case--l hz__case--mid">
+          <figcaption>Paketzeichnung · K1</figcaption>
+          <img src="assets/car/k1-linie.svg" alt="Technische Paketzeichnung des K1" loading="lazy">
+        </figure>
       </div>
       <div class="hz__col hz__col--narrow">
-      <figure class="hz__case hz__case--m hz__case--mid">
-        <figcaption>incub:FRAME Reel III, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-frame-03.webp"><source src="assets/video/frame-03.mp4" type="video/mp4"></video>
-      </figure>
+        <figure class="hz__case hz__case--m hz__case--mid">
+          <figcaption>Paketzeichnung · KX</figcaption>
+          <img src="assets/car/kx-linie.svg" alt="Technische Paketzeichnung des KX" loading="lazy">
+        </figure>
       </div>
       <div class="hz__col">
-      <figure class="hz__case hz__case--xl hz__case--mid">
-        <figcaption>Imagefilm, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-eques-hr.webp" data-sound-video><source src="assets/video/imagefilm.mp4" type="video/mp4"></video>
-        <button class="sound-btn" type="button" data-sound-toggle aria-pressed="false"><i></i><span>Mit Ton ansehen</span></button>
-      </figure>
+        <figure class="hz__case hz__case--xl hz__case--mid">
+          <figcaption>KX · Graphit</figcaption>
+          <img src="assets/car/kx-graphit.svg" alt="KX Crossover in Graphit" loading="lazy">
+        </figure>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ VILIUS ============ -->
-<section class="works" data-nav-theme="light">
+<!-- ============ ANTRIEB ============ -->
+<section class="works" id="technik" data-nav-theme="light">
   <div class="vilius" data-reveal>
-    <img class="vilius__bg" src="assets/img/vilius.webp" alt="" aria-hidden="true">
+    <img class="vilius__bg" src="assets/car/detail-rad.svg" alt="" aria-hidden="true">
     <div class="vilius__text">
-      <div class="vilius__eyebrow">Content-Format · 1vs10</div>
-      <h3 class="vilius__h">Vilius Dainora</h3>
-      <p class="vilius__p">Mitwirkung am 1vs10-Diskussionsformat, gemeinsam mit meinem damaligen Coach <strong>Lucas Kleinecke</strong>, von dem ich alles gelernt habe.</p>
-      <div class="vilius__stat"><span class="vilius__num"><b data-count="100">0</b>+&nbsp;Mio.</span><span class="vilius__lbl">generierte Aufrufe</span></div>
+      <div class="vilius__eyebrow">Antrieb · 800 Volt</div>
+      <h3 class="vilius__h">Eine Architektur für drei Modelle</h3>
+      <p class="vilius__p">Motor, Inverter und Batteriesteuerung entstehen bei uns. Die Batterie ist tragendes Bauteil, kein Anbau — das spart Masse in jedem Modell. Geladen wird mit bis zu <strong>350 kW</strong>.</p>
+      <div class="vilius__stat"><span class="vilius__num"><b data-count="620">0</b>&nbsp;km</span><span class="vilius__lbl">Reichweite im K4 (WLTP)</span></div>
     </div>
-    <div class="vilius__media"><video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-vilius.webp"><source src="assets/video/vilius-dainora-bts.mp4" type="video/mp4"></video></div>
+    <div class="vilius__media"><img src="assets/car/detail-profil.svg" alt="Karosserieprofil mit tragender Batterie"></div>
   </div>
 </section>
 
-<!-- ============ PARTNERS ============ -->
-<section class="partners" id="partner" data-nav-theme="light">
-  <span class="partners__script" aria-hidden="true" data-reveal>Kunden</span>
+<!-- ============ TECHNIK-MARQUEE ============ -->
+<section class="partners" id="fertigung" data-nav-theme="light">
+  <span class="partners__script" aria-hidden="true" data-reveal>Technik</span>
   <div class="partners__head">
-    <h2 class="partners__h" data-reveal><span class="partners__h1">Partner</span><span class="partners__h2">&amp;Kunden</span></h2>
-    <p class="partners__p" data-reveal>Unternehmen, mit denen ich Filme, Recruiting-Content und Software umgesetzt habe. Vom Personaldienstleister bis zur Eventagentur.</p>
+    <h2 class="partners__h" data-reveal><span class="partners__h1">Manufaktur</span><span class="partners__h2">&amp;Technik</span></h2>
+    <p class="partners__p" data-reveal>Zwölf Montageplätze, kein Fließband. Was wir nicht selbst fertigen, lassen wir in Norddeutschland fertigen — Spaceframe, Zellmodule und Fahrwerk im Umkreis von 200 Kilometern.</p>
   </div>
-  <div class="partners__marquee" aria-hidden="true"><div class="partners__track" data-logo-track><img src="assets/logos/eques-hr.png" alt=""><img src="assets/logos/event-crue.png" alt=""><img src="assets/logos/fess-jobs.png" alt=""><img src="assets/logos/euro-personal.png" alt=""><img src="assets/logos/incub-live.png" alt=""><img src="assets/logos/schapperth-advisory.png" alt=""><img src="assets/logos/ecom-accelerator.png" alt=""><img src="assets/logos/eques-hr.png" alt=""><img src="assets/logos/event-crue.png" alt=""><img src="assets/logos/fess-jobs.png" alt=""><img src="assets/logos/euro-personal.png" alt=""><img src="assets/logos/incub-live.png" alt=""><img src="assets/logos/schapperth-advisory.png" alt=""><img src="assets/logos/ecom-accelerator.png" alt=""></div></div>
+  <div class="partners__marquee" aria-hidden="true"><div class="partners__track partners__track--text" data-logo-track><span>800-Volt-Architektur</span><span>Aluminium-Spaceframe</span><span>Tragende Batterie</span><span>Handmontage</span><span>Luftfederung</span><span>Rekuperation 300 kW</span><span>800-Volt-Architektur</span><span>Aluminium-Spaceframe</span><span>Tragende Batterie</span><span>Handmontage</span><span>Luftfederung</span><span>Rekuperation 300 kW</span></div></div>
 </section>
 
-<!-- ============ COLLAGE GALLERY ============ -->
-<section class="collage" id="galerie" data-collage data-nav-theme="light">
-  <div class="collage__bg" aria-hidden="true"><video muted loop playsinline autoplay preload="metadata" data-collage-bg><source src="assets/video/collage-bg.mp4" type="video/mp4"></video></div>
+<!-- ============ LACKIERUNGEN ============ -->
+<section class="collage" id="lackierungen" data-collage data-nav-theme="light">
   <div class="collage__stage">
-    <figure class="collage__item collage__item--l" style="--x:42%;--y:4%;--w:26vw;--mx:4%;--my:1%;--mw:54vw" data-speed="0.5">
-      <figcaption>Hamburg, 2025</figcaption><img src="assets/gallery/w/g03-800.webp" srcset="assets/gallery/w/g03-800.webp 800w, assets/gallery/w/g03-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Hamburg, 2025" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:36%;--y:1%;--w:26vw;--mx:3%;--my:1%;--mw:60vw" data-speed="0.5">
+      <figcaption>Nachtblau · K1</figcaption><img src="assets/car/k1-nachtblau.svg" alt="K1 in Nachtblau" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--p" style="--x:6%;--y:10%;--w:11vw;--mx:58%;--my:8%;--mw:38vw" data-speed="1.2">
-      <figcaption>Sommer, 2025</figcaption><img src="assets/gallery/w/g13-800.webp" srcset="assets/gallery/w/g13-800.webp 800w, assets/gallery/w/g13-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Sommer, 2025" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:4%;--y:8%;--w:20vw;--mx:40%;--my:8%;--mw:54vw" data-speed="1.2">
+      <figcaption>Silber · K4</figcaption><img src="assets/car/k4-silber.svg" alt="K4 in Silber" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--l" style="--x:62%;--y:36%;--w:14vw;--mx:2%;--my:18%;--mw:52vw" data-speed="0.9">
-      <figcaption>Studio, 2025</figcaption><img src="assets/gallery/w/g11-800.webp" srcset="assets/gallery/w/g11-800.webp 800w, assets/gallery/w/g11-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Studio, 2025" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:68%;--y:11%;--w:21vw;--mx:4%;--my:15%;--mw:56vw" data-speed="0.9">
+      <figcaption>Graphit · KX</figcaption><img src="assets/car/kx-graphit.svg" alt="KX in Graphit" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--p" style="--x:20%;--y:30%;--w:12vw;--mx:56%;--my:25%;--mw:40vw" data-speed="0.7">
-      <figcaption>Set, 2024</figcaption><img src="assets/gallery/w/g05-800.webp" srcset="assets/gallery/w/g05-800.webp 800w, assets/gallery/w/g05-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Set, 2024" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:20%;--y:19%;--w:22vw;--mx:38%;--my:23%;--mw:58vw" data-speed="0.7">
+      <figcaption>Karminrot · K1</figcaption><img src="assets/car/k1-karminrot.svg" alt="K1 in Karminrot" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--p" style="--x:78%;--y:12%;--w:10vw;--mx:6%;--my:50%;--mw:40vw" data-speed="1.4">
-      <figcaption>Off Set, 2025</figcaption><img src="assets/gallery/w/g16-800.webp" srcset="assets/gallery/w/g16-800.webp 800w, assets/gallery/w/g16-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Off Set, 2025" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:56%;--y:26%;--w:24vw;--mx:3%;--my:31%;--mw:56vw" data-speed="1.3">
+      <figcaption>Papierweiß · K4</figcaption><img src="assets/car/k4-papierweiss.svg" alt="K4 in Papierweiß" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--l" style="--x:4%;--y:58%;--w:13vw;--mx:50%;--my:56%;--mw:48vw" data-speed="0.8">
-      <figcaption>Dreh, 2025</figcaption><img src="assets/gallery/w/g02-800.webp" srcset="assets/gallery/w/g02-800.webp 800w, assets/gallery/w/g02-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Dreh, 2025" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:4%;--y:33%;--w:21vw;--mx:40%;--my:38%;--mw:54vw" data-speed="0.8">
+      <figcaption>Signalblau · KX</figcaption><img src="assets/car/kx-signalblau.svg" alt="KX in Signalblau" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--p" style="--x:34%;--y:66%;--w:10vw;--mx:4%;--my:62%;--mw:40vw" data-speed="1.1">
-      <figcaption>Backstage, 2024</figcaption><img src="assets/gallery/w/g08-800.webp" srcset="assets/gallery/w/g08-800.webp 800w, assets/gallery/w/g08-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Backstage, 2024" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:66%;--y:40%;--w:20vw;--mx:4%;--my:46%;--mw:58vw" data-speed="1.1">
+      <figcaption>Nachtblau · KX</figcaption><img src="assets/car/kx-nachtblau.svg" alt="KX in Nachtblau" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--p" style="--x:72%;--y:62%;--w:12vw;--mx:58%;--my:63%;--mw:38vw" data-speed="0.6">
-      <figcaption>Abend, 2025</figcaption><img src="assets/gallery/w/g14-800.webp" srcset="assets/gallery/w/g14-800.webp 800w, assets/gallery/w/g14-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Abend, 2025" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:6%;--y:50%;--w:22vw;--mx:38%;--my:54%;--mw:54vw" data-speed="0.6">
+      <figcaption>Karminrot · K4</figcaption><img src="assets/car/k4-karminrot.svg" alt="K4 in Karminrot" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--p" style="--x:14%;--y:84%;--w:11vw;--mx:4%;--my:86%;--mw:44vw" data-speed="1.3">
-      <figcaption>Studio, 2024</figcaption><img src="assets/gallery/w/g10-800.webp" srcset="assets/gallery/w/g10-800.webp 800w, assets/gallery/w/g10-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Studio, 2024" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:46%;--y:56%;--w:24vw;--mx:3%;--my:62%;--mw:58vw" data-speed="1.0">
+      <figcaption>Signalblau · K1</figcaption><img src="assets/car/k1-signalblau.svg" alt="K1 in Signalblau" loading="lazy">
     </figure>
-    <figure class="collage__item collage__item--p" style="--x:60%;--y:88%;--w:10vw;--mx:54%;--my:88%;--mw:40vw" data-speed="0.9">
-      <figcaption>Set, 2024</figcaption><img src="assets/gallery/w/g07-800.webp" srcset="assets/gallery/w/g07-800.webp 800w, assets/gallery/w/g07-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Set, 2024" loading="lazy">
+    <figure class="collage__item collage__item--l" style="--x:12%;--y:64%;--w:22vw;--mx:40%;--my:70%;--mw:54vw" data-speed="1.35">
+      <figcaption>Graphit · K4</figcaption><img src="assets/car/k4-graphit.svg" alt="K4 in Graphit" loading="lazy">
+    </figure>
+    <figure class="collage__item collage__item--l" style="--x:62%;--y:71%;--w:21vw;--mx:4%;--my:78%;--mw:56vw" data-speed="0.75">
+      <figcaption>Papierweiß · KX</figcaption><img src="assets/car/kx-papierweiss.svg" alt="KX in Papierweiß" loading="lazy">
+    </figure>
+    <figure class="collage__item collage__item--l" style="--x:26%;--y:88%;--w:24vw;--mx:34%;--my:90%;--mw:58vw" data-speed="1.15">
+      <figcaption>Graphit · K1</figcaption><img src="assets/car/k1-graphit.svg" alt="K1 in Graphit" loading="lazy">
     </figure>
     <div class="collage__quote collage__quote--1" data-reveal>
-      <p>Seit dem ersten Paar Sneaker ging es mir um eine Sache: <em>etwas aufbauen,</em> das ohne mich weiterläuft.</p>
+      <p>Sechs Lackierungen, <em>keine Sonderfarben.</em> Wer eine siebte will, bekommt sie — nach acht Wochen.</p>
       <img src="assets/img/signature.png" alt="" class="collage__sig">
     </div>
     <div class="collage__quote collage__quote--2" data-reveal>
-      <p>Es ist egal, <em>wo</em> du anfängst. Entscheidend ist, <em>wie</em> du von dort weitergehst.</p>
+      <p>Jedes Fahrzeug wird <em>bestellt,</em> keines auf Halde gebaut.</p>
       <img src="assets/img/signature-light.png" alt="" class="collage__sig">
     </div>
   </div>
 </section>
 
-
-<!-- ============ SOCIALS / KONTAKT ============ -->
+<!-- ============ PROBEFAHRT ============ -->
 <section class="callout" id="kontakt" data-nav-theme="light">
   <div class="callout__inner">
-    <p class="callout__eyebrow" data-reveal>Kontakt</p>
-    <h2 class="callout__h" data-reveal>Lass uns etwas<br><em>bauen.</em></h2>
-    <p class="callout__p" data-reveal>30 Minuten, kein Pitch. Für Medienproduktionen, Software oder ein erstes Gespräch.</p>
+    <p class="callout__eyebrow" data-reveal>Probefahrt</p>
+    <h2 class="callout__h" data-reveal>Lass uns<br><em>fahren.</em></h2>
+    <p class="callout__p" data-reveal>90 Minuten, kein Verkaufsgespräch. Start ab Werk in Hamburg-Harburg, Landstraße und Autobahn inklusive.</p>
     <div class="callout__actions" data-reveal>
-      <a class="btn btn--accent btn--lg" href="mailto:n.krebs@incub.live">n.krebs@incub.live</a>
-      <a class="btn btn--ghost btn--lg" href="https://www.instagram.com/nikita.krbs/" target="_blank" rel="noopener">Instagram</a>
-      <a class="btn btn--ghost btn--lg" href="https://www.linkedin.com/in/nikita-krebs-a7625b337/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn--accent btn--lg" href="mailto:probefahrt@krebs-automobile.de">probefahrt@krebs-automobile.de</a>
+      <a class="btn btn--ghost btn--lg" href="#modelle">Modelle vergleichen</a>
+      <a class="btn btn--ghost btn--lg" href="#technik">Technik</a>
     </div>
   </div>
 </section>
@@ -420,17 +453,17 @@
   <div class="footer__blob" aria-hidden="true"></div>
   <div class="footer__top">
     <div class="footer__brand">
-      <span class="footer__big" data-split>NIKITA</span>
-      <span class="footer__big footer__big--2" data-split>KREBS</span>
+      <span class="footer__big" data-split>KREBS</span>
+      <span class="footer__big footer__big--2" data-split>AUTOMOBILE</span>
     </div>
     <div class="footer__cols">
-      <div><h4>Marken</h4><a href="https://incub-frame.de" target="_blank" rel="noopener">incub:FRAME</a><a href="https://incubgrid.io" target="_blank" rel="noopener">incub:GRID</a><a href="https://incub-venture-website.vercel.app" target="_blank" rel="noopener">incub:VENTURE</a></div>
-      <div><h4>Social</h4><a href="https://www.instagram.com/nikita.krbs/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/nikita-krebs-a7625b337/" target="_blank" rel="noopener">LinkedIn</a></div>
-      <div><h4>Kontakt</h4><a href="mailto:n.krebs@incub.live">n.krebs@incub.live</a><span>incub:VENTURE GmbH &amp; Co. KG<br>Mittelstraße 11<br>40789 Monheim am Rhein</span></div>
+      <div><h4>Modelle</h4><a href="#k1">K1 Coupé</a><a href="#k4">K4 Limousine</a><a href="#kx">KX Crossover</a></div>
+      <div><h4>Marke</h4><a href="#baureihe">Baureihe</a><a href="#technik">Technik</a><a href="#lackierungen">Lackierungen</a></div>
+      <div><h4>Kontakt</h4><a href="mailto:probefahrt@krebs-automobile.de">probefahrt@krebs-automobile.de</a><span>Werk Hamburg-Harburg<br>Nartenstraße 8<br>21079 Hamburg</span></div>
     </div>
   </div>
   <div class="footer__bottom">
-    <span>© 2026 Nikita Krebs</span>
+    <span>© 2026 KREBS AUTOMOBILE</span>
     <img class="footer__sig" src="assets/img/signature.png" alt="">
     <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
   </div>

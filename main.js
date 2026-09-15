@@ -1,5 +1,5 @@
-/* Nikita Krebs — landing page choreography
-   GSAP + ScrollTrigger + Lenis + Three.js (hero wireframe) */
+/* KREBS AUTOMOBILE — landing page choreography
+   GSAP + ScrollTrigger + Lenis */
 (function () {
   'use strict';
   const $ = (s, c = document) => c.querySelector(s);
@@ -60,7 +60,7 @@
     tl.fromTo(hero, { backgroundColor: '#F5F4EF' }, { backgroundColor: '#1B2540', duration: 1, ease: 'none' }, 0)
       .to(title, { opacity: 0, yPercent: -20, duration: 0.5, ease: 'none' }, 0)
       .to('.hero__topo', { opacity: 0, duration: 0.5 }, 0)
-      .to('[data-hero-scroll]', { opacity: 0, duration: 0.3 }, 0)
+      .fromTo('[data-hero-scroll]', { opacity: 1 }, { opacity: 0, duration: 0.3, ease: 'none' }, 0)
       .fromTo(frame, { width: '100%', height: '100%', left: 0, top: 0, borderRadius: 0, backgroundColor: 'rgba(230,229,224,0)' },
         { width: fw, height: fh, left: () => (innerWidth - fw()) / 2, top: () => (innerHeight - fh()) / 2, borderRadius: 6, backgroundColor: 'rgba(230,229,224,1)', duration: 1, ease: 'power2.inOut' }, 0)
       .to('[data-hero-frame-video]', { opacity: isTouch ? 0 : 0.9, duration: 0.6 }, 0.3)
@@ -356,20 +356,6 @@
       scrollTrigger: { trigger: el, start: 'top 88%' } });
   });
 
-  /* ---------- works: hover play ---------- */
-  $$('[data-work]').forEach((card) => {
-    const vid = $('video', card);
-    if (!vid) return;
-    gsap.from(card, { y: 60, opacity: 0, duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: card, start: 'top 90%' } });
-  });
-
-  /* ---------- ventures: hover play ---------- */
-  $$('[data-venture]').forEach((card) => {
-    const vid = $('video', card);
-    if (!vid) return;
-  });
-
   /* ---------- partner logos: endless, moving left → right ---------- */
   (function () {
     const track = $('[data-logo-track]');
@@ -424,7 +410,7 @@
 
   /* ---------- explain: word-by-word scrub + sticky media ---------- */
   $$('[data-explain]').forEach((sec) => {
-    const h = $('[data-words]', sec), p = $('[data-lines]', sec), media = $('[data-explain-media]', sec), vid = $('[data-explain-video]', sec);
+    const h = $('[data-words]', sec), p = $('[data-lines]', sec), media = $('[data-explain-media]', sec);
     if (h) {
       h.innerHTML = h.textContent.trim().split(/\s+/).map((w) => '<span class="w">' + w + '</span>').join('');
       gsap.to($$('.w', h), { opacity: 1, stagger: 0.25, ease: 'none',
@@ -432,7 +418,12 @@
     }
     if (p) {
       // split into sentences → each reveals as you scroll
-      const parts = p.textContent.trim().match(/[^.!?]+[.!?]+/g) || [p.textContent];
+      // a period inside a number ("1.780") is not a sentence end — hide it
+      // from the splitter, then put it back
+      const DOT = '\u0001';
+      const masked = p.textContent.trim().replace(/(\d)\.(\d)/g, '$1' + DOT + '$2');
+      const parts = (masked.match(/[^.!?]+[.!?]+/g) || [masked])
+        .map((s) => s.split(DOT).join('.'));
       p.innerHTML = parts.map((s) => '<span class="ln">' + s.trim() + '</span>').join(' ');
       gsap.to($$('.ln', p), { opacity: 1, y: 0, stagger: 0.3, ease: 'power2.out', duration: 1,
         scrollTrigger: { trigger: p, start: 'top 85%', end: 'bottom 55%', scrub: 0.8 } });
@@ -443,20 +434,6 @@
       gsap.to(media, { scale: 1, opacity: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: sec, start: 'top 70%' } });
     }
   });
-
-  /* ---------- autoplay: IntersectionObserver, funktioniert auch in gepinnten Horizontal-Sektionen ---------- */
-  (function () {
-    const vids = $$('video[data-autoplay]');
-    const play = (v) => { if (v.preload !== 'auto') v.preload = 'auto'; if (v.paused) v.play().catch(() => {}); };
-    if (!('IntersectionObserver' in window)) { vids.forEach(play); return; }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { e.isIntersecting ? play(e.target) : (!e.target.paused && e.target.pause()); });
-    }, { rootMargin: '300px 600px 300px 600px', threshold: 0 });
-    vids.forEach((v) => { v.loop = true; io.observe(v); v.addEventListener('ended', () => play(v)); });
-    // Sicherheitsnetz: Browser stoppt manchmal Videos nach Tab-Wechsel oder Pinning
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) vids.forEach((v) => { const r = v.getBoundingClientRect(); if (r.bottom > -300 && r.top < innerHeight + 300) play(v); }); });
-    setInterval(() => { vids.forEach((v) => { const r = v.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth && v.paused) play(v); }); }, 1500);
-  })();
 
   /* ---------- collage: parallax items + bg shift ---------- */
   (function () {
@@ -473,28 +450,7 @@
     }
     ScrollTrigger.create({ trigger: sec, start: '58% bottom', end: 'bottom top',
       onToggle: (st) => { sec.classList.toggle('is-dark', st.isActive); nav.classList.toggle('is-dark', st.isActive); setTimeout(() => setBarColor(sec), 950); } });
-    const bgv = $('[data-collage-bg]', sec);
-    if (bgv && isTouch) { bgv.pause(); bgv.removeAttribute('autoplay'); bgv.parentElement.classList.add('is-missing'); }
-    if (bgv) { const src = bgv.querySelector('source'); (src || bgv).addEventListener('error', () => bgv.parentElement.classList.add('is-missing')); }
   })();
-
-  /* ---------- Imagefilm: mit Ton ansehen (alle Stellen) ---------- */
-  $$('[data-sound-toggle]').forEach((btn) => {
-    const vid = btn.parentElement.querySelector('[data-sound-video]');
-    if (!vid) return;
-    const label = btn.querySelector('span');
-    const mute = () => { vid.muted = true; btn.setAttribute('aria-pressed', 'false'); label.textContent = 'Mit Ton ansehen'; };
-    btn.addEventListener('click', (e) => {
-      e.preventDefault(); e.stopPropagation();
-      if (vid.muted) {
-        $$('[data-sound-video]').forEach((v) => { if (v !== vid) v.muted = true; });
-        $$('[data-sound-toggle]').forEach((b) => { if (b !== btn) { b.setAttribute('aria-pressed', 'false'); b.querySelector('span').textContent = 'Mit Ton ansehen'; } });
-        vid.muted = false; vid.volume = 1; vid.currentTime = 0; vid.play().catch(() => {});
-        btn.setAttribute('aria-pressed', 'true'); label.textContent = 'Ton aus';
-      } else mute();
-    });
-    ScrollTrigger.create({ trigger: vid, start: 'top bottom', end: 'bottom top', onLeave: mute, onLeaveBack: mute });
-  });
 
   /* ---------- counter ---------- */
   $$('[data-count]').forEach((el) => {
@@ -505,7 +461,7 @@
 
   /* ---------- exe rows ---------- */
   $$('[data-exe-row]').forEach((row) => {
-    const media = $('.exe__media', row), vid = $('[data-exe-video]', row);
+    const media = $('.exe__media', row);
     gsap.to(media, { y: 0, opacity: 1, duration: 1, ease: 'power3.out',
       scrollTrigger: { trigger: row, start: 'top 80%' } });
     gsap.from($$('.exe__year, .exe__text > *', row), { y: 30, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out',
@@ -530,7 +486,6 @@
   let refreshT;
   const queueRefresh = () => { clearTimeout(refreshT); refreshT = setTimeout(() => { ScrollTrigger.refresh(); lenis && lenis.resize(); }, 150); };
   $$('img').forEach((im) => { if (!im.complete) im.addEventListener('load', queueRefresh, { once: true }); });
-  $$('video').forEach((v) => v.addEventListener('loadedmetadata', queueRefresh, { once: true }));
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueRefresh);
   addEventListener('load', () => { queueRefresh(); setTimeout(queueRefresh, 1500); setTimeout(queueRefresh, 4000); });
   addEventListener('orientationchange', () => setTimeout(queueRefresh, 300));
