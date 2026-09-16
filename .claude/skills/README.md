@@ -15,6 +15,7 @@ Selbst geschrieben, auf diesen Code gemünzt.
 | `scroll-motion` | GSAP/ScrollTrigger/Lenis: Reveals, Pinning, Scrub, Parallax, Video-Autoplay |
 | `medien-assets` | Bilder und Videos: Namen, WebP/JPG, srcset, Encoding, Größenbudget, Cache |
 | `seo-meta` | Titel, Description, Open Graph, Canonical, Sitemap, neue Unterseiten |
+| `design-md` | `DESIGN.md` pflegen und an Claude Design übergeben, Vorlagen-Katalog |
 | `qa-deploy` | Lokal starten, Screenshot-/Konsolencheck, tote Referenzen, Deploy auf Vercel |
 | `neue-webseite` | Den Stack für ein neues Projekt aufsetzen |
 
@@ -61,6 +62,19 @@ Nicht installiert, weil sie zu diesem Stack nichts beitragen: `animate-expo`
 einer Stelle auf `pick-ui-library` — der Verweis läuft hier ins Leere, das ist
 gewollt, denn Komponenten-Libraries kommen in eine Seite ohne Build-Schritt
 nicht hinein.
+
+## Designsystem als Datei
+
+`DESIGN.md` in der Projektwurzel beschreibt das visuelle System der Seite in dem
+Format, das Design-Agenten wie [Claude Design](https://claude.ai/design) lesen:
+Atmosphäre, Farben, Typo, Komponenten, Layout, Tiefe, Guardrails, Responsive,
+Prompts. Wer Tokens im CSS ändert, zieht die Datei im selben Commit nach.
+
+`design-md/CATALOG.md` listet 68 fertige DESIGN.md-Vorlagen aus
+[VoltAgent/awesome-claude-design](https://github.com/VoltAgent/awesome-claude-design)
+(MIT, © 2026 VoltAgent) als Inspirationsquelle. Der Katalog ist eine Linkliste —
+die Dateien selbst liegen auf getdesign.md. Dieses Repo enthält keine
+installierbare Skill; übernommen wurden das Format und die Liste.
 
 ## Eigene Skill anlegen
 
