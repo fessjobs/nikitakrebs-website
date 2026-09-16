@@ -1,12 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 232" fill="none"
      role="img" aria-label="MTM">
-  <!-- Typografische Wortmarke, gesetzt als Zwischenstand.
-       Sobald die Originaldatei vom Kunden vorliegt, ersetzt sie diese Datei. -->
-  <rect x="10" y="28" width="180" height="5" fill="#FFFFFF" fill-opacity=".38"/>
-  <g fill="#FFFFFF">
-    <path d="M10 142V58h17l14 42 14-42h17v84H55V90l-14 37-14-37v52z"/>
-    <path d="M80 58h40v17h-12v67H92V75H80z"/>
-    <path d="M128 142V58h17l14 42 14-42h17v84h-17V90l-14 37-14-37v52z"/>
+  <!-- Platzhalter im Wappenformat. Form, Seitenverhältnis und Farben sitzen,
+       die Wappenfigur ist bewusst nicht nachgezeichnet. Die Originaldatei des
+       Kunden ersetzt diese Datei; alle Einbauorte ziehen mit. -->
+  <defs>
+    <linearGradient id="feld" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4F4F4"/>
+      <stop offset="1" stop-color="#C9C9C9"/>
+    </linearGradient>
+    <clipPath id="schild">
+      <path d="M6 6H194V122C194 178 148 210 100 226C52 210 6 178 6 122Z"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#schild)">
+    <rect x="0" y="0" width="200" height="232" fill="url(#feld)"/>
+    <rect x="0" y="0" width="200" height="78" fill="#0B0B0C"/>
+    <rect x="40" y="96" width="120" height="13" fill="#E30613"/>
+    <g fill="#FFFFFF">
+      <path d="M24 62V22h9l17 20 17-20h9v40h-9V37l-17 18-17-18v25z"/>
+      <path d="M82 22h36v9h-13v31h-10V31H82z"/>
+      <path d="M124 62V22h9l17 20 17-20h9v40h-9V37l-17 18-17-18v25z"/>
+    </g>
   </g>
-  <rect x="10" y="160" width="180" height="16" fill="#E30613"/>
+
+  <path d="M6 6H194V122C194 178 148 210 100 226C52 210 6 178 6 122Z"
+        stroke="#0B0B0C" stroke-width="8"/>
 </svg>

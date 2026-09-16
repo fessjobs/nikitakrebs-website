@@ -245,7 +245,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .footer__top{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(40px,5vw,90px);align-items:end}
 .footer__brand{display:flex;flex-direction:column;font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.82;letter-spacing:-.02em;font-size:clamp(80px,13vw,220px)}
 .footer__big--2{color:var(--accent)}
-.footer__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.footer__cols{display:grid;grid-template-columns:1fr 1fr 1.35fr .75fr;gap:24px}
 .footer__cols h4{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;color:var(--ink-3)}
 .footer__cols a,.footer__cols span{display:block;font-size:14px;font-weight:600;margin-bottom:9px;color:var(--ink)}
 .footer__cols a:hover{color:var(--accent)}
@@ -279,6 +279,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
   .exe__row{grid-template-columns:1fr}
   .exe__media{grid-column:1}
   .footer__cols{grid-template-columns:1fr 1fr}
+  .footer__sozial a{margin-bottom:11px}
   .footer__bottom{justify-content:center;text-align:center}
 }
 @media (prefers-reduced-motion:reduce){
@@ -502,7 +503,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 
 .site-head{position:fixed;inset:0 0 auto 0;z-index:100;color:var(--paper)}
 .site-head__mark{position:absolute;left:var(--gutter);top:4px;z-index:2;
-  height:84px;display:block;filter:drop-shadow(0 10px 20px rgba(0,0,0,.5))}
+  height:80px;display:block;filter:drop-shadow(0 10px 20px rgba(0,0,0,.5))}
 .site-head__mark img{height:100%;width:auto;display:block}
 
 .topbar{display:flex;align-items:center;gap:20px;min-height:var(--topbar-h);
@@ -647,3 +648,10 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .feature__media img.is-foto{padding:0;object-fit:cover;background:none}
 .explain__media--car img.is-foto{height:100%;padding:0;object-fit:cover}
 .hz__case img.is-foto{padding:0;object-fit:cover}
+
+/* ---------- Soziale Netze ----------
+   Nur Verweise nach außen, keine eingebetteten Inhalte: dadurch lädt die Seite
+   nichts von Meta oder Google nach und kommt ohne Einwilligung aus. */
+.footer__sozial a{display:inline-flex;align-items:center;gap:9px}
+.footer__sozial a svg{flex:0 0 auto;transition:color .2s}
+.footer__sozial a:hover svg{color:var(--accent)}
