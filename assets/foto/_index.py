@@ -20,6 +20,17 @@ for name in sorted(os.listdir(HIER)):
     if endung.lower() in ENDUNGEN:
         karte[stamm] = name
 
+# Eine Aufnahme darf mehrere Bildplätze füllen. zuordnung.json hält solche
+# Mehrfachnutzungen fest; die Dateien selbst liegen nur einmal hier.
+mehrfach = os.path.join(HIER, "zuordnung.json")
+if os.path.exists(mehrfach):
+    with open(mehrfach, encoding="utf-8") as f:
+        for slot, datei in json.load(f).items():
+            if datei in karte.values():
+                karte[slot] = datei
+            else:
+                print("  ACHTUNG: zuordnung.json nennt '%s' — Datei fehlt." % datei)
+
 with open(os.path.join(HIER, "index.json"), "w", encoding="utf-8") as f:
     json.dump(karte, f, ensure_ascii=False, indent=1, sort_keys=True)
     f.write("\n")

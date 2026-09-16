@@ -22,11 +22,10 @@ Livegang ersetzt werden:
    Favicon, die vier Rechtsseiten und das Vorschaubild. Die Datei misst nur
    128 × 150 px; für scharfe Darstellung auf hochauflösenden Bildschirmen
    wäre eine SVG- oder eine größere PNG-Fassung besser.
-2. **Alle Bilder.** Sämtliche Fahrzeug- und Produktaufnahmen sind SVG-
-   Zeichnungen aus `assets/car/` und `assets/parts/`. Sie halten die
-   Bildplätze offen und ersetzen keine Fotografie. Jedes `alt` beginnt
-   deshalb mit „Platzhalter:". Die Originale kommen nach `assets/foto/`;
-   das Verfahren steht in `assets/foto/README.md`.
+2. **Bilder.** Die zwölf Produktkacheln, das Kopfbanner und das Wappen
+   liegen vor. Weitere Aufnahmen füllen über `assets/foto/zuordnung.json`
+   zusätzliche Plätze mit. Offen sind noch 34 Bildplätze; dort stehen
+   Zeichnungen, deren `alt` mit „Platzhalter:" beginnt.
 3. **Garantie.** Der Abschnitt `#garantie` enthält nur eine Hilfszeile; die
    Garantiebedingungen im Wortlaut fehlen.
 4. **AGB.** Die Seite ist ein Rumpf, damit die Verlinkung nicht ins Leere
@@ -66,7 +65,7 @@ lesbar bleibt. Die Generatoren nehmen den Akzent als Parameter.
 ## Originalaufnahmen einsetzen
 
 Jeder der 53 Bildplätze trägt im Quelltext ein `data-foto="…"` mit einem
-festen Namen. Beim Laden liest die Seite `assets/foto/index.json` und tauscht
+festen Namen; 19 sind belegt. Beim Laden liest die Seite `assets/foto/index.json` und tauscht
 jede Zeichnung gegen die Datei, die dort unter demselben Namen steht. Ohne
 Eintrag bleibt die Zeichnung; die Bilder können also nach und nach kommen.
 
@@ -141,3 +140,11 @@ Behoben wurden dabei:
 
 Nicht geprüft: Bildschirmlesegeräte. Automatische Prüfungen erfassen nur
 einen Teil; das steht auch so in der Erklärung.
+
+### Eine Aufnahme für mehrere Plätze
+
+`assets/foto/zuordnung.json` bildet Bildplatz auf Datei ab und darf dieselbe
+Datei mehrfach nennen — so füllt etwa die Aufnahme des Steuergeräts sowohl die
+Kachel als auch die Modulkarte, ohne zweimal im Repository zu liegen.
+`_index.py` mischt diese Zuordnung beim Lauf dazu und meldet, wenn eine dort
+genannte Datei fehlt.
