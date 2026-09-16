@@ -100,3 +100,38 @@ Nach jeder Motion-Änderung: einmal langsam komplett runter **und wieder hoch**
 scrollen, dann Fenster in der Breite ziehen und erneut scrollen. Die meisten
 Fehler zeigen sich beim Rückwärtsscrollen oder nach einem Resize. Screenshots
 über mehrere Scroll-Positionen: siehe `qa-deploy`.
+
+## Zusammenspiel mit den `animate`-Skills
+
+Im Projekt liegen zusätzlich die Animations-Skills von Emil Kowalski
+(`animate`, `review-animations`, `improve-animations`,
+`find-animation-opportunities`, `animation-vocabulary`, `apple-design`,
+`emil-design-eng`, `mobile-native`). Sie liefern die **Entscheidungen**
+(animieren oder nicht, welche Kurve, welche Dauer, welche Eigenschaft),
+dieser Skill liefert die **Mechanik für diesen Stack** (GSAP statt CSS/Motion,
+ScrollTrigger statt `@starting-style`).
+
+Kurven übersetzen sich so:
+
+| Emils Token | Entspricht | In GSAP |
+|---|---|---|
+| `--ease-out: cubic-bezier(.23,1,.32,1)` | easeOutQuint | `power4.out` |
+| `--ease-in-out: cubic-bezier(.77,0,.175,1)` | easeInOutQuart | `power3.inOut` |
+| `--ease-drawer: cubic-bezier(.32,.72,0,1)` | iOS-Drawer | nur über `CustomEase.create()` |
+
+Das Projekt nutzt `power3.out` für Reveals, `power4.out` für das Intro und
+`power2.inOut` für Zustandswechsel — das deckt sich mit „starkes ease-out für
+Eingänge, nie `ease-in` auf UI".
+
+**Ein Unterschied, der wichtig ist:** Die Regel „UI-Animationen bleiben unter
+300 ms" gilt für Interface-Elemente — Dropdowns, Tooltips, Buttons. Diese Seite
+ist eine Marketing-Landingpage; die einsekündigen Reveals, die gescrubbte
+Hero-Sequenz und die Marquees sind bewusst länger und fallen unter
+„Marketing/explanatory: can be longer". Nicht auf 200 ms zusammenkürzen.
+Was dagegen auch hier gilt: `transform` und `opacity` statt Layout-Eigenschaften,
+nie `scale(0)`, Transform-Origin am Auslöser, und Reduced Motion gehört zur
+Animation, nicht in einen Folge-Commit.
+
+Für mobile Eigenheiten (100vh, Tap-Highlight, Safe Areas, hängende
+Hover-Zustände) ist `mobile-native` zuständig — die Seite nutzt bereits `100svh`
+und `viewport-fit=cover`.
