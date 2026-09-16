@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generates the product tile artwork for KREBS PERFORMANCE.
+"""Generates the placeholder product tile artwork.
 
 Twelve flat illustrations in the same visual language as the vehicles:
 paper ground, ink outlines, steel greys, blue as the brand accent and red
@@ -18,7 +18,7 @@ ACCENT, RED, BRASS = "#E30613", "#C1050F", "#B08D4F"
 
 def svg(body, label):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
-            f'fill="none" role="img" aria-label="{label}">{body}</svg>')
+            f'fill="none" role="img" aria-label="Platzhalter: {label}">{body}</svg>')
 
 
 def ground(y=330):

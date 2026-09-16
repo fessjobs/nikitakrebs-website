@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generates the vehicle artwork for KREBS PERFORMANCE.
+"""Generates the placeholder vehicle artwork.
 
 One parametric side view. Each model is a silhouette in normalised
 coordinates (u = along the car, v = 0 at the sill, 1 at the roof), mapped onto
@@ -179,7 +179,7 @@ def render(model, paint="#1E2A4A", glass_col="#121A2C", accent="#E30613",
     vb = crop or (0, 0, W, H)
     label = "Seitenansicht" if not crop else "Detail"
     s = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb[0]} {vb[1]} {vb[2]} '
-         f'{vb[3]}" fill="none" role="img" aria-label="KREBS {m["name"]}, {label}">']
+         f'{vb[3]}" fill="none" role="img" aria-label="Platzhalter: Fahrzeugzeichnung, {label}">']
 
     # ---- line style -----------------------------------------------------
     if style == "line":

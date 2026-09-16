@@ -366,21 +366,21 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .collage.is-dark .collage__bg video{mix-blend-mode:screen;filter:invert(1);opacity:.28}
 .collage__bg.is-missing{display:none}
 
-/* ---------- vilius (1:1 alte Seite) ---------- */
-.vilius{margin-top:clamp(22px,2.6vw,32px);position:relative;overflow:hidden;background:#0B0B0C;border-radius:16px;padding:clamp(30px,4.4vw,60px);display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,4vw,56px);align-items:center;text-align:left;color:#fff}
-.vilius__bg{position:absolute;left:0;bottom:0;height:120%;width:auto;opacity:.5;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(102deg,#000 36%,rgba(0,0,0,0) 72%);mask-image:linear-gradient(102deg,#000 36%,rgba(0,0,0,0) 72%)}
-.vilius__text{position:relative;z-index:1}
-.vilius__eyebrow{font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-light);margin-bottom:16px}
-.vilius__h{font-family:var(--body);font-weight:800;font-size:clamp(26px,3.4vw,46px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
-.vilius__p{font-size:clamp(15px,1.3vw,17.5px);line-height:1.65;color:rgba(255,255,255,.72);max-width:52ch;margin:0 0 24px}
-.vilius__p strong{color:#fff;font-weight:600}
-.vilius__stat{display:inline-flex;align-items:baseline;gap:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px 24px}
-.vilius__num{font-family:var(--body);font-weight:800;font-size:clamp(28px,3.6vw,46px);letter-spacing:-.02em;line-height:1}
-.vilius__num b{font-weight:800}
-.vilius__lbl{font-weight:600;font-size:13.5px;color:rgba(255,255,255,.6)}
-.vilius__media{position:relative;z-index:1;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0C0E12}
-.vilius__media video{width:100%;height:100%;object-fit:cover}
-@media (max-width:860px){.vilius{grid-template-columns:1fr}.vilius__bg{display:none}}
+/* ---------- Hervorhebung ---------- */
+.feature{margin-top:clamp(22px,2.6vw,32px);position:relative;overflow:hidden;background:#0B0B0C;border-radius:16px;padding:clamp(30px,4.4vw,60px);display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,4vw,56px);align-items:center;text-align:left;color:#fff}
+.feature__bg{position:absolute;left:0;bottom:0;height:120%;width:auto;opacity:.5;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(102deg,#000 36%,rgba(0,0,0,0) 72%);mask-image:linear-gradient(102deg,#000 36%,rgba(0,0,0,0) 72%)}
+.feature__text{position:relative;z-index:1}
+.feature__eyebrow{font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-light);margin-bottom:16px}
+.feature__h{font-family:var(--body);font-weight:800;font-size:clamp(26px,3.4vw,46px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
+.feature__p{font-size:clamp(15px,1.3vw,17.5px);line-height:1.65;color:rgba(255,255,255,.72);max-width:52ch;margin:0 0 24px}
+.feature__p strong{color:#fff;font-weight:600}
+.feature__stat{display:inline-flex;align-items:baseline;gap:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px 24px}
+.feature__num{font-family:var(--body);font-weight:800;font-size:clamp(28px,3.6vw,46px);letter-spacing:-.02em;line-height:1}
+.feature__num b{font-weight:800}
+.feature__lbl{font-weight:600;font-size:13.5px;color:rgba(255,255,255,.6)}
+.feature__media{position:relative;z-index:1;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0C0E12}
+.feature__media video{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.feature{grid-template-columns:1fr}.feature__bg{display:none}}
 
 /* ---------- section fade ---------- */
 .fade{height:clamp(200px,34vh,420px);margin-top:calc(-1 * clamp(90px,10vw,150px));position:relative;z-index:0;background:var(--paper);overflow:hidden}
@@ -435,7 +435,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 }
 
 /* ================================================================
-   KREBS AUTOMOBILE — Fahrzeug-Layout
+   Fahrzeug-Layout
    Die Medienflächen zeigen Zeichnungen statt Footage, der Held ist
    breit statt hoch, und die Modelle brauchen Datenblätter.
    ================================================================ */
@@ -450,9 +450,9 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .explain--dark .explain__media--car{background:#161616}
 .explain--blue .explain__media--car{background:rgba(255,255,255,.07)}
 .hz__case img{width:100%;aspect-ratio:16/9;object-fit:contain;display:block;background:var(--paper-2);padding:12px}
-.vilius__media{aspect-ratio:16/9}
-.vilius__media img{width:100%;height:100%;object-fit:contain;background:#0C0E12;padding:3%}
-.vilius__bg{opacity:.2}
+.feature__media{aspect-ratio:16/9}
+.feature__media img{width:100%;height:100%;object-fit:contain;background:#0C0E12;padding:3%}
+.feature__bg{opacity:.2}
 .collage__item img,.collage__item:nth-child(3n) img{filter:none}
 
 /* ---------- Eckdaten auf den Modellkarten ---------- */
@@ -494,7 +494,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 }
 
 /* ================================================================
-   KREBS PERFORMANCE — Kopfbereich, Slider, Produktraster
+   Kopfbereich, Slider, Produktraster
    Aufbau einer Veredler-Seite: schmale Servicezeile, dunkle
    Hauptnavigation mit Untermenüs, breiter Slider, Kachelraster.
    ================================================================ */

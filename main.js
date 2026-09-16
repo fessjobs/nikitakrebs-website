@@ -1,4 +1,4 @@
-/* KREBS AUTOMOBILE — landing page choreography
+/* MTM — landing page choreography
    GSAP + ScrollTrigger + Lenis */
 (function () {
   'use strict';
@@ -208,7 +208,7 @@
     if (document.readyState === 'complete') run(); else addEventListener('load', run);
   })();
 
-  /* ---------- story: journey line — zeichnet sich synchron zum Scrollen, Punkt an der Spitze, nur vorwärts (wie nikitakrebs.de) ---------- */
+  /* ---------- story: journey line — zeichnet sich synchron zum Scrollen, Punkt an der Spitze, nur vorwärts ---------- */
   (function () {
     const list = $('.exe__wrap'), svg = $('[data-journey-svg]'), path = $('[data-journey-path]'), dot = $('[data-journey-dot]');
     if (!list || !svg || !path || !dot) return;
