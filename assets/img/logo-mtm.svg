@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none"
+     role="img" aria-label="MTM">
+  <!-- Typografische Wortmarke, gesetzt als Zwischenstand.
+       Sobald die Originaldatei vom Kunden vorliegt, ersetzt sie diese Datei. -->
+  <rect x="10" y="28" width="180" height="5" fill="#FFFFFF" fill-opacity=".38"/>
+  <g fill="#FFFFFF">
+    <path d="M10 142V58h17l14 42 14-42h17v84H55V90l-14 37-14-37v52z"/>
+    <path d="M80 58h40v17h-12v67H92V75H80z"/>
+    <path d="M128 142V58h17l14 42 14-42h17v84h-17V90l-14 37-14-37v52z"/>
+  </g>
+  <rect x="10" y="160" width="180" height="16" fill="#E30613"/>
+</svg>

@@ -634,3 +634,16 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .explain--dark .explain__eyebrow--blue,
 .explain--blue .explain__eyebrow--blue{color:var(--accent-light)}
 .exe__tag{color:var(--accent-light)}
+
+/* ---------- Originalfotos ----------
+   Die Zeichnungen halten die Bildplätze frei und stehen deshalb auf
+   object-fit:contain mit Innenabstand. Ein echtes Foto bekommt beim Einsetzen
+   die Klasse .is-foto und füllt seinen Platz randlos aus. */
+.slide__media img.is-foto{width:100%;height:100%;max-width:none;max-height:none;
+  object-fit:cover;border-radius:2px}
+.tile img.is-foto{padding:0;object-fit:cover}
+.exe__media img.is-foto,
+.venture__media img.is-foto,
+.feature__media img.is-foto{padding:0;object-fit:cover;background:none}
+.explain__media--car img.is-foto{height:100%;padding:0;object-fit:cover}
+.hz__case img.is-foto{padding:0;object-fit:cover}

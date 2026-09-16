@@ -1,0 +1,267 @@
+[
+ {
+  "slot": "slider-01",
+  "zeigt": "Fahrzeugaufnahme Audi RS5 B10",
+  "zeichnung": "assets/car/k1-graphit-tuned.svg"
+ },
+ {
+  "slot": "slider-02",
+  "zeigt": "Fahrzeugaufnahme MTM Audi Bimoto",
+  "zeichnung": "assets/car/k1-karminrot-tuned.svg"
+ },
+ {
+  "slot": "slider-03",
+  "zeigt": "Fahrzeugaufnahme Audi S2 RSR Clubsport",
+  "zeichnung": "assets/car/k4-silber-tuned.svg"
+ },
+ {
+  "slot": "slider-04",
+  "zeigt": "Produktaufnahme Bimoto Felge",
+  "zeichnung": "assets/parts/rad-elbe.svg"
+ },
+ {
+  "slot": "slider-05",
+  "zeigt": "Produktaufnahme Abgasanlage",
+  "zeichnung": "assets/parts/abgasanlage.svg"
+ },
+ {
+  "slot": "kachel-01",
+  "zeigt": "M, F, V, S-Cantronic",
+  "zeichnung": "assets/parts/steuergeraet.svg"
+ },
+ {
+  "slot": "kachel-02",
+  "zeigt": "Antriebstechnik",
+  "zeichnung": "assets/parts/antriebstechnik.svg"
+ },
+ {
+  "slot": "kachel-03",
+  "zeigt": "Abgasanlagen",
+  "zeichnung": "assets/parts/abgasanlage.svg"
+ },
+ {
+  "slot": "kachel-04",
+  "zeigt": "Entwicklung",
+  "zeichnung": "assets/parts/kolben.svg"
+ },
+ {
+  "slot": "kachel-05",
+  "zeigt": "Bimoto Felgen",
+  "zeichnung": "assets/parts/rad-elbe.svg"
+ },
+ {
+  "slot": "kachel-06",
+  "zeigt": "Nardo Felge",
+  "zeichnung": "assets/parts/rad-harburg.svg"
+ },
+ {
+  "slot": "kachel-07",
+  "zeigt": "Fahrwerke",
+  "zeichnung": "assets/parts/fahrwerk.svg"
+ },
+ {
+  "slot": "kachel-08",
+  "zeigt": "Bremsanlagen",
+  "zeichnung": "assets/parts/bremsanlage.svg"
+ },
+ {
+  "slot": "kachel-09",
+  "zeigt": "Wartung & Reparatur",
+  "zeichnung": "assets/parts/wartung.svg"
+ },
+ {
+  "slot": "kachel-10",
+  "zeigt": "Individual",
+  "zeichnung": "assets/parts/individual.svg"
+ },
+ {
+  "slot": "kachel-11",
+  "zeigt": "Leistungssteigerung",
+  "zeichnung": "assets/parts/turbolader.svg"
+ },
+ {
+  "slot": "kachel-12",
+  "zeigt": "Teilegutachten",
+  "zeichnung": "assets/parts/teilegutachten.svg"
+ },
+ {
+  "slot": "unternehmen-01",
+  "zeigt": "Aufnahme aus der Firmengeschichte",
+  "zeichnung": "assets/car/detail-profil.svg"
+ },
+ {
+  "slot": "unternehmen-02",
+  "zeigt": "Aufnahme Audi S2 RSR Clubsport",
+  "zeichnung": "assets/car/k4-silber-tuned.svg"
+ },
+ {
+  "slot": "unternehmen-03",
+  "zeigt": "Aufnahme MTM Audi Bimoto",
+  "zeichnung": "assets/car/k1-karminrot-tuned.svg"
+ },
+ {
+  "slot": "unternehmen-04",
+  "zeigt": "Aufnahme aus der Fertigung",
+  "zeichnung": "assets/car/detail-rad.svg"
+ },
+ {
+  "slot": "unternehmen-05",
+  "zeigt": "Aufnahme eines Kundenfahrzeugs",
+  "zeichnung": "assets/car/kx-graphit-tuned.svg"
+ },
+ {
+  "slot": "modul-01",
+  "zeigt": "Produktaufnahme M-Cantronic",
+  "zeichnung": "assets/parts/steuergeraet.svg"
+ },
+ {
+  "slot": "modul-02",
+  "zeigt": "Produktaufnahme F-Cantronic",
+  "zeichnung": "assets/parts/fahrwerk.svg"
+ },
+ {
+  "slot": "modul-03",
+  "zeigt": "Produktaufnahme V-Cantronic",
+  "zeichnung": "assets/parts/turbolader.svg"
+ },
+ {
+  "slot": "leistung-01",
+  "zeigt": "Produktaufnahme Motorentechnik",
+  "zeichnung": "assets/parts/turbolader.svg"
+ },
+ {
+  "slot": "fahrwerk-01",
+  "zeigt": "Produktaufnahme Abgasanlage",
+  "zeichnung": "assets/parts/abgasanlage.svg"
+ },
+ {
+  "slot": "raeder-01",
+  "zeigt": "Produktaufnahme Bimoto Felge",
+  "zeichnung": "assets/parts/rad-elbe.svg"
+ },
+ {
+  "slot": "fahrzeug-01",
+  "zeigt": "Fahrzeugaufnahme im Serienzustand",
+  "zeichnung": "assets/car/k1-graphit.svg"
+ },
+ {
+  "slot": "fahrzeug-02",
+  "zeigt": "dasselbe Fahrzeug nach dem Umbau",
+  "zeichnung": "assets/car/k1-graphit-tuned.svg"
+ },
+ {
+  "slot": "fahrzeug-03",
+  "zeigt": "Produktaufnahme Bimoto Felge",
+  "zeichnung": "assets/parts/rad-elbe.svg"
+ },
+ {
+  "slot": "fahrzeug-04",
+  "zeigt": "Produktaufnahme Nardo Felge",
+  "zeichnung": "assets/parts/rad-harburg.svg"
+ },
+ {
+  "slot": "fahrzeug-05",
+  "zeigt": "Fahrzeugaufnahme MTM Audi Bimoto",
+  "zeichnung": "assets/car/k1-karminrot-tuned.svg"
+ },
+ {
+  "slot": "fahrzeug-06",
+  "zeigt": "Produktaufnahme Abgasanlage",
+  "zeichnung": "assets/parts/abgasanlage.svg"
+ },
+ {
+  "slot": "fahrzeug-07",
+  "zeigt": "Produktaufnahme Bremsanlage",
+  "zeichnung": "assets/parts/bremsanlage.svg"
+ },
+ {
+  "slot": "fahrzeug-08",
+  "zeigt": "Fahrzeugaufnahme Audi S2 RSR Clubsport",
+  "zeichnung": "assets/car/k4-silber-tuned.svg"
+ },
+ {
+  "slot": "fahrzeug-09",
+  "zeigt": "Fahrzeugaufnahme eines Kundenfahrzeugs",
+  "zeichnung": "assets/car/kx-graphit-tuned.svg"
+ },
+ {
+  "slot": "fahrzeug-10",
+  "zeigt": "technische Zeichnung",
+  "zeichnung": "assets/car/k1-linie.svg"
+ },
+ {
+  "slot": "fahrzeug-11",
+  "zeigt": "Fahrzeugaufnahme eines Kundenfahrzeugs",
+  "zeichnung": "assets/car/k4-graphit-tuned.svg"
+ },
+ {
+  "slot": "entwicklung-01",
+  "zeigt": "(dekorativ)",
+  "zeichnung": "assets/parts/turbolader.svg"
+ },
+ {
+  "slot": "entwicklung-02",
+  "zeigt": "Fahrzeugaufnahme MTM Audi Bimoto",
+  "zeichnung": "assets/car/k1-karminrot-tuned.svg"
+ },
+ {
+  "slot": "galerie-01",
+  "zeigt": "Platzhalter",
+  "zeichnung": "assets/car/k1-graphit-tuned.svg"
+ },
+ {
+  "slot": "galerie-02",
+  "zeigt": "Platzhalter",
+  "zeichnung": "assets/car/k4-silber-tuned.svg"
+ },
+ {
+  "slot": "galerie-03",
+  "zeigt": "Bimoto Felge",
+  "zeichnung": "assets/parts/rad-elbe.svg"
+ },
+ {
+  "slot": "galerie-04",
+  "zeigt": "Platzhalter",
+  "zeichnung": "assets/car/k1-karminrot-tuned.svg"
+ },
+ {
+  "slot": "galerie-05",
+  "zeigt": "Abgasanlage",
+  "zeichnung": "assets/parts/abgasanlage.svg"
+ },
+ {
+  "slot": "galerie-06",
+  "zeigt": "Nardo Felge",
+  "zeichnung": "assets/parts/rad-harburg.svg"
+ },
+ {
+  "slot": "galerie-07",
+  "zeigt": "Platzhalter",
+  "zeichnung": "assets/car/kx-graphit-tuned.svg"
+ },
+ {
+  "slot": "galerie-08",
+  "zeigt": "Bremsanlage",
+  "zeichnung": "assets/parts/bremsanlage.svg"
+ },
+ {
+  "slot": "galerie-09",
+  "zeigt": "Platzhalter",
+  "zeichnung": "assets/car/k4-graphit-tuned.svg"
+ },
+ {
+  "slot": "galerie-10",
+  "zeigt": "Fahrwerk",
+  "zeichnung": "assets/parts/fahrwerk.svg"
+ },
+ {
+  "slot": "galerie-11",
+  "zeigt": "Platzhalter",
+  "zeichnung": "assets/car/kx-papierweiss-tuned.svg"
+ },
+ {
+  "slot": "galerie-12",
+  "zeigt": "Turbolader",
+  "zeichnung": "assets/parts/turbolader.svg"
+ }
+]

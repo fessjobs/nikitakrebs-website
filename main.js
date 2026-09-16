@@ -333,4 +333,30 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueRefresh);
   addEventListener('load', () => { queueRefresh(); setTimeout(queueRefresh, 1500); setTimeout(queueRefresh, 4000); });
   addEventListener('orientationchange', () => setTimeout(queueRefresh, 300));
+
+  /* ---------- Originalfotos ----------
+     assets/foto/index.json ordnet jedem Bildplatz (data-foto) eine Bilddatei zu.
+     Liegt zu einem Platz keine Datei, bleibt dort die Zeichnung stehen — die
+     Seite funktioniert unverändert, auch ganz ohne index.json. */
+  fetch('assets/foto/index.json', { cache: 'no-cache' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((karte) => {
+      if (!karte) return;
+      Object.keys(karte).forEach((slot) => {
+        const platz = $('[data-foto="' + slot + '"]');
+        if (!platz) return;
+        const foto = new Image();
+        // Erst tauschen, wenn das Foto wirklich geladen ist — eine fehlende oder
+        // defekte Datei lässt die Zeichnung unangetastet.
+        foto.onload = () => {
+          platz.src = foto.src;
+          platz.classList.add('is-foto');
+          platz.removeAttribute('width');
+          platz.removeAttribute('height');
+          queueRefresh();
+        };
+        foto.src = 'assets/foto/' + karte[slot];
+      });
+    })
+    .catch(() => {});
 })();

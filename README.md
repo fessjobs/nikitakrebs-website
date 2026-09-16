@@ -8,6 +8,7 @@ Technik: GSAP + ScrollTrigger + Lenis via CDN, sonst keine Abhängigkeiten.
 - `index.html` / `style.css` / `main.js` – die Seite
 - `impressum.html`, `datenschutz.html`, `agb.html`, `barrierefreiheit.html`
 - `assets/car/`, `assets/parts/` – **Blindmuster**, siehe unten
+- `assets/foto/` – hier kommen die Originalaufnahmen hinein
 - Lokal: `python3 -m http.server 5190` und http://127.0.0.1:5190
 - Deploy: `npx vercel --prod --yes`
 
@@ -16,13 +17,15 @@ Technik: GSAP + ScrollTrigger + Lenis via CDN, sonst keine Abhängigkeiten.
 Diese Punkte sind im Quelltext als Platzhalter markiert und müssen vor dem
 Livegang ersetzt werden:
 
-1. **Logo.** `assets/img/logo-platzhalter.svg` ist ein gestricheltes
-   Blindelement. Das MTM-Wappen an dieser Stelle einsetzen — auch als
-   Favicon und für das OG-Bild.
+1. **Logo.** `assets/img/logo-mtm.svg` ist eine schlichte typografische
+   Wortmarke, kein Nachbau des eingetragenen Zeichens. Die Originaldatei
+   des Kunden ersetzt sie — dieselbe Datei versorgt Kopfzeile, Vorschalter,
+   Favicon und OG-Bild.
 2. **Alle Bilder.** Sämtliche Fahrzeug- und Produktaufnahmen sind SVG-
    Zeichnungen aus `assets/car/` und `assets/parts/`. Sie halten die
    Bildplätze offen und ersetzen keine Fotografie. Jedes `alt` beginnt
-   deshalb mit „Platzhalter:".
+   deshalb mit „Platzhalter:". Die Originale kommen nach `assets/foto/`;
+   das Verfahren steht in `assets/foto/README.md`.
 3. **Garantie.** Der Abschnitt `#garantie` enthält nur eine Hilfszeile; die
    Garantiebedingungen im Wortlaut fehlen.
 4. **AGB und Barrierefreiheit.** Beide Seiten sind Rümpfe, damit die
@@ -56,3 +59,18 @@ Schwarz und ein Grauband für das Chrom, Rot als Akzent. `--accent-text` ist
 der rote Ton für Schrift auf Weiß, `--accent-light` der hellere für Schrift
 auf Schwarz — beide braucht es, weil ein Rot nicht auf beiden Gründen
 lesbar bleibt. Die Generatoren nehmen den Akzent als Parameter.
+
+## Originalaufnahmen einsetzen
+
+Jeder der 53 Bildplätze trägt im Quelltext ein `data-foto="…"` mit einem
+festen Namen. Beim Laden liest die Seite `assets/foto/index.json` und tauscht
+jede Zeichnung gegen die Datei, die dort unter demselben Namen steht. Ohne
+Eintrag bleibt die Zeichnung; die Bilder können also nach und nach kommen.
+
+    # Aufnahmen nach Bildplatz benannt in assets/foto/ legen, dann:
+    python3 assets/foto/_index.py
+
+`assets/foto/README.md` listet alle Plätze mit Motiv und empfohlener Größe,
+`assets/foto/slots.json` dasselbe maschinenlesbar. Ein Foto bekommt beim
+Einsetzen die Klasse `is-foto` und füllt seinen Platz randlos aus, während
+die Zeichnungen mit Innenabstand freigestellt stehen.
