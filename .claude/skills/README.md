@@ -76,6 +76,43 @@ Prompts. Wer Tokens im CSS ändert, zieht die Datei im selben Commit nach.
 die Dateien selbst liegen auf getdesign.md. Dieses Repo enthält keine
 installierbare Skill; übernommen wurden das Format und die Liste.
 
+## Wo die Skills gelten — und wie sie überall gelten
+
+| Ort | Gilt für | Bleibt erhalten |
+|---|---|---|
+| `.claude/skills/` in diesem Repo | nur dieses Projekt | ja, sobald der Branch gemergt ist — die Dateien sind versioniert und hängen damit am Branch |
+| `~/.claude/skills/` auf dem Rechner | jedes Projekt auf diesem Rechner | ja, bis man sie löscht |
+| `~/.claude/skills/` in einer Cloud-Session | diese eine Session | nein — der Container wird nach der Session verworfen |
+
+Für Claude Code im Browser gilt deshalb: **nur was das Setup-Skript des
+Environments installiert, ist in jeder Session da.** Diese beiden Befehle ins
+Setup-Skript des Environments (claude.ai/code → Environment → Setup-Skript)
+legen alle portablen Skills nach `~/.claude/skills/`:
+
+```bash
+npx -y skills@latest add emilkowalski/skills \
+  --skill animate --skill review-animations --skill improve-animations \
+  --skill find-animation-opportunities --skill animation-vocabulary \
+  --skill apple-design --skill emil-design-eng --skill mobile-native \
+  --agent claude-code --copy -g -y
+
+npx -y skills@latest add fessjobs/nikitakrebs-website \
+  --skill neue-webseite --skill design-md \
+  --agent claude-code --copy -g -y
+```
+
+Lokal auf dem eigenen Rechner reichen dieselben beiden Befehle, einmal ausgeführt.
+
+Zwei Details, die sonst Zeit kosten:
+
+- Die CLI klont den **Default-Branch**. Solange die Skills nur in einem Feature-Branch liegen, braucht der Befehl den Ref mit Doppelkreuz: `fessjobs/nikitakrebs-website#claude/dreamy-cray-rw28gv`. Die Schreibweise mit `@` wird stillschweigend ignoriert und klont trotzdem den Default-Branch.
+- `--copy` statt Symlink, `-g` für `~/.claude/skills/`, `--agent claude-code`, sonst listet die CLI nur auf, statt zu installieren.
+
+**Projektbezogen bleiben** sollten `design-system`, `sektion-bauen`,
+`scroll-motion`, `medien-assets`, `seo-meta` und `qa-deploy`: Sie beschreiben die
+Konventionen dieser einen Seite. Global installiert würden sie in fremden
+Projekten falsche Auskünfte geben.
+
 ## Eigene Skill anlegen
 
 Ordner unter `.claude/skills/<name>/` mit einer `SKILL.md`, im Frontmatter
