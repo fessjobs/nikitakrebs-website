@@ -681,3 +681,11 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
   text-transform:uppercase;letter-spacing:.02em;font-size:16px;
   padding:14px 22px;border-bottom-right-radius:10px}
 .sprungmarke:focus{transform:translateY(0)}
+
+/* ---------- Folie mit fertigem Banner ----------
+   Das Banner bringt Überschrift, Kennzahlen und Hinweis schon mit. Der
+   HTML-Text bleibt als sr-only stehen, damit Vorleseprogramme ihn bekommen —
+   das Bild trägt deshalb ein leeres alt, sonst käme alles doppelt. */
+.slide--voll{display:block;padding:0}
+.slide--voll .slide__media{display:block;height:100%}
+.slide__banner{width:100%;height:100%;object-fit:cover;display:block}

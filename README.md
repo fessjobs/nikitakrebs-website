@@ -17,11 +17,11 @@ Technik: GSAP + ScrollTrigger + Lenis via CDN, sonst keine Abhängigkeiten.
 Diese Punkte sind im Quelltext als Platzhalter markiert und müssen vor dem
 Livegang ersetzt werden:
 
-1. **Logo.** `assets/img/logo-mtm.svg` ist ein Platzhalter im Wappenformat:
-   Schildform, Seitenverhältnis und Farben entsprechen dem Original, die
-   Wappenfigur ist bewusst **nicht** nachgezeichnet. Die Originaldatei des
-   Kunden ersetzt diese eine Datei — Kopfzeile, Vorschalter, Favicon,
-   Rechtsseiten und OG-Bild ziehen mit.
+1. ~~**Logo.**~~ **Erledigt** — das Wappen des Kunden liegt als
+   `assets/img/mtm_wappen.png` vor und versorgt Kopfzeile, Vorschalter,
+   Favicon, die vier Rechtsseiten und das Vorschaubild. Die Datei misst nur
+   128 × 150 px; für scharfe Darstellung auf hochauflösenden Bildschirmen
+   wäre eine SVG- oder eine größere PNG-Fassung besser.
 2. **Alle Bilder.** Sämtliche Fahrzeug- und Produktaufnahmen sind SVG-
    Zeichnungen aus `assets/car/` und `assets/parts/`. Sie halten die
    Bildplätze offen und ersetzen keine Fotografie. Jedes `alt` beginnt
