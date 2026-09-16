@@ -17,7 +17,7 @@
  {
   "slot": "slider-04",
   "zeigt": "Produktaufnahme Bimoto Felge",
-  "zeichnung": "assets/parts/rad-elbe.svg"
+  "zeichnung": "assets/parts/rad-bimoto.svg"
  },
  {
   "slot": "slider-05",
@@ -47,12 +47,12 @@
  {
   "slot": "kachel-05",
   "zeigt": "Bimoto Felgen",
-  "zeichnung": "assets/parts/rad-elbe.svg"
+  "zeichnung": "assets/parts/rad-bimoto.svg"
  },
  {
   "slot": "kachel-06",
   "zeigt": "Nardo Felge",
-  "zeichnung": "assets/parts/rad-harburg.svg"
+  "zeichnung": "assets/parts/rad-nardo.svg"
  },
  {
   "slot": "kachel-07",
@@ -137,7 +137,7 @@
  {
   "slot": "raeder-01",
   "zeigt": "Produktaufnahme Bimoto Felge",
-  "zeichnung": "assets/parts/rad-elbe.svg"
+  "zeichnung": "assets/parts/rad-bimoto.svg"
  },
  {
   "slot": "fahrzeug-01",
@@ -152,12 +152,12 @@
  {
   "slot": "fahrzeug-03",
   "zeigt": "Produktaufnahme Bimoto Felge",
-  "zeichnung": "assets/parts/rad-elbe.svg"
+  "zeichnung": "assets/parts/rad-bimoto.svg"
  },
  {
   "slot": "fahrzeug-04",
   "zeigt": "Produktaufnahme Nardo Felge",
-  "zeichnung": "assets/parts/rad-harburg.svg"
+  "zeichnung": "assets/parts/rad-nardo.svg"
  },
  {
   "slot": "fahrzeug-05",
@@ -217,7 +217,7 @@
  {
   "slot": "galerie-03",
   "zeigt": "Bimoto Felge",
-  "zeichnung": "assets/parts/rad-elbe.svg"
+  "zeichnung": "assets/parts/rad-bimoto.svg"
  },
  {
   "slot": "galerie-04",
@@ -232,7 +232,7 @@
  {
   "slot": "galerie-06",
   "zeigt": "Nardo Felge",
-  "zeichnung": "assets/parts/rad-harburg.svg"
+  "zeichnung": "assets/parts/rad-nardo.svg"
  },
  {
   "slot": "galerie-07",

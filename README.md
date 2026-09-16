@@ -29,8 +29,10 @@ Livegang ersetzt werden:
    das Verfahren steht in `assets/foto/README.md`.
 3. **Garantie.** Der Abschnitt `#garantie` enthält nur eine Hilfszeile; die
    Garantiebedingungen im Wortlaut fehlen.
-4. **AGB und Barrierefreiheit.** Beide Seiten sind Rümpfe, damit die
-   Verlinkung nicht ins Leere läuft.
+4. **AGB.** Die Seite ist ein Rumpf, damit die Verlinkung nicht ins Leere
+   läuft. Die Erklärung zur Barrierefreiheit ist inzwischen ausgearbeitet und
+   durch Messwerte gedeckt; der rote Hinweiskasten dort gehört nach der
+   rechtlichen Prüfung entfernt.
 5. **Impressum und Datenschutz prüfen.** Anschrift, Geschäftsführer,
    Handelsregister und Kontakt wurden aus öffentlich zugänglichen Quellen
    übernommen, nicht von mtm-online.de selbst — die Domain war aus der
@@ -111,3 +113,31 @@ CDN kamen.
   Livegang prüfen, insbesondere Instagram.
 - **Bilder.** Alle 53 Bildplätze warten weiter auf die Originalaufnahmen,
   siehe `assets/foto/README.md`.
+
+## Barrierefreiheit
+
+Geprüft mit axe-core gegen WCAG 2.0/2.1 A und AA sowie 2.2 AA — alle fünf
+Seiten ohne Befund. Die Prüfung liegt im Scratchpad als `a11y.mjs`; sie
+startet einen lokalen Server, wartet den Vorschalter ab und misst jede Seite
+einzeln.
+
+Behoben wurden dabei:
+
+- Die Wörter der Abschnittsüberschriften standen vor dem Scrollen auf 15 %
+  Deckkraft (1,46:1). Der Ausgangswert liegt jetzt bei 0,48 — der schwächste
+  Wert, der auf allen drei Gründen der Seite 3:1 erreicht; der helle Abschnitt
+  ist der strengere Fall. Der Einblendeffekt ist dadurch dezenter.
+- Die Vorbelegung `opacity:0` steht nicht mehr in der CSS, sondern kommt von
+  GSAP (`fromTo`). Fällt die Animation aus, bleibt der Inhalt lesbar.
+- `@media (prefers-reduced-motion: reduce)` zwingt alle vorbelegten Zustände
+  auf sichtbar — mit `!important`, weil GSAP inline schreibt. Nachgemessen:
+  0 von 25 Elementen zu blass.
+- Die Punkte unter dem Slider waren 10 px groß; die Schaltfläche misst jetzt
+  24 px, der sichtbare Punkt weiterhin 10 px.
+- `--ink-3` (#8C8C8C) erreicht auf Weiß nur 3,36:1 und wurde für Kleintext an
+  vier Stellen durch `--steel` (5,10:1) ersetzt.
+- Eine Sprungmarke „Zum Inhalt springen" — der Kopfbereich kostete sonst
+  14-mal Tab.
+
+Nicht geprüft: Bildschirmlesegeräte. Automatische Prüfungen erfassen nur
+einen Teil; das steht auch so in der Erklärung.

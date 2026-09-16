@@ -132,7 +132,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .work__meta{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;padding-top:16px;align-items:baseline}
 .work__year{font-family:var(--display);font-weight:800;font-size:22px;color:var(--accent-text);grid-row:1/3}
 .work__name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(24px,2.2vw,34px);line-height:1}
-.work__cat{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.work__cat{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
 .works__stat{margin-top:clamp(70px,8vw,120px);display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:30px}
 .works__num,.works__plus{font-family:var(--display);font-weight:900;font-size:clamp(70px,10vw,160px);line-height:.9;letter-spacing:-.02em}
 .works__plus{color:var(--accent)}
@@ -203,11 +203,11 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .explain__eyebrow--blue{color:var(--accent-text)}
 .explain__eyebrow--white{color:rgba(255,255,255,.7)}
 .explain__h{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:-.015em;font-size:clamp(56px,7.4vw,130px)}
-.explain__h .w{display:inline-block;margin-right:.22em;opacity:.15;will-change:opacity,transform}
+.explain__h .w{display:inline-block;margin-right:.22em;will-change:opacity,transform}
 .explain__p{font-size:clamp(17px,1.35vw,21px);line-height:1.6;max-width:560px;opacity:.85}
 .explain--dark .explain__p{color:rgba(245,244,239,.8)}
 .explain--light .explain__p{color:var(--ink-2)}
-.explain__p .ln{display:inline-block;opacity:0;transform:translateY(16px);will-change:opacity,transform}
+.explain__p .ln{display:inline-block;will-change:opacity,transform}
 .explain__link{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:22px;padding:16px 24px;border-radius:12px;border:2px solid currentColor;transition:background .3s,color .3s,transform .3s}
 .explain__link i{font-style:normal;transition:transform .3s}
 .explain__link:hover{transform:translateY(-2px)}
@@ -224,7 +224,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 
 /* ---------- partners ---------- */
 .partners{padding:clamp(40px,5vw,70px) 0 clamp(90px,10vw,150px);background:var(--paper)}
-.partners__eyebrow{text-align:center;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:34px}
+.partners__eyebrow{text-align:center;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:34px}
 .partners__marquee{overflow:hidden}
 .partners__track{display:flex;align-items:center;gap:clamp(48px,7vw,110px);width:max-content;padding-left:clamp(48px,7vw,110px);will-change:transform}
 .partners__track img{height:clamp(26px,3vw,40px);width:auto;opacity:.85;filter:grayscale(1) contrast(1.1)}
@@ -246,7 +246,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .footer__brand{display:flex;flex-direction:column;font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.82;letter-spacing:-.02em;font-size:clamp(80px,13vw,220px)}
 .footer__big--2{color:var(--accent)}
 .footer__cols{display:grid;grid-template-columns:1fr 1fr 1.35fr .75fr;gap:24px}
-.footer__cols h4{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;color:var(--ink-3)}
+.footer__cols h4{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;color:var(--steel)}
 .footer__cols a,.footer__cols span{display:block;font-size:14px;font-weight:600;margin-bottom:9px;color:var(--ink)}
 .footer__cols a:hover{color:var(--accent)}
 .footer__bottom{position:relative;margin-top:clamp(50px,6vw,90px);padding-top:22px;border-top:1.5px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:600;color:var(--ink-2)}
@@ -461,7 +461,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
   border-top:1px solid rgba(11,11,12,.12)}
 .spec li{display:flex;flex-direction:column;gap:3px}
 .spec b{font-family:var(--display);font-weight:800;font-size:clamp(21px,1.9vw,28px);line-height:1;letter-spacing:-.01em;color:var(--ink)}
-.spec span{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.spec span{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--steel)}
 
 /* ---------- Datenblatt in den Modellsektionen ---------- */
 .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,3vw,44px);max-width:620px;margin:0}
@@ -579,12 +579,16 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .slider__arrow--prev::before{transform:rotate(45deg);margin-left:5px}
 .slider__arrow--next{right:0}
 .slider__arrow--next::before{transform:rotate(-135deg);margin-right:5px}
-.slider__dots{position:absolute;left:0;right:0;bottom:12px;z-index:3;
-  display:flex;justify-content:center;gap:9px}
-.slider__dots button{width:10px;height:10px;border-radius:50%;
+.slider__dots{position:absolute;left:0;right:0;bottom:6px;z-index:3;
+  display:flex;justify-content:center;gap:0}
+/* Die Schaltfläche ist 24 px groß (Zielgröße nach WCAG 2.2), sichtbar bleibt
+   der 10-px-Punkt. */
+.slider__dots button{width:24px;height:24px;border-radius:50%;background:none;
+  display:grid;place-items:center}
+.slider__dots button::before{content:"";width:10px;height:10px;border-radius:50%;
   background:rgba(245,244,239,.34);transition:background .2s,transform .2s}
-.slider__dots button:hover{background:rgba(245,244,239,.7)}
-.slider__dots button[aria-current="true"]{background:var(--paper);transform:scale(1.15)}
+.slider__dots button:hover::before{background:rgba(245,244,239,.7)}
+.slider__dots button[aria-current="true"]::before{background:var(--paper);transform:scale(1.15)}
 
 /* ---------- Produktraster ---------- */
 .tiles{background:var(--paper);padding:0 var(--gutter) clamp(56px,7vw,100px)}
@@ -655,3 +659,25 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .footer__sozial a{display:inline-flex;align-items:center;gap:9px}
 .footer__sozial a svg{flex:0 0 auto;transition:color .2s}
 .footer__sozial a:hover svg{color:var(--accent)}
+
+/* ---------- Rückfall bei reduzierter Bewegung ----------
+   Mehrere Elemente warten auf eine Scroll-Animation und stehen bis dahin auf
+   opacity:0. Wer Bewegung abbestellt hat, bekommt keine Animation — und soll
+   den Inhalt trotzdem sehen. !important schlägt auch die Inline-Stile, die
+   GSAP schreibt. */
+@media (prefers-reduced-motion: reduce){
+  .explain__h .w,.explain__p .ln,.explain__media,.exe__media,.exe__dot,
+  .preloader__mark,.collage__item,.feature__media{
+    opacity:1 !important;transform:none !important}
+  .preloader{display:none !important}
+}
+
+/* ---------- Sprungmarke ----------
+   Der Kopfbereich kostet 14-mal Tab, bevor der Inhalt kommt. Die Marke steht
+   außerhalb des Sichtfelds und rutscht beim Fokussieren herein. */
+.sprungmarke{position:fixed;top:0;left:0;z-index:200;
+  transform:translateY(-120%);transition:transform .2s;
+  background:var(--accent);color:#fff;font-family:var(--display);font-weight:800;
+  text-transform:uppercase;letter-spacing:.02em;font-size:16px;
+  padding:14px 22px;border-bottom-right-radius:10px}
+.sprungmarke:focus{transform:translateY(0)}

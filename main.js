@@ -257,8 +257,14 @@
     const h = $('[data-words]', sec), p = $('[data-lines]', sec), media = $('[data-explain-media]', sec);
     if (h) {
       h.innerHTML = h.textContent.trim().split(/\s+/).map((w) => '<span class="w">' + w + '</span>').join('');
-      gsap.to($$('.w', h), { opacity: 1, stagger: 0.25, ease: 'none',
-        scrollTrigger: { trigger: h, start: 'top 80%', end: 'bottom 40%', scrub: 0.6 } });
+      // fromTo statt to: der abgedunkelte Zustand kommt von GSAP, nicht aus der
+      // CSS — sonst bliebe die Überschrift unlesbar, falls die Animation ausfällt.
+      // 0.48 ist der schwächste Wert, der auf allen drei Gründen der Seite noch
+      // 3:1 schafft (großer Schriftgrad, WCAG AA) — der helle Abschnitt ist der
+      // strengere Fall. Darunter steht der Text vor dem Scrollen unlesbar da.
+      if (!reduced) gsap.fromTo($$('.w', h), { opacity: 0.48 },
+        { opacity: 1, stagger: 0.25, ease: 'none',
+          scrollTrigger: { trigger: h, start: 'top 80%', end: 'bottom 40%', scrub: 0.6 } });
     }
     if (p) {
       // split into sentences → each reveals as you scroll
@@ -269,8 +275,9 @@
       const parts = (masked.match(/[^.!?]+[.!?]+/g) || [masked])
         .map((s) => s.split(DOT).join('.'));
       p.innerHTML = parts.map((s) => '<span class="ln">' + s.trim() + '</span>').join(' ');
-      gsap.to($$('.ln', p), { opacity: 1, y: 0, stagger: 0.3, ease: 'power2.out', duration: 1,
-        scrollTrigger: { trigger: p, start: 'top 85%', end: 'bottom 55%', scrub: 0.8 } });
+      if (!reduced) gsap.fromTo($$('.ln', p), { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, stagger: 0.3, ease: 'power2.out', duration: 1,
+          scrollTrigger: { trigger: p, start: 'top 85%', end: 'bottom 55%', scrub: 0.8 } });
     }
     const link = $('.explain__link', sec);
     if (link) gsap.from(link, { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: link, start: 'top 90%' } });
