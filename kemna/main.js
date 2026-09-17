@@ -180,6 +180,24 @@
     });
   });
 
+  /* ---------- nav: weicht beim Runterscrollen, kommt beim Hochscrollen zurück ---------- */
+  // Eine dauerhaft sichtbare Nav verdeckt in jeder Sektion die obere rechte Ecke.
+  safe('nav-autohide', () => {
+    const nav = $('[data-nav]');
+    if (!nav || reduced) return;
+    let last = window.scrollY, ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = window.scrollY, d = y - last;
+      if (Math.abs(d) < 6) return;
+      last = y;
+      if (document.body.classList.contains('menu-open')) { nav.classList.remove('is-away'); return; }
+      nav.classList.toggle('is-away', d > 0 && y > 160);
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    if (lenis) lenis.on('scroll', onScroll); else addEventListener('scroll', onScroll, { passive: true });
+  });
+
   /* ---------- menu ---------- */
   safe('menu', () => {
     const menu = $('[data-menu]'), toggle = $('[data-menu-toggle]');
@@ -399,7 +417,7 @@
   /* ---------- career + callout + footer ---------- */
   safe('tail', () => {
     if (reduced) return;
-    gsap.from('.career__stripes i', { scaleY: 0.05, opacity: 0, duration: 1, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.career', start: 'top 70%' } });
+    gsap.from('.career__stripes i', { scaleY: 0.08, duration: 1, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.career', start: 'top 70%' } });
     gsap.from('.callout__eyebrow, .callout__h, .callout__card, .callout__actions', { y: 30, opacity: 0, duration: 1, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.callout', start: 'top 75%' } });
     gsap.from('.footer__big .ch', { yPercent: 100, opacity: 0, duration: 1, stagger: 0.05, ease: 'power4.out', scrollTrigger: { trigger: '.footer', start: 'top 75%' } });
   });

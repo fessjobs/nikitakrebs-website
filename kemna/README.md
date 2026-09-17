@@ -7,6 +7,7 @@ Eigenständig deploybar, keine Abhängigkeit zur Elternseite.
 - `index.html` / `style.css` / `main.js` – die Seite
 - `impressum.html`, `datenschutz.html` – ohne JS, eigener Style-Block
 - `assets/img/` – Favicon, Apple-Touch-Icon, OG-Bild, Rauschtextur (alle aus Code erzeugt)
+- `DESIGN.md` – das Designsystem als Datei, für Design-Agenten lesbar
 - `serve.mjs` – Vorschau-Server, der `cleanUrls` aus `vercel.json` nachbildet
 - Lokal: `node serve.mjs`, dann http://127.0.0.1:5190
 - Deploy: `npx vercel --prod --yes` aus diesem Ordner (eigenes Vercel-Projekt)
