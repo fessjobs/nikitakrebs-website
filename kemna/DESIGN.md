@@ -55,7 +55,8 @@ Regeln, die hier zweimal falsch gemacht wurden:
 
 1. `--accent` und `--accent-2` sind **Flächenfarben**. Als Text auf `--paper`
    fallen sie durch die Kontrastprüfung. Für rote Schrift auf Hell gibt es
-   `--accent-text`. Auf `--dark` darf `--accent` Text sein (11,3:1).
+   `--accent-text`. Auf `--dark` ist `--accent` als Text zu dunkel (2,8:1);
+   dort nimmt Schrift `--accent-light` (6,3:1).
 2. `--ink-3` ist zu hell für Text. Labels auf Weiß nehmen `--ink-2`.
 3. Jede Sektion braucht `data-nav-theme="light|dark"`, sonst bleibt die
    Navigation auf dem Zustand der Sektion davor. Die rote Karriere-Sektion
@@ -143,7 +144,7 @@ Die Fläche ist flach. Tiefe entsteht aus Größe, Überlappung und Bewegung.
 |---|---|
 | Karten-Hover | `0 40px 70px -40px rgba(17,18,20,.5)` |
 | Aktiver Punkt an der Kette | `0 0 0 6px rgba(242,183,5,.18), 0 0 26px 8px rgba(242,183,5,.45)` |
-| Fokusring | `outline:3px solid var(--ink)`, auf Dunkel `var(--accent)`, `outline-offset:3px` |
+| Fokusring | `outline:3px solid var(--ink)`, auf Dunkel `var(--accent-light)`, `outline-offset:3px` |
 
 Radien: `8px` Tags, `12px` Buttons, `14px` (`--r`) Medien, `18px` Karten,
 `50%` Punkte. Rahmen sind entweder haarfein (`1px rgba(17,18,20,.12)`) oder

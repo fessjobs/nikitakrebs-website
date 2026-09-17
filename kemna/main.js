@@ -112,7 +112,7 @@
     tl.to(title, { scale: () => (mobile() ? 0.7 : 0.55), yPercent: -30, duration: 1, ease: 'power2.inOut' }, 0)
       .fromTo('[data-hero-eyebrow], [data-hero-claim]', { opacity: 1, y: 0 }, { opacity: 0, y: -20, duration: 0.35, ease: 'none', immediateRender: false }, 0)
       .to('[data-road-lines]', { opacity: 0.25, duration: 1, ease: 'none' }, 0)
-      .to('[data-hero-photo] img', { scale: 1.1, yPercent: 5, duration: 1, ease: 'none' }, 0)
+      .fromTo('[data-hero-photo] img', { scale: 1, yPercent: 0 }, { scale: 1.1, yPercent: 5, duration: 1, ease: 'none', immediateRender: false }, 0)
       .fromTo('[data-hero-scroll], [data-hero-meta]', { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'none', immediateRender: false }, 0)
       .fromTo(band, { opacity: 0, xPercent: -8, rotate: -4 }, { opacity: 1, xPercent: 0, rotate: -4, duration: 0.6, ease: 'power3.out' }, 0.35);
   });
@@ -148,7 +148,9 @@
     if (!track || !prev || !next) return;
     const items = $$('[data-slide]', track);
     if (items.length < 2) return;
-    const left = (el) => el.offsetLeft - items[0].offsetLeft;
+    // Snap-Ziele auf den Scrollbereich begrenzen: auf breiten Bildschirmen liegt die Startkante der
+    // letzten Slide hinter scrollWidth - clientWidth, sonst würde sie nie als aktuell gelten.
+    const left = (el) => Math.min(el.offsetLeft - items[0].offsetLeft, track.scrollWidth - track.clientWidth);
     const index = () => {
       let best = 0, dist = Infinity;
       items.forEach((it, i) => { const d = Math.abs(left(it) - track.scrollLeft); if (d < dist) { dist = d; best = i; } });
@@ -205,7 +207,9 @@
     // refreshPriority -1: erst nach den Pins berechnen, sonst fehlt der Pin-Spacer in Start und Ende.
     $$('[data-nav-theme]').forEach((sec) => {
       ScrollTrigger.create({
-        trigger: sec, start: 'top 60px', end: 'bottom 60px', refreshPriority: -1,
+        // Liegt die Folgesektion mit negativem margin-top über dieser (Intro-Sheet), endet das Thema entsprechend früher.
+        trigger: sec, start: 'top 60px', refreshPriority: -1,
+        end: () => { const n = sec.nextElementSibling; const m = n ? parseFloat(getComputedStyle(n).marginTop) : 0; return 'bottom' + (m < 0 ? '-=' + (-m) : '') + ' 60px'; },
         onToggle: (st) => {
           if (!st.isActive) return;
           nav.classList.toggle('is-dark', sec.dataset.navTheme === 'dark');
