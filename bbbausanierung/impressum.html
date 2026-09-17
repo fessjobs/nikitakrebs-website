@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Impressum — BB Bausanierung</title>
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://www.bbbausanierung.de/impressum">
@@ -10,39 +10,37 @@
 <link rel="icon" href="assets/img/bb-mark.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/barlow-condensed-800-latin.woff2) format('woff2')}
+  @font-face{font-family:'Montserrat';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/montserrat-var-latin.woff2) format('woff2')}
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
   body{margin:0;background:#F5F4EF;color:#0B0B0C;font-family:'Montserrat',-apple-system,system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
   img{display:block;max-width:100%}
-  a{color:#9A5A06;text-decoration:none}
-  a:hover{text-decoration:underline}
-  .top{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px clamp(20px,5vw,64px);background:rgba(245,244,239,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(11,11,12,.08)}
-  .top__logo{display:flex;align-items:center;gap:10px;color:#0B0B0C;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:20px}
+  a{color:#9A5A06;text-decoration:underline;text-underline-offset:2px}
+  .top{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px max(env(safe-area-inset-left,0px),clamp(20px,5vw,64px));background:rgba(245,244,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(11,11,12,.08)}
+  .top__logo{display:flex;align-items:center;gap:10px;min-height:44px;color:#0B0B0C;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;text-decoration:none}
   .top__logo img{height:30px;width:auto}
-  .top__btn{background:#F5B331;color:#0B0B0C;border:2px solid #0B0B0C;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:17px;padding:10px 18px;border-radius:10px}
-  .top__btn:hover{background:#0B0B0C;color:#F5F4EF;text-decoration:none}
+  .top__btn{display:inline-flex;align-items:center;min-height:44px;background:#F5B331;color:#0B0B0C;border:2px solid #0B0B0C;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:17px;padding:8px 18px;border-radius:12px;text-decoration:none}
   .wrap{max-width:820px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,5vw,48px)}
   .wrap h1{font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(44px,7vw,84px);line-height:.95;letter-spacing:-.015em;margin:0 0 8px}
   .wrap .lead{color:#9A5A06;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 clamp(28px,4vw,44px)}
   .wrap h2{font-weight:700;font-size:clamp(18px,2vw,22px);letter-spacing:-.01em;margin:clamp(28px,3.5vw,40px) 0 10px}
   .wrap p{font-size:16px;line-height:1.7;color:#3A3A3C;margin:0 0 12px}
   .wrap strong{color:#0B0B0C}
-  .todo{background:#FFF3D6;border:1px dashed #9A5A06;border-radius:6px;padding:1px 6px;color:#9A5A06;font-weight:600}
-  footer{background:#ECEBE4;border-top:1px solid rgba(11,11,12,.08);padding:clamp(30px,4vw,48px) clamp(20px,5vw,64px)}
+  .todo{background:#FFF3D6;border:1px dashed #9A5A06;border-radius:8px;padding:1px 6px;color:#8A5005;font-weight:600}
+  footer{background:#ECEBE4;border-top:1px solid rgba(11,11,12,.08);padding:clamp(30px,4vw,48px) clamp(20px,5vw,64px) calc(clamp(30px,4vw,48px) + env(safe-area-inset-bottom,0px))}
   footer div{max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px;font-weight:600;font-size:13px;color:#5A5A5C}
   footer nav{display:flex;flex-wrap:wrap;gap:22px}
-  footer nav a{color:#5A5A5C;font-size:12.5px;letter-spacing:.04em}
+  footer nav a{display:inline-flex;align-items:center;min-height:44px;color:#5A5A5C;font-size:12.5px;letter-spacing:.04em}
   footer nav a[aria-current]{color:#0B0B0C}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <nav class="top" aria-label="Seitennavigation">
-  <a class="top__logo" href="index.html"><img src="assets/img/bb-mark.svg" alt="">BB Bausanierung</a>
-  <a class="top__btn" href="index.html">Zur Startseite</a>
+  <a class="top__logo" href="/"><img src="assets/img/bb-mark.svg" alt="">BB Bausanierung</a>
+  <a class="top__btn" href="/">Zur Startseite</a>
 </nav>
 
 <main class="wrap">
@@ -54,7 +52,8 @@
   <p><strong>BB Bausanierung GmbH</strong><br>Hummelsbüttler Dorfstraße 17<br>22339 Hamburg<br>Deutschland</p>
 
   <h2>Vertretungsberechtigte Geschäftsführung</h2>
-  <p><span class="todo">Name der Geschäftsführung ergänzen</span></p>
+  <!-- Aus dem Impressum der alten Seite und dem Handelsregister übernommen. Vor dem Livegang vom Unternehmen bestätigen lassen. -->
+  <p>Günter Blöß</p>
 
   <h2>Kontakt</h2>
   <p>Telefon: <a href="tel:+494063273268">040 / 632 732 68</a><br>Telefax: 040 / 632 732 66<br>E-Mail: <a href="mailto:info@bbbausanierung.de">info@bbbausanierung.de</a></p>
@@ -63,10 +62,16 @@
   <p>Eintragung im Handelsregister.<br>Registergericht: Amtsgericht Hamburg<br>Registernummer: HRB 90096</p>
 
   <h2>Umsatzsteuer-ID</h2>
-  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: <span class="todo">USt-IdNr. ergänzen</span></p>
+  <!-- Aus dem Impressum der alten Seite übernommen. Vor dem Livegang bestätigen lassen. -->
+  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE235914888</p>
+
+  <h2>Kammer und Berufsbezeichnung</h2>
+  <p>Zuständige Kammer: Handwerkskammer Hamburg, Holstenwall 12, 20355 Hamburg<br>
+  Gesetzliche Berufsbezeichnung: <span class="todo">Berufsbezeichnung laut Handwerksrolle ergänzen</span> (verliehen in der Bundesrepublik Deutschland)<br>
+  Berufsrechtliche Regelung: Handwerksordnung (HwO), einsehbar unter <a href="https://www.gesetze-im-internet.de/hwo/" target="_blank" rel="noopener">gesetze-im-internet.de/hwo</a></p>
 
   <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-  <p><span class="todo">Name der Geschäftsführung ergänzen</span><br>BB Bausanierung GmbH<br>Hummelsbüttler Dorfstraße 17, 22339 Hamburg</p>
+  <p>Günter Blöß<br>BB Bausanierung GmbH<br>Hummelsbüttler Dorfstraße 17, 22339 Hamburg</p>
 
   <h2>Haftung für Inhalte</h2>
   <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
@@ -77,17 +82,17 @@
   <h2>Urheberrecht</h2>
   <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Beiträge Dritter sind als solche gekennzeichnet.</p>
 
-  <h2>Streitschlichtung</h2>
-  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  <h2>Verbraucherstreitbeilegung</h2>
+  <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 </main>
 
 <footer>
   <div>
     <span>© 2026 BB Bausanierung GmbH · Hamburg</span>
     <nav aria-label="Rechtliches">
-      <a href="impressum.html" aria-current="page">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="index.html">Zur Startseite</a>
+      <a href="/impressum" aria-current="page">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <a href="/">Zur Startseite</a>
     </nav>
   </div>
 </footer>

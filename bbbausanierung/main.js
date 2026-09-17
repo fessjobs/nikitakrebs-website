@@ -1,6 +1,9 @@
 /* BB Bausanierung — Scroll-Choreografie
-   GSAP + ScrollTrigger + Lenis (alles per CDN). Ohne GSAP bleibt die Seite
-   über die Klasse .no-js vollständig lesbar. */
+   GSAP + ScrollTrigger + Lenis, alles selbst gehostet unter assets/js/.
+   Die Seite ist ohne JS und ohne GSAP vollständig lesbar: das Inline-Skript im
+   <head> setzt .js, und nur unter .js werden Reveal-Inhalte überhaupt versteckt.
+   Fällt GSAP aus oder ist "Bewegung reduzieren" aktiv, nimmt main.js .js wieder
+   weg — dann steht alles sofort sichtbar da. */
 (function () {
   'use strict';
   const $ = (s, c = document) => c.querySelector(s);
@@ -8,19 +11,123 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch = matchMedia('(hover: none)').matches;
   const html = document.documentElement;
+  const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+  const motion = hasGsap && !reduced;
+  window.__bb = 1;   // sagt dem Inline-Skript im <head>: main.js läuft
 
-  /* ---------- fallback: kein GSAP → statische Seite ---------- */
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    initMenuStatic();
+  /* ---------- statische Seite: alles sichtbar, keine Tweens ---------- */
+  if (!motion) html.classList.remove('js');
+
+  /* ---------- Menü: Fokusfalle, Scroll-Sperre, Fokus-Rückgabe ---------- */
+  const menu = $('[data-menu]'), toggle = $('[data-menu-toggle]');
+  const pageRegions = [$('main'), $('.footer')].filter(Boolean);
+  let menuOpen = false, lastFocus = null, menuTl = null, lenis = null;
+
+  const menuFocusables = () => $$('a[href], button', menu);
+
+  function trapTab(e) {
+    if (e.key !== 'Tab' || !menuOpen) return;
+    const items = menuFocusables();
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    // Der Burger bleibt über dem Overlay bedienbar und gehört mit in den Kreis
+    const ring = [toggle].concat(items);
+    const active = document.activeElement;
+    if (e.shiftKey && active === ring[0]) { e.preventDefault(); ring[ring.length - 1].focus(); }
+    else if (!e.shiftKey && active === ring[ring.length - 1]) { e.preventDefault(); ring[0].focus(); }
+    else if (!ring.includes(active)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+  }
+
+  function setMenu(open) {
+    if (!menu || !toggle) return;
+    menuOpen = open;
+    document.body.classList.toggle('menu-open', open);
+    html.classList.toggle('menu-open', open);            // Scroll-Sperre, unabhängig von Lenis
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    menu.setAttribute('aria-hidden', String(!open));
+    pageRegions.forEach((el) => { el.inert = open; });   // Hintergrund aus der Tab-Reihenfolge nehmen
+    if (open) {
+      lastFocus = document.activeElement;
+      menu.style.visibility = 'visible';            // erst sichtbar, dann fokussierbar
+      if (menuTl) menuTl.timeScale(1).play();
+      else menu.style.clipPath = 'none';
+      if (lenis) lenis.stop();
+      const first = menuFocusables()[0];
+      if (first) first.focus({ preventScroll: true });
+    } else {
+      if (menuTl) menuTl.timeScale(1.6).reverse();
+      else { menu.style.clipPath = ''; menu.style.visibility = 'hidden'; }
+      if (lenis) lenis.start();
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+      else toggle.focus({ preventScroll: true });
+    }
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => setMenu(!menuOpen));
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) setMenu(false); });
+    addEventListener('keydown', trapTab);
+  }
+
+  /* ---------- Sprungziele: Fokus wandert mit, sonst springt Tab zurück an den Anfang ---------- */
+  function focusTarget(t) {
+    if (!t) return;
+    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
+    t.focus({ preventScroll: true });
+  }
+
+  /* ---------- Nav: Wortmarke tritt nach dem Hero ab ---------- */
+  const nav = $('[data-nav]');
+  const hero = $('[data-hero]');
+  function watchCompact() {
+    if (!nav || !hero) return;
+    const update = () => nav.classList.toggle('is-compact', window.scrollY > innerHeight * 0.6);
+    update();
+    addEventListener('scroll', update, { passive: true });
+  }
+
+  /* ---------- Nav-Theme je Sektion + Safari-Balkenfarbe ---------- */
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const setBarColor = (el) => {
+    if (!themeMeta) return;
+    let bg = getComputedStyle(el).backgroundColor, node = el;
+    while ((bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') && node.parentElement) { node = node.parentElement; bg = getComputedStyle(node).backgroundColor; }
+    if (themeMeta.getAttribute('content') !== bg) { themeMeta.setAttribute('content', bg); html.style.backgroundColor = bg; }
+  };
+  function watchNavTheme() {
+    if (!nav || !hasGsap) return;
+    $$('[data-nav-theme]').forEach((sec) => {
+      ScrollTrigger.create({
+        trigger: sec, start: 'top 60px', end: 'bottom 60px',
+        onToggle: (st) => { if (st.isActive) { nav.classList.toggle('is-dark', sec.dataset.navTheme === 'dark'); setBarColor(sec); } }
+      });
+    });
+  }
+
+  /* ---------- ohne Bewegung ist hier Schluss ---------- */
+  if (!motion) {
+    watchCompact();
+    if (hasGsap) { ScrollTrigger.config({ ignoreMobileResize: true }); watchNavTheme(); }
+    $$('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const t = $(a.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        if (menuOpen) setMenu(false);
+        t.scrollIntoView();
+        focusTarget(t);
+        history.pushState(null, '', a.getAttribute('href'));
+      });
+    });
     return;
   }
-  html.classList.remove('no-js');
-  gsap.registerPlugin(ScrollTrigger);
 
-  /* ---------- smooth scroll ---------- */
+  gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
-  let lenis = null;
-  if (!reduced && !isTouch && typeof Lenis !== 'undefined') {
+
+  /* ---------- Smooth Scroll (nur Desktop) ---------- */
+  if (!isTouch && typeof Lenis !== 'undefined') {
     lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
     window.__lenis = lenis;
     lenis.on('scroll', ScrollTrigger.update);
@@ -28,36 +135,59 @@
     gsap.ticker.lagSmoothing(0);
   }
 
-  /* ---------- split text into words → chars (words never break mid-word) ---------- */
-  $$('[data-split]').forEach((el) => {
-    const txt = el.textContent.trim();
-    el.setAttribute('aria-label', txt);
-    el.textContent = '';
-    txt.split(/\s+/).forEach((word, i) => {
-      if (i) el.appendChild(document.createTextNode(' '));
-      const w = document.createElement('span');
-      w.className = 'wd';
-      w.setAttribute('aria-hidden', 'true');
-      [...word].forEach((ch) => {
-        const s = document.createElement('span');
-        s.className = 'ch';
-        s.textContent = ch;
-        w.appendChild(s);
+  /* ---------- Menü-Timeline nachrüsten ---------- */
+  if (menu) {
+    gsap.set('[data-menu-link]', { y: 60, opacity: 0 });
+    gsap.set('.menu__foot a', { y: 10, opacity: 0 });
+    menuTl = gsap.timeline({ paused: true, onReverseComplete: () => gsap.set(menu, { visibility: 'hidden' }) })
+      .set(menu, { visibility: 'visible' })
+      .fromTo(menu, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power4.inOut' })
+      .to('[data-menu-link]', { y: 0, opacity: 0.75, duration: 0.7, stagger: 0.06, ease: 'power4.out' }, '-=0.35')
+      .to('.menu__foot a', { y: 0, opacity: 1, duration: 0.4, stagger: 0.05 }, '-=0.4');
+  }
+
+  watchCompact();
+  watchNavTheme();
+
+  /* ---------- Wörter → Zeichen (Wörter brechen nie mitten drin) ---------- */
+  function splitText() {
+    $$('[data-split]').forEach((el) => {
+      if (el.dataset.splitDone) return;
+      el.dataset.splitDone = '1';
+      const txt = el.textContent.trim();
+      el.textContent = '';
+      txt.split(/\s+/).forEach((word, i) => {
+        if (i) el.appendChild(document.createTextNode(' '));
+        const w = document.createElement('span');
+        w.className = 'wd';
+        w.setAttribute('aria-hidden', 'true');
+        [...word].forEach((ch) => {
+          const s = document.createElement('span');
+          s.className = 'ch';
+          s.textContent = ch;
+          w.appendChild(s);
+        });
+        el.appendChild(w);
       });
-      el.appendChild(w);
     });
-  });
+  }
 
-  /* ---------- hero intro ---------- */
-  const intro = gsap.timeline({ defaults: { ease: 'power4.out' } });
-  intro
-    .from('.hero__h .ch', { yPercent: 70, opacity: 0, duration: 1, stagger: 0.018 }, 0.15)
-    .from('[data-hero-eyebrow]', { y: 16, opacity: 0, duration: 0.7 }, 0.3)
-    .from('[data-hero-p], [data-hero-actions] > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.1 }, 0.7)
-    .from('.nav__logo, .nav__right > *', { opacity: 0, duration: 0.7, stagger: 0.08 }, 0.6)
-    .from('[data-hero-scroll]', { y: 20, opacity: 0, duration: 0.7 }, 1);
+  /* ---------- Hero-Intro, erst wenn die Displayschrift steht ---------- */
+  function heroIntro() {
+    splitText();
+    gsap.timeline({ defaults: { ease: 'power4.out' } })
+      .from('.hero__h .ch', { yPercent: 70, opacity: 0, duration: 1, stagger: 0.018, willChange: 'transform', clearProps: 'willChange' }, 0.15)
+      .from('[data-hero-eyebrow]', { y: 16, opacity: 0, duration: 0.7 }, 0.3)
+      .from('[data-hero-p], [data-hero-actions] > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.1 }, 0.7)
+      .from('.nav__logo, .nav__right > *', { opacity: 0, duration: 0.7, stagger: 0.08 }, 0.6)
+      .from('[data-hero-scroll]', { y: 20, opacity: 0, duration: 0.7 }, 1);
+  }
+  const displayReady = document.fonts && document.fonts.load
+    ? Promise.race([document.fonts.load('900 1em "Barlow Condensed"').catch(() => {}), new Promise((r) => setTimeout(r, 1200))])
+    : Promise.resolve();
+  displayReady.then(heroIntro);
 
-  /* ---------- hero: topo lines — draw on, drift, mouse depth ---------- */
+  /* ---------- Hero: Höhenlinien zeichnen sich, driften, folgen der Maus ---------- */
   (function genTopo() {
     const g = $('[data-topo-lines]');
     if (!g) return;
@@ -92,7 +222,7 @@
   })();
 
   const topoPaths = $$('.hero__topo path');
-  if (!reduced) topoPaths.forEach((p, i) => {
+  topoPaths.forEach((p, i) => {
     const isLine = p.parentElement.getAttribute('fill') === 'none';
     if (isLine) {
       const len = p.getTotalLength();
@@ -110,8 +240,14 @@
     }
     if (!isTouch) gsap.to(p, { x: (i % 2 ? 1 : -1) * (12 + (i % 6) * 4), y: (i % 3 - 1) * 10, duration: 7 + (i % 5) * 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: (i % 6) * 0.4 });
   });
-  if (!isTouch && !reduced) {
-    window.addEventListener('mousemove', (e) => {
+  if (!isTouch) {
+    // Parallax nur, solange der Hero im Bild ist — danach kostet er nur Rechenzeit
+    let heroVisible = true;
+    if (hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }).observe(hero);
+    }
+    addEventListener('mousemove', (e) => {
+      if (!heroVisible) return;
       const x = (e.clientX / innerWidth - 0.5), y = (e.clientY / innerHeight - 0.5);
       topoPaths.forEach((p, i) => {
         const depth = 0.3 + (i % 5) * 0.25;
@@ -119,138 +255,116 @@
       });
     });
   }
-  // hero content drifts up slightly while the next section arrives
-  gsap.to('.hero__inner', { yPercent: -12, opacity: 0.4, ease: 'none',
-    scrollTrigger: { trigger: '[data-hero]', start: 'bottom 80%', end: 'bottom 20%', scrub: true } });
+  if (hero) gsap.to('.hero__inner', { yPercent: -12, opacity: 0.4, ease: 'none',
+    scrollTrigger: { trigger: hero, start: 'bottom 80%', end: 'bottom 20%', scrub: true } });
 
-  /* ---------- programmatic scroll ---------- */
+  /* ---------- Programmatisches Scrollen, jederzeit abbrechbar ---------- */
+  let scrollTween = null;
   function scrollToEl(el) {
+    if (!el) return;
+    if (scrollTween) scrollTween.kill();
     const y = el.getBoundingClientRect().top + window.scrollY;
-    const from = window.scrollY, o = { v: from };
-    gsap.to(o, { v: y, duration: 1.3, ease: 'power4.inOut', overwrite: true,
-      onUpdate: () => { lenis ? lenis.scrollTo(o.v, { immediate: true, force: true }) : window.scrollTo(0, o.v); } });
-  }
-
-  /* ---------- nav theme by section + Safari bar colour ---------- */
-  const nav = $('[data-nav]');
-  const themeMeta = document.querySelector('meta[name="theme-color"]');
-  const setBarColor = (el) => {
-    if (!themeMeta) return;
-    let bg = getComputedStyle(el).backgroundColor, node = el;
-    while ((bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') && node.parentElement) { node = node.parentElement; bg = getComputedStyle(node).backgroundColor; }
-    themeMeta.setAttribute('content', bg);
-    html.style.backgroundColor = bg;
-  };
-  $$('[data-nav-theme]').forEach((sec) => {
-    ScrollTrigger.create({
-      trigger: sec, start: 'top 60px', end: 'bottom 60px',
-      onToggle: (st) => { if (st.isActive) { nav.classList.toggle('is-dark', sec.dataset.navTheme === 'dark'); setBarColor(sec); } }
+    const o = { v: window.scrollY };
+    const stop = () => { if (scrollTween) scrollTween.kill(); cleanup(); };
+    const cleanup = () => {
+      removeEventListener('touchstart', stop);
+      removeEventListener('wheel', stop);
+      scrollTween = null;
+    };
+    addEventListener('touchstart', stop, { passive: true });
+    addEventListener('wheel', stop, { passive: true });
+    scrollTween = gsap.to(o, {
+      v: y, duration: 1.3, ease: 'power4.inOut',
+      onUpdate: () => { lenis ? lenis.scrollTo(o.v, { immediate: true, force: true }) : window.scrollTo(0, o.v); },
+      onComplete: () => { cleanup(); focusTarget(el); }
     });
-  });
-
-  /* ---------- menu ---------- */
-  const menu = $('[data-menu]'), toggle = $('[data-menu-toggle]');
-  let menuOpen = false;
-  gsap.set('[data-menu-link]', { y: 60, opacity: 0 });
-  gsap.set('.menu__foot a', { y: 10, opacity: 0 });
-  const menuTl = gsap.timeline({ paused: true, onReverseComplete: () => gsap.set(menu, { visibility: 'hidden' }) })
-    .set(menu, { visibility: 'visible' })
-    .fromTo(menu, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power4.inOut' })
-    .to('[data-menu-link]', { y: 0, opacity: 0.55, duration: 0.7, stagger: 0.06, ease: 'power4.out' }, '-=0.35')
-    .to('.menu__foot a', { y: 0, opacity: 1, duration: 0.4, stagger: 0.05 }, '-=0.4');
-  function setMenu(open) {
-    menuOpen = open;
-    document.body.classList.toggle('menu-open', open);
-    toggle.setAttribute('aria-expanded', open);
-    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
-    menu.setAttribute('aria-hidden', !open);
-    if (open) { menuTl.timeScale(1).play(); lenis && lenis.stop(); }
-    else { menuTl.timeScale(1.6).reverse(); lenis && lenis.start(); }
   }
-  toggle.addEventListener('click', () => setMenu(!menuOpen));
+
+  /* ---------- Menü-Links ---------- */
   $$('[data-menu-link]').forEach((a) => {
     a.addEventListener('click', (e) => {
       e.preventDefault();
       const target = $(a.getAttribute('href'));
+      const href = a.getAttribute('href');
       setMenu(false);
-      if (target) setTimeout(() => scrollToEl(target), 450);
+      if (target) setTimeout(() => { scrollToEl(target); history.pushState(null, '', href); }, 450);
     });
   });
-  addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) setMenu(false); });
 
-  /* ---------- marquee: constant, infinite ---------- */
+  /* ---------- Marquee: endlos, nahtlos, nach Schriftwechsel neu vermessen ---------- */
   (function () {
     const track = $('[data-marquee]');
-    if (!track || reduced) return;
+    if (!track) return;
+    let tween = null;
     const run = () => {
-      const half = track.scrollWidth / 2;
-      gsap.to(track, { x: -half, duration: half / 60, ease: 'none', repeat: -1 });
+      if (tween) tween.kill();
+      gsap.set(track, { x: 0 });
+      // scrollWidth enthält eine Lücke weniger als die halbe Strecke braucht
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      const half = (track.scrollWidth + gap) / 2;
+      if (!half) return;
+      tween = gsap.to(track, { x: -half, duration: half / 60, ease: 'none', repeat: -1 });
     };
-    if (document.readyState === 'complete') run(); else addEventListener('load', run);
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(run);
+    let t;
+    addEventListener('resize', () => { clearTimeout(t); t = setTimeout(run, 200); });
   })();
 
-  /* ---------- reveals ---------- */
+  /* ---------- Reveals ---------- */
   $$('[data-reveal]').forEach((el) => {
     gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 88%' } });
   });
 
-  /* ---------- counter ---------- */
+  /* ---------- Zähler ---------- */
   $$('[data-count]').forEach((el) => {
     const target = +el.dataset.count;
     ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true,
       onEnter: () => gsap.to({ v: 0 }, { v: target, duration: 1.6, ease: 'power3.out', onUpdate() { el.textContent = Math.round(this.targets()[0].v); } }) });
   });
 
-  /* ---------- partner: word-by-word scrub ---------- */
+  /* ---------- Partner: Wort für Wort ---------- */
   (function () {
     const h = $('[data-words]');
     if (!h) return;
     const txt = h.textContent.trim();
-    h.setAttribute('aria-label', txt);
-    h.innerHTML = txt.split(/\s+/).map((w) => '<span class="w" aria-hidden="true">' + w + '</span>').join('');
+    h.textContent = '';
+    // echte Leerzeichen zwischen den Wörtern, sonst brechen Suche und Kopieren
+    txt.split(/\s+/).forEach((word, i) => {
+      if (i) h.appendChild(document.createTextNode(' '));
+      const s = document.createElement('span');
+      s.className = 'w';
+      s.textContent = word;
+      h.appendChild(s);
+    });
     gsap.to($$('.w', h), { opacity: 1, stagger: 0.25, ease: 'none',
       scrollTrigger: { trigger: h, start: 'top 80%', end: 'bottom 45%', scrub: 0.6 } });
   })();
 
-  /* ---------- footer big text ---------- */
-  gsap.from('.footer__brand .ch', { yPercent: 100, opacity: 0, duration: 1, stagger: 0.03, ease: 'power4.out',
-    scrollTrigger: { trigger: '.footer', start: 'top 75%' } });
+  /* ---------- Footer-Schriftzug ---------- */
+  if ($('.footer__brand')) {
+    splitText();
+    gsap.from('.footer__brand .ch', { yPercent: 100, opacity: 0, duration: 1, stagger: 0.03, ease: 'power4.out',
+      scrollTrigger: { trigger: '.footer', start: 'top 75%' } });
+  }
 
-  /* ---------- anchor links ---------- */
+  /* ---------- Ankerlinks ---------- */
   $$('a[href^="#"]:not([data-menu-link])').forEach((a) => {
     a.addEventListener('click', (e) => {
-      const t = $(a.getAttribute('href'));
+      const href = a.getAttribute('href');
+      const t = $(href);
       if (!t) return;
       e.preventDefault();
       scrollToEl(t);
+      history.pushState(null, '', href);
     });
   });
 
-  /* ---------- refresh after late layout changes ---------- */
+  /* ---------- Trigger nachziehen, wenn sich das Layout noch ändert ---------- */
   let refreshT;
-  const queueRefresh = () => { clearTimeout(refreshT); refreshT = setTimeout(() => { ScrollTrigger.refresh(); lenis && lenis.resize(); }, 150); };
+  const queueRefresh = () => { clearTimeout(refreshT); refreshT = setTimeout(() => { ScrollTrigger.refresh(); if (lenis) lenis.resize(); }, 150); };
   $$('img').forEach((im) => { if (!im.complete) im.addEventListener('load', queueRefresh, { once: true }); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueRefresh);
   addEventListener('load', () => { queueRefresh(); setTimeout(queueRefresh, 1500); });
   addEventListener('orientationchange', () => setTimeout(queueRefresh, 300));
-
-  /* ---------- menu without GSAP (static fallback) ---------- */
-  function initMenuStatic() {
-    const menu = $('[data-menu]'), toggle = $('[data-menu-toggle]');
-    if (!menu || !toggle) return;
-    let open = false;
-    const set = (o) => {
-      open = o;
-      document.body.classList.toggle('menu-open', o);
-      toggle.setAttribute('aria-expanded', o);
-      toggle.setAttribute('aria-label', o ? 'Menü schließen' : 'Menü öffnen');
-      menu.setAttribute('aria-hidden', !o);
-      menu.style.visibility = o ? 'visible' : 'hidden';
-      document.body.style.overflow = o ? 'hidden' : '';
-    };
-    toggle.addEventListener('click', () => set(!open));
-    $$('[data-menu-link]').forEach((a) => a.addEventListener('click', () => set(false)));
-    addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) set(false); });
-  }
 })();
