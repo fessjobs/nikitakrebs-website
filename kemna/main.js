@@ -219,6 +219,15 @@
 
   /* ---------- nav: weicht beim Runterscrollen, kommt beim Hochscrollen zurück ---------- */
   // Eine dauerhaft sichtbare Nav verdeckt in jeder Sektion die obere rechte Ecke.
+  safe('nav-scrolled', () => {
+    const nav = $('[data-nav]');
+    if (!nav) return;
+    let on = false;
+    const check = () => { const next = window.scrollY > 40; if (next !== on) { on = next; nav.classList.toggle('is-scrolled', on); } };
+    if (lenis) lenis.on('scroll', check); else addEventListener('scroll', check, { passive: true });
+    check();
+  });
+
   safe('nav-autohide', () => {
     const nav = $('[data-nav]');
     if (!nav || reduced) return;
