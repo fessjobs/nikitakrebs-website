@@ -209,7 +209,7 @@
         onToggle: (st) => {
           if (!st.isActive) return;
           nav.classList.toggle('is-dark', sec.dataset.navTheme === 'dark');
-          // Der gelbe Karriere-Block verschluckt den gelben CTA — dort wird er dunkel.
+          // Der rote Karriere-Block verschluckt den roten CTA — dort wird er dunkel.
           nav.classList.toggle('is-oncolor', sec.dataset.navAccent === 'ink');
           setBarColor(sec);
         },
@@ -343,7 +343,7 @@
       const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       p.setAttribute('d', d + ' Z');
       p.setAttribute('stroke-opacity', String(0.9 - k * 0.07));
-      if (k === 0) { p.setAttribute('fill', '#F2B705'); p.setAttribute('fill-opacity', '.85'); }
+      if (k === 0) { p.setAttribute('fill', '#B5163F'); p.setAttribute('fill-opacity', '.85'); }
       g.appendChild(p);
     }
     const ramp = document.createElementNS('http://www.w3.org/2000/svg', 'path');

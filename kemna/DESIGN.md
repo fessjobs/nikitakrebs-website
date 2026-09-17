@@ -19,7 +19,7 @@ nachgezogen.
 ## 1. Thema & Atmosphäre
 
 Industriell und geerdet, nicht verspielt. Die Seite ist aus Asphalt, Beton und
-Markierungsgelb gebaut: ein fast schwarzer Hero mit Straßenperspektive, dann
+Markenrot gebaut: ein fast schwarzer Hero mit Straßenperspektive, dann
 ein warmes Betongrau als Arbeitsfläche, dazwischen dunkle Kapitel. Der Kontrast
 zwischen riesiger Condensed-Versalie und kleinem, ruhigem Fließtext trägt die
 ganze Seite.
@@ -44,21 +44,22 @@ zwischen hell und dunkel wie Kapitel.
 | `--ink` | `#111214` | Text, Rahmen, Icons |
 | `--ink-2` | `#55575B` | Fließtext, Labels auf Weiß |
 | `--ink-3` | `#8C8E92` | nur Deko, **nie für Text** (3,28:1) |
-| `--accent` | `#F2B705` | Markierungsgelb als **Fläche**: Buttons, Karriere-Sektion, Bänder |
-| `--accent-2` | `#D99E00` | nur als Fläche oder Rahmen, **nie als Text auf Papier** (2,07:1) |
-| `--accent-text` | `#8A5B00` | gelbliche **Schrift** auf hellem Grund (5,11:1) |
+| `--accent` | `#B5163F` | Markenrot aus dem Logo als **Fläche**: Buttons, Karriere-Sektion, Bänder; Text darauf ist `--paper` |
+| `--accent-2` | `#8F1132` | dunkleres Rot für Rahmen und Tiefe von `--accent` |
+| `--accent-light` | `#FF5C6C` | helles Rot für **Schrift und Akzente auf dunklem Grund** (6,3:1) |
+| `--accent-text` | `#A3123A` | rote **Schrift** auf hellem Grund (6,5:1) |
 | `--dark` | `#101214` | dunkle Sektionen, Hero, Footer |
 | `--dark-2` | `#1A1D21` | Flächen in dunklen Sektionen |
 
 Regeln, die hier zweimal falsch gemacht wurden:
 
 1. `--accent` und `--accent-2` sind **Flächenfarben**. Als Text auf `--paper`
-   fallen sie durch die Kontrastprüfung. Für gelbliche Schrift auf Hell gibt es
+   fallen sie durch die Kontrastprüfung. Für rote Schrift auf Hell gibt es
    `--accent-text`. Auf `--dark` darf `--accent` Text sein (11,3:1).
 2. `--ink-3` ist zu hell für Text. Labels auf Weiß nehmen `--ink-2`.
 3. Jede Sektion braucht `data-nav-theme="light|dark"`, sonst bleibt die
-   Navigation auf dem Zustand der Sektion davor. Die gelbe Karriere-Sektion
-   trägt zusätzlich `data-nav-accent="ink"`, weil der gelbe CTA sonst in ihr
+   Navigation auf dem Zustand der Sektion davor. Die rote Karriere-Sektion
+   trägt zusätzlich `data-nav-accent="ink"`, weil der rote CTA sonst in ihr
    verschwindet.
 
 ## 3. Typografie
@@ -102,8 +103,8 @@ Größen kommen aus `clamp()`, nicht aus Media Queries:
 `border-radius:12px`. Hover nur hinter `@media (hover:hover) and (pointer:fine)`,
 Druckfeedback über `:active{transform:scale(.97)}` in `160ms var(--ease-out)`.
 
-- `.btn--accent`: gelbe Fläche, `2px solid var(--ink)`. Der Haupt-CTA.
-- `.btn--ink`: dunkle Fläche, für helle und gelbe Sektionen.
+- `.btn--accent`: rote Fläche, `2px solid var(--accent-2)`, Schrift `--paper`. Der Haupt-CTA.
+- `.btn--ink`: dunkle Fläche, für helle und rote Sektionen.
 - `.btn--outline`: nur Rahmen, als zweite Option neben einem gefüllten Button.
 - `.btn--lg`: `24px`, `padding:20px 32px` — Call-to-Action auf Seitenebene.
 
@@ -118,7 +119,7 @@ das ist ein Alltagszustand.
 Rahmen auf Weiß. Beschriftungen bleiben links vom rechten viewBox-Rand mit
 Sicherheitsabstand — bei Ersatzschriften laufen sie sonst heraus.
 
-**Listen mit Quadrat** (`.field__list`): `10px` gelbes Quadrat statt Punkt.
+**Listen mit Quadrat** (`.field__list`): `10px` rotes Quadrat statt Punkt.
 Das Quadrat ist die einzige Aufzählungsform der Seite.
 
 ## 5. Layout
@@ -207,8 +208,8 @@ kritische Inhalte — Telefonnummer, Anschrift, Rechtstexte — bekommen **nie**
 - „Baue eine Referenzseite für ein Autobahnprojekt mit diesem Designsystem:
   dunkler Hero mit Kennzahlen, dreispaltiger Bauablauf, Kontakt-Callout."
 - „Ergänze eine Standortübersicht. Betongrauer Grund, eine weiße Karte je
-  Niederlassung, Gelb nur als Akzent auf der Kartenmarkierung."
-- „Entwirf die Karriere-Unterseite: gleiches Typosystem, Gelb als Grundfläche,
+  Niederlassung, Rot nur als Akzent auf der Kartenmarkierung."
+- „Entwirf die Karriere-Unterseite: gleiches Typosystem, Rot als Grundfläche,
   Stellenliste als Karten, ohne neue Farben."
 - „Schreib die Mobilregeln für diese Sektion" — erwartet Umbruchreihenfolge,
   Seitenrand, Touch-Ziele und Reduced-Motion-Verhalten.

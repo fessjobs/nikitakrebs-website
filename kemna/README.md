@@ -51,18 +51,18 @@ Weiter offen:
 - **Weitere Fotos.** Die übrigen Visuals sind aus Code erzeugte SVG.
   Steinbruch-Höhenlinien, Asphaltkörnung und Schichtaufbau können als
   Erklärgrafiken bleiben.
-- **Akzentfarbe.** Markierungsgelb `#F2B705` ist ein Vorschlag. Die Tokens stehen
+- **Akzentfarbe.** Markenrot `#B5163F`, aus dem KEMNA-Logo gemessen. Die Tokens stehen
   oben in `style.css`, ein Tausch gegen die CI-Farbe ist eine Zeile.
 
 ## Sektionen
 
-Hero (gepinnt, Werksfoto unter Straßenlinien, Wortmarke schrumpft, gelbes
+Hero (gepinnt, Werksfoto unter Straßenlinien, Wortmarke schrumpft, rotes
 Band) → Referenzen & Partner (Logo-Band) → Intro + Kennzahlen → Themen-Slider
 (Mitarbeitende, Nachhaltigkeit & Transparenz, Karriere; Scroll-Snap, Tasten,
 Touch, Pfeiltasten) → Leistungen (Zickzack mit Erklärgrafiken) →
 Wertschöpfungskette (horizontal gepinnt, fünf Stationen) → Einsatzbereiche →
 Verantwortung (Wort-für-Wort-Scrub) → Geschichte (Zeitlinie) → Gruppe
-(Namens-Marquee) → Karriere (gelb) → Kontakt → Footer.
+(Namens-Marquee) → Karriere (rot) → Kontakt → Footer.
 
 ## Robustheit
 
