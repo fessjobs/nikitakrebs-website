@@ -13,27 +13,31 @@
 <style>
   @font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/barlow-condensed-800-latin.woff2) format('woff2')}
   @font-face{font-family:'Montserrat';font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/montserrat-var-latin.woff2) format('woff2')}
+  :root{
+    --paper:#F5F4EF; --paper-2:#ECEBE4; --ink:#0B0B0C; --ink-2:#5A5A5C; --text:#3A3A3C;
+    --accent:#F5B331; --accent-text:#9A5A06; --todo-bg:#FFF3D6; --todo-ink:#8A5005;
+  }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
-  body{margin:0;background:#F5F4EF;color:#0B0B0C;font-family:'Montserrat',-apple-system,system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Montserrat',-apple-system,system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
   img{display:block;max-width:100%}
-  a{color:#9A5A06;text-decoration:underline;text-underline-offset:2px}
+  a{color:var(--accent-text);text-decoration:underline;text-underline-offset:2px}
   .top{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px max(env(safe-area-inset-left,0px),clamp(20px,5vw,64px));background:rgba(245,244,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(11,11,12,.08)}
-  .top__logo{display:flex;align-items:center;gap:10px;min-height:44px;color:#0B0B0C;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;text-decoration:none}
+  .top__logo{display:flex;align-items:center;gap:10px;min-height:44px;color:var(--ink);font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;text-decoration:none}
   .top__logo img{height:30px;width:auto}
-  .top__btn{display:inline-flex;align-items:center;min-height:44px;background:#F5B331;color:#0B0B0C;border:2px solid #0B0B0C;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:17px;padding:8px 18px;border-radius:12px;text-decoration:none}
+  .top__btn{display:inline-flex;align-items:center;min-height:44px;background:var(--accent);color:var(--ink);border:2px solid var(--ink);font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:17px;padding:8px 18px;border-radius:12px;text-decoration:none}
   .wrap{max-width:820px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,5vw,48px)}
   .wrap h1{font-family:'Barlow Condensed',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(44px,7vw,84px);line-height:.95;letter-spacing:-.015em;margin:0 0 8px}
-  .wrap .lead{color:#9A5A06;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 clamp(28px,4vw,44px)}
+  .wrap .lead{color:var(--accent-text);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 clamp(28px,4vw,44px)}
   .wrap h2{font-weight:700;font-size:clamp(18px,2vw,23px);letter-spacing:-.01em;margin:clamp(30px,4vw,44px) 0 10px}
-  .wrap p{font-size:16px;line-height:1.7;color:#3A3A3C;margin:0 0 12px}
-  .wrap ul{font-size:16px;line-height:1.7;color:#3A3A3C;margin:0 0 12px;padding-left:22px}
-  .wrap strong{color:#0B0B0C}
-  footer{background:#ECEBE4;border-top:1px solid rgba(11,11,12,.08);padding:clamp(30px,4vw,48px) clamp(20px,5vw,64px) calc(clamp(30px,4vw,48px) + env(safe-area-inset-bottom,0px))}
-  footer div{max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px;font-weight:600;font-size:13px;color:#5A5A5C}
+  .wrap p{font-size:16px;line-height:1.7;color:var(--text);margin:0 0 12px}
+  .wrap ul{font-size:16px;line-height:1.7;color:var(--text);margin:0 0 12px;padding-left:22px}
+  .wrap strong{color:var(--ink)}
+  footer{background:var(--paper-2);border-top:1px solid rgba(11,11,12,.08);padding:clamp(30px,4vw,48px) clamp(20px,5vw,64px) calc(clamp(30px,4vw,48px) + env(safe-area-inset-bottom,0px))}
+  footer div{max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px;font-weight:600;font-size:13px;color:var(--ink-2)}
   footer nav{display:flex;flex-wrap:wrap;gap:22px}
-  footer nav a{display:inline-flex;align-items:center;min-height:44px;color:#5A5A5C;font-size:12.5px;letter-spacing:.04em}
-  footer nav a[aria-current]{color:#0B0B0C}
+  footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);font-size:12.5px;letter-spacing:.04em}
+  footer nav a[aria-current]{color:var(--ink)}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
