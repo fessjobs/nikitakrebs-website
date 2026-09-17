@@ -24,9 +24,13 @@ ein warmes Betongrau als Arbeitsfläche, dazwischen dunkle Kapitel. Der Kontrast
 zwischen riesiger Condensed-Versalie und kleinem, ruhigem Fließtext trägt die
 ganze Seite.
 
-Es gibt keine Fotos. Alle Bildelemente sind aus Code erzeugte SVG: Höhenlinien
-eines Steinbruchs, eine Punktwolke als Asphaltkörnung, der Schichtaufbau einer
-Straße. Sie erklären, sie dekorieren nicht.
+Ein Foto trägt den Hero: die Mischanlage bei Dämmerung, unter Straßenlinien
+und Wortmarke, mit einem Verlauf von unten und einer Abdunklung hinter dem
+Text. Der Text steht immer vorn. Alle anderen Bildelemente sind aus Code
+erzeugte SVG: Höhenlinien eines Steinbruchs, eine Punktwolke als
+Asphaltkörnung, der Schichtaufbau einer Straße. Sie erklären, sie dekorieren
+nicht. Logos von Gruppe und Partnern liegen als Karten auf Weiß in einem
+laufenden Band, gleich hoch, gleich breit, Logo auf höchstens 64 % der Karte.
 
 Dichte: niedrig. Ein Gedanke pro Bildschirm. Die Sektionen wechseln bewusst
 zwischen hell und dunkel wie Kapitel.

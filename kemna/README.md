@@ -37,16 +37,29 @@ Weiter offen:
   `curl -s <url> | openssl dgst -sha384 -binary | openssl base64 -A`
   Noch besser: GSAP, ScrollTrigger, Lenis und die Schriften lokal ausliefern –
   dann entfällt auch der Abschnitt 3 der Datenschutzerklärung.
-- **Echte Fotos.** Es gibt bewusst keine Bilder; alle Visuals sind aus Code
-  erzeugte SVG. Steinbruch-Höhenlinien, Asphaltkörnung und Schichtaufbau können
-  als Erklärgrafiken bleiben.
+- **Hero-Foto in höherer Auflösung.** `assets/img/hero-1000.*` stammt aus einer
+  1000 px breiten Vorlage und wird auf großen Bildschirmen hochskaliert. Für den
+  Livegang das Original mit mindestens 2400 px Breite liefern und in
+  `hero-1000`/`hero-640` (JPG + WebP) ersetzen; die Größen im `srcset` anpassen.
+- **Logos als Vektor.** Die 18 Logos in `assets/img/logos/` sind aus Screenshots
+  freigestellt und nur etwa 100 px breit. Für den Livegang SVG oder mindestens
+  400 px breite PNG vom jeweiligen Unternehmen einholen. Logo 06 (grünes
+  Punkt-Dreieck) ist nicht zugeordnet; `alt`-Text in `index.html` nachtragen.
+  Auch die Überschrift „Referenzen & Partner" ist ein Vorschlag.
+- **Slider-Texte bestätigen.** Die drei Slides „Mitarbeitende", „Nachhaltigkeit
+  & Transparenz" und „Karriere" sind Konzepttexte aus öffentlichen Quellen.
+- **Weitere Fotos.** Die übrigen Visuals sind aus Code erzeugte SVG.
+  Steinbruch-Höhenlinien, Asphaltkörnung und Schichtaufbau können als
+  Erklärgrafiken bleiben.
 - **Akzentfarbe.** Markierungsgelb `#F2B705` ist ein Vorschlag. Die Tokens stehen
   oben in `style.css`, ein Tausch gegen die CI-Farbe ist eine Zeile.
 
 ## Sektionen
 
-Hero (gepinnt, Straßenperspektive, Wortmarke schrumpft, gelbes Band) →
-Intro + Kennzahlen → Leistungen (Zickzack mit Erklärgrafiken) →
+Hero (gepinnt, Werksfoto unter Straßenlinien, Wortmarke schrumpft, gelbes
+Band) → Referenzen & Partner (Logo-Band) → Intro + Kennzahlen → Themen-Slider
+(Mitarbeitende, Nachhaltigkeit & Transparenz, Karriere; Scroll-Snap, Tasten,
+Touch, Pfeiltasten) → Leistungen (Zickzack mit Erklärgrafiken) →
 Wertschöpfungskette (horizontal gepinnt, fünf Stationen) → Einsatzbereiche →
 Verantwortung (Wort-für-Wort-Scrub) → Geschichte (Zeitlinie) → Gruppe
 (Namens-Marquee) → Karriere (gelb) → Kontakt → Footer.

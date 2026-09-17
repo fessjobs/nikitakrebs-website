@@ -73,6 +73,7 @@
       .to('.preloader__mark', { opacity: 0, y: -20, duration: 0.4, ease: 'power2.out' }, '+=0.15')
       .to(pre, { yPercent: -100, duration: 0.9, ease: 'power4.inOut' }, '-=0.2')
       .set(pre, { display: 'none' })
+      .from('[data-hero-photo] img', { scale: 1.08, opacity: 0, duration: 1.6, ease: 'power2.out' }, '-=0.9')
       .from('.hero__title .ch', { yPercent: 70, opacity: 0, duration: 1, stagger: 0.05 }, '-=0.6')
       .from('[data-hero-eyebrow], [data-hero-claim]', { y: 20, opacity: 0, duration: 0.8, stagger: 0.1 }, '-=0.7')
       .from('[data-road-lines] path', { opacity: 0, duration: 1.2, stagger: 0.08 }, '-=0.9')
@@ -111,6 +112,7 @@
     tl.to(title, { scale: () => (mobile() ? 0.7 : 0.55), yPercent: -30, duration: 1, ease: 'power2.inOut' }, 0)
       .fromTo('[data-hero-eyebrow], [data-hero-claim]', { opacity: 1, y: 0 }, { opacity: 0, y: -20, duration: 0.35, ease: 'none', immediateRender: false }, 0)
       .to('[data-road-lines]', { opacity: 0.25, duration: 1, ease: 'none' }, 0)
+      .to('[data-hero-photo] img', { scale: 1.1, yPercent: 5, duration: 1, ease: 'none' }, 0)
       .fromTo('[data-hero-scroll], [data-hero-meta]', { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'none', immediateRender: false }, 0)
       .fromTo(band, { opacity: 0, xPercent: -8, rotate: -4 }, { opacity: 1, xPercent: 0, rotate: -4, duration: 0.6, ease: 'power3.out' }, 0.35);
   });
@@ -122,6 +124,7 @@
     const belts = [];
     const add = (track, dir, speed, trigger) => { if (track) belts.push({ track, dir, speed, trigger, tween: null }); };
     add($('[data-hero-marq]'), -1, 90, $('[data-hero]'));
+    add($('[data-logo-track]'), -1, 36, $('.logos'));
     $$('[data-group-track]').forEach((t) => add(t, parseFloat(t.dataset.groupTrack) || 1, 50, $('.group')));
     const build = () => {
       belts.forEach((b) => {
@@ -137,6 +140,40 @@
     onReady(build);
     let t;
     addEventListener('resize', () => { clearTimeout(t); t = setTimeout(build, 200); });
+  });
+
+  /* ---------- slides: Scroll-Snap-Slider, Tasten und Zähler; Touch und Tastatur nativ ---------- */
+  safe('slides', () => {
+    const track = $('[data-slides]'), prev = $('[data-slides-prev]'), next = $('[data-slides-next]'), cur = $('[data-slides-cur]');
+    if (!track || !prev || !next) return;
+    const items = $$('[data-slide]', track);
+    if (items.length < 2) return;
+    const left = (el) => el.offsetLeft - items[0].offsetLeft;
+    const index = () => {
+      let best = 0, dist = Infinity;
+      items.forEach((it, i) => { const d = Math.abs(left(it) - track.scrollLeft); if (d < dist) { dist = d; best = i; } });
+      return best;
+    };
+    const go = (i) => {
+      const n = Math.max(0, Math.min(items.length - 1, i));
+      track.scrollTo({ left: left(items[n]), behavior: reduced ? 'auto' : 'smooth' });
+    };
+    const sync = () => {
+      const i = index();
+      if (cur) cur.textContent = String(i + 1);
+      prev.disabled = i <= 0;
+      next.disabled = i >= items.length - 1;
+    };
+    prev.addEventListener('click', () => go(index() - 1));
+    next.addEventListener('click', () => go(index() + 1));
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(index() - 1); }
+    });
+    let t;
+    track.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(sync, 80); }, { passive: true });
+    addEventListener('resize', sync);
+    sync();
   });
 
   /* ---------- programmatic scroll ---------- */
