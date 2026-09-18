@@ -102,7 +102,6 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .hero__blobs{fill:var(--accent);fill-opacity:.16}
 .hero__inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto}
 .hero__eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text);margin-bottom:26px}
-.hero.has-video .hero__eyebrow{color:var(--ink)}
 .hero__h{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.02em;font-size:clamp(48px,10vw,190px)}
 .hero__h .wd,.footer__brand .wd{display:inline-block;white-space:nowrap}
 .hero__h .ch{display:inline-block}

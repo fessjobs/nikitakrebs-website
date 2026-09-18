@@ -264,28 +264,40 @@
     const wrap = $('[data-hero-video]');
     const vid = wrap && $('[data-hero-video-el]', wrap);
     if (!wrap || !vid) return;
-    // Auf dem Handy kostet ein Hintergrundvideo nur Datenvolumen
-    if (isTouch) { wrap.remove(); return; }
-    vid.preload = 'auto';
-    vid.addEventListener('loadeddata', () => {
-      vid.play().then(() => {
-        wrap.classList.add('is-on');
-        if (!hero) return;
-        hero.classList.add('has-video');
-        // Der Hero wird jetzt dunkel: Nav und Safari-Balken muessen mit
-        hero.dataset.navTheme = 'dark';
-        if (nav && hero.getBoundingClientRect().top <= 60 && hero.getBoundingClientRect().bottom > 60) {
-          nav.classList.add('is-dark');
-          setBarColor(hero);
-        }
-      }).catch(() => {});
-    }, { once: true });
+    // Laeuft auch auf dem Handy. Nur Datensparmodus und langsame Netze
+    // bekommen es nicht - dort waeren 400 KB Deko nicht zu rechtfertigen.
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''))) { wrap.remove(); return; }
+    // Kein H.264 im Browser: gar nicht erst 400 KB anfordern
+    if (!vid.canPlayType('video/mp4; codecs="avc1.42E01E"')) { wrap.remove(); return; }
+
+    let on = false;
+    function enable() {
+      if (on) return;
+      on = true;
+      wrap.classList.add('is-on');
+      if (!hero) return;
+      hero.classList.add('has-video');
+      // Der Hero wird jetzt dunkel: Nav und Safari-Balken muessen mit
+      hero.dataset.navTheme = 'dark';
+      const r = hero.getBoundingClientRect();
+      if (nav && r.top <= 60 && r.bottom > 60) { nav.classList.add('is-dark'); setBarColor(hero); }
+    }
+    // NotAllowedError heisst nur "noch keine Geste" - alles andere (Codec,
+    // kaputte Datei) ist endgueltig, dann verschwindet die Ebene.
+    const tryPlay = () => vid.play().then(enable).catch((e) => {
+      if (e && e.name === 'NotSupportedError') wrap.remove();
+    });
+
+    // preload="none" bleibt stehen: play() holt die Datei selbst. Erst
+    // preload umzustellen und dann load() zu rufen, laedt sie zweimal.
     vid.addEventListener('error', () => wrap.remove(), { once: true });
-    vid.load();
+    tryPlay();
+    // iOS verweigert Autoplay im Stromsparmodus. Die erste Beruehrung ist
+    // eine Nutzergeste - dann darf es doch, also holen wir es dort nach.
+    ['touchstart', 'click'].forEach(t => document.addEventListener(t, tryPlay, { once: true, passive: true }));
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause();
-      }).observe(wrap);
+      new IntersectionObserver(([e]) => { if (e.isIntersecting) tryPlay(); else vid.pause(); }).observe(wrap);
     }
   })();
 

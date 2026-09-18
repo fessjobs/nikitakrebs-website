@@ -95,9 +95,26 @@ Schleier von .80, und dort bestehen alle Texte selbst gegen ein rein weißes
 Video (min. 5,78:1). Beide Werte stehen als Tokens in `:root`:
 `--hero-veil` (hell) und `--hero-veil-dark` (dunkel).
 
-Läuft das Video nicht, bleibt der helle Papier-Hero unverändert stehen. Das ist
-der Fall bei Touchgeräten (dort wird die Ebene entfernt, spart Datenvolumen),
-bei „Bewegung reduzieren", ohne JavaScript und bei einem Ladefehler.
+Das Video läuft auf dem Handy genauso wie am Desktop. Es wird nur in vier
+Fällen gar nicht erst geladen, und dann bleibt der helle Papier-Hero
+unverändert stehen:
+
+- **Datensparmodus oder 2G** (`navigator.connection.saveData`,
+  `effectiveType`) — 400 KB Dekoration sind dort nicht zu rechtfertigen.
+- **Kein H.264 im Browser** (`canPlayType` leer) — dann wird die Datei nicht
+  angefordert, statt sie umsonst zu laden.
+- **„Bewegung reduzieren"** und **ohne JavaScript** — der Videoblock liegt im
+  Animationspfad und läuft dort nicht an.
+- **Ladefehler** oder `NotSupportedError` beim Abspielen — die Ebene entfernt
+  sich selbst.
+
+`preload` bleibt auf `none`; `play()` holt die Datei. Erst `preload` auf `auto`
+zu setzen **und** `load()` zu rufen, hat sie zweimal geladen.
+
+iOS verweigert Autoplay im Stromsparmodus. Darum wird beim ersten `touchstart`
+oder `click` noch einmal `play()` versucht — dann liegt eine Nutzergeste vor.
+**Dieser Pfad ist ungetestet**, weil Chromium stummes Autoplay auch mit
+`--autoplay-policy=document-user-activation-required` durchlässt.
 
 **Noch offen:** Die Quelle ist 480×854 im Hochformat und 2,23 s lang. Auf einem
 1440er Desktop wird sie rund dreifach hochskaliert und stark beschnitten, und
@@ -105,9 +122,11 @@ die Schleife springt alle gut zwei Sekunden. Für den Livegang wäre Querformat
 ab 1280 px Breite und 8 bis 15 s besser.
 
 **Nicht verifiziert:** Das Chromium dieser Umgebung hat kein H.264, die
-Wiedergabe konnte hier nicht geprüft werden. Mechanik (Laden, Abspielen,
-Schleife, Pause außerhalb des Bildes, Entfernen auf Touch) wurde mit einem
-Ersatzclip getestet, die echte Datei muss im Browser gegengeprüft werden.
+Wiedergabe der echten Datei konnte hier nicht geprüft werden. Die Mechanik
+(Laden, Abspielen, Schleife, Pause außerhalb des Bildes, Statusleistenfarbe,
+Datensparmodus, Codec-Rückfall) wurde bei 390 px und 1440 px mit einem
+selbst aufgenommenen Ersatzclip getestet. Die echte Datei muss im Browser
+gegengeprüft werden.
 
 ## Vor dem Livegang
 
