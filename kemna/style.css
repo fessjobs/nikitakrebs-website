@@ -16,7 +16,6 @@
   --gutter:clamp(20px,3vw,48px);
   --r:14px;
   --r-lg:22px;
-  --r-xl:36px;
   --ease-out:cubic-bezier(.23,1,.32,1);
   --ease-in-out:cubic-bezier(.77,0,.175,1);
 }
@@ -136,7 +135,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 @keyframes scrollline{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ---------- intro + stats ---------- */
-.intro{position:relative;z-index:1;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;margin-top:calc(-1 * var(--r-xl));padding:clamp(90px,12vh,160px) var(--gutter) clamp(60px,8vh,110px);background:var(--paper);border-radius:var(--r-xl) var(--r-xl) 0 0}
+.intro{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(90px,12vh,160px) var(--gutter) clamp(60px,8vh,110px);background:var(--paper)}
 .intro__inner{max-width:1100px;margin:0 auto;text-align:center}
 .intro__eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text);margin-bottom:26px}
 .intro__h{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:-.015em;font-size:clamp(46px,7vw,112px)}
@@ -257,7 +256,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 @media (max-width:760px){.history__line{left:0}.era{grid-template-columns:1fr;gap:10px;padding-left:24px}.era__year::after{left:-31px;right:auto;top:.28em}.era__text{padding-left:0}}
 
 /* ---------- logos: Referenzband direkt unter dem Hero ---------- */
-.logos{padding:clamp(56px,7vw,96px) 0 calc(clamp(24px,4vw,56px) + var(--r-xl));background:var(--dark);color:var(--paper);overflow:hidden}
+.logos{padding:clamp(56px,7vw,96px) 0 clamp(24px,4vw,56px);background:var(--dark);color:var(--paper);overflow:hidden}
 .logos__head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 40px;padding:0 var(--gutter);margin:0 auto clamp(28px,3.4vw,44px);max-width:1500px}
 .logos__head .tag{margin-bottom:0}
 .logos__p{max-width:460px;font-size:clamp(14px,1.1vw,16px);line-height:1.55;color:rgba(241,239,233,.68);text-wrap:pretty}
