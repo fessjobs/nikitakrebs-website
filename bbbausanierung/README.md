@@ -81,6 +81,34 @@ den das Unternehmen so bestätigen muss.
 CSS-Abschnitt `crew` in `style.css` und die drei Dateien
 `assets/img/crew-test-*.jpg` löschen.
 
+## Hero-Hintergrundvideo
+
+`assets/video/hero.mp4` liegt hinter dem Hero. Die Datei kam als `.MOV`, ist
+aber mp42/isom mit H.264 und AAC, moov vor mdat — also ein normales MP4;
+Umbenennen genügte, es wurde nichts umkodiert.
+
+**Sobald das Video läuft, kippt der Hero auf dunkel.** Das ist kein Geschmack,
+sondern gemessen: Mit hellem Papier-Schleier braucht die schwarze Schrift eine
+Deckkraft von .88, damit sie gegen ein dunkles Video noch 4,5:1 erreicht — bei
+.88 ist vom Video nur noch ein grauer Stich übrig. Auf dunklem Grund reicht ein
+Schleier von .80, und dort bestehen alle Texte selbst gegen ein rein weißes
+Video (min. 5,78:1). Beide Werte stehen als Tokens in `:root`:
+`--hero-veil` (hell) und `--hero-veil-dark` (dunkel).
+
+Läuft das Video nicht, bleibt der helle Papier-Hero unverändert stehen. Das ist
+der Fall bei Touchgeräten (dort wird die Ebene entfernt, spart Datenvolumen),
+bei „Bewegung reduzieren", ohne JavaScript und bei einem Ladefehler.
+
+**Noch offen:** Die Quelle ist 480×854 im Hochformat und 2,23 s lang. Auf einem
+1440er Desktop wird sie rund dreifach hochskaliert und stark beschnitten, und
+die Schleife springt alle gut zwei Sekunden. Für den Livegang wäre Querformat
+ab 1280 px Breite und 8 bis 15 s besser.
+
+**Nicht verifiziert:** Das Chromium dieser Umgebung hat kein H.264, die
+Wiedergabe konnte hier nicht geprüft werden. Mechanik (Laden, Abspielen,
+Schleife, Pause außerhalb des Bildes, Entfernen auf Touch) wurde mit einem
+Ersatzclip getestet, die echte Datei muss im Browser gegengeprüft werden.
+
 ## Vor dem Livegang
 
 1. **Impressum prüfen.** Geschäftsführung (Günter Blöß) und USt-IdNr.

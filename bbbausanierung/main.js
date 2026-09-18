@@ -258,7 +258,38 @@
   if (hero) gsap.to('.hero__inner', { yPercent: -12, opacity: 0.4, ease: 'none',
     scrollTrigger: { trigger: hero, start: 'bottom 80%', end: 'bottom 20%', scrub: true } });
 
-  /* ---------- Programmatisches Scrollen, jederzeit abbrechbar ---------- */
+
+  /* ---------- Hero-Hintergrundvideo ---------- */
+  (function () {
+    const wrap = $('[data-hero-video]');
+    const vid = wrap && $('[data-hero-video-el]', wrap);
+    if (!wrap || !vid) return;
+    // Auf dem Handy kostet ein Hintergrundvideo nur Datenvolumen
+    if (isTouch) { wrap.remove(); return; }
+    vid.preload = 'auto';
+    vid.addEventListener('loadeddata', () => {
+      vid.play().then(() => {
+        wrap.classList.add('is-on');
+        if (!hero) return;
+        hero.classList.add('has-video');
+        // Der Hero wird jetzt dunkel: Nav und Safari-Balken muessen mit
+        hero.dataset.navTheme = 'dark';
+        if (nav && hero.getBoundingClientRect().top <= 60 && hero.getBoundingClientRect().bottom > 60) {
+          nav.classList.add('is-dark');
+          setBarColor(hero);
+        }
+      }).catch(() => {});
+    }, { once: true });
+    vid.addEventListener('error', () => wrap.remove(), { once: true });
+    vid.load();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause();
+      }).observe(wrap);
+    }
+  })();
+
+  /* ---------- programmatisches Scrollen, jederzeit abbrechbar ---------- */
   let scrollTween = null;
   function scrollToEl(el) {
     if (!el) return;

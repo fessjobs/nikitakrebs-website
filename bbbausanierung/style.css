@@ -25,6 +25,8 @@
   --gut-l:calc(var(--gutter) + env(safe-area-inset-left,0px));
   --gut-r:calc(var(--gutter) + env(safe-area-inset-right,0px));
   --r:14px;
+  --hero-veil:.88;        /* heller Schleier, falls der Hero hell bleiben soll */
+  --hero-veil-dark:.80;   /* dunkler Schleier, sobald das Video laeuft */
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;color-scheme:light;background:var(--paper);-webkit-tap-highlight-color:transparent}
@@ -90,12 +92,17 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100svh;overflow:hidden;background:var(--paper);display:flex;align-items:flex-end;padding:clamp(120px,18vh,180px) var(--gut-r) calc(clamp(90px,12vh,130px) + var(--sab)) var(--gut-l)}
-.hero__topo{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero__video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:0;transition:opacity .9s ease}
+.hero__video.is-on{opacity:1}
+.hero__video video{width:100%;height:100%;object-fit:cover}
+.hero__video::after{content:"";position:absolute;inset:0;background:var(--paper);opacity:var(--hero-veil)}
+.hero__topo{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero__topo svg{width:100%;height:100%;overflow:visible}
 .hero__topo path{will-change:transform,stroke-dashoffset}
 .hero__blobs{fill:var(--accent);fill-opacity:.16}
-.hero__inner{position:relative;z-index:1;width:100%;max-width:1400px;margin:0 auto}
+.hero__inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto}
 .hero__eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text);margin-bottom:26px}
+.hero.has-video .hero__eyebrow{color:var(--ink)}
 .hero__h{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.02em;font-size:clamp(48px,10vw,190px)}
 .hero__h .wd,.footer__brand .wd{display:inline-block;white-space:nowrap}
 .hero__h .ch{display:inline-block}
@@ -103,7 +110,7 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .hero__row{display:grid;grid-template-columns:1fr auto;gap:30px 60px;align-items:end;margin-top:clamp(28px,4vw,48px)}
 .hero__p{max-width:520px;font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:var(--ink-2)}
 .hero__actions{display:flex;gap:14px;flex-wrap:wrap}
-.hero__scroll{position:absolute;right:var(--gut-r);top:calc(clamp(110px,16vh,160px) + var(--sat));z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hero__scroll{position:absolute;right:var(--gut-r);top:calc(clamp(110px,16vh,160px) + var(--sat));z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .hero__scroll i{width:1.5px;height:44px;background:var(--ink);display:block;transform-origin:top;animation:scrollline 1.8s cubic-bezier(.65,0,.35,1) infinite}
 @keyframes scrollline{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 @media (max-width:760px){.hero__h{font-size:clamp(36px,11vw,92px)}}
@@ -122,6 +129,24 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .crew__person:nth-child(2) img{object-position:center 82%}
 .crew__person:nth-child(3) img{object-position:center 30%}
 @media (max-width:760px){.crew{padding-top:calc(78px + var(--sat))}.crew__grid{gap:8px}.crew__item{aspect-ratio:3/4}}
+
+/* ---------- Hero mit laufendem Video: dunkles Kapitel ----------
+   Ein heller Schleier, der die schwarze Schrift lesbar haelt, deckt das Video
+   praktisch zu (gemessen: bei Schleier .88 bleibt nur ein grauer Stich).
+   Sobald das Video wirklich laeuft, kippt der Hero deshalb auf dunkel und die
+   Schrift auf hell. Laeuft es nicht - Handy, reduzierte Bewegung, Ladefehler -
+   bleibt der helle Papier-Hero unveraendert stehen. */
+.hero.has-video .hero__video::after{background:var(--dark);opacity:var(--hero-veil-dark)}
+.hero.has-video{background:var(--dark)}
+.hero.has-video .hero__h{color:var(--paper)}
+.hero.has-video .hero__h em{color:var(--accent)}
+.hero.has-video .hero__eyebrow{color:var(--accent)}
+.hero.has-video .hero__p{color:rgba(245,244,239,.88)}
+.hero.has-video .hero__scroll{color:var(--paper)}
+.hero.has-video .hero__scroll i{background:var(--paper)}
+.hero.has-video .hero__topo path{stroke:var(--paper)}
+.hero.has-video .hero__blobs{fill:var(--accent);fill-opacity:.1}
+.hero.has-video .btn--outline{border-color:rgba(245,244,239,.6);color:var(--paper)}
 
 /* ---------- marquee ---------- */
 .marquee{overflow:hidden;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:18px 0;background:var(--paper)}

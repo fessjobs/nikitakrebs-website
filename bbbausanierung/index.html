@@ -109,6 +109,13 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" data-hero data-nav-theme="light">
+  <!-- Hintergrundvideo. Laedt nur auf Zeigegeraeten und nur ohne "Bewegung
+       reduzieren". Faellt es aus, bleibt der Hero exakt wie ohne Video. -->
+  <div class="hero__video" data-hero-video aria-hidden="true">
+    <video muted loop playsinline preload="none" data-hero-video-el>
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero__topo" aria-hidden="true">
     <svg viewBox="0 0 1920 1000" preserveAspectRatio="xMidYMid slice">
       <g fill="none" stroke="#0B0B0C" stroke-opacity=".14" stroke-width="1.3" stroke-linecap="round" data-topo-lines></g>
