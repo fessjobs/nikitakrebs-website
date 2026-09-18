@@ -61,6 +61,24 @@ Kontaktdaten.
 (Besichtigung → Konzept → Ausführung → Übergabe). Sie beschreibt einen Ablauf,
 den das Unternehmen so bestätigen muss.
 
+## Probeweise eingebaut: Streifen "Die Arbeiter"
+
+Über dem Header liegt ein temporärer Block mit drei Fotos
+(`assets/img/crew-test-1..3.jpg`). Er ist **nicht freigegeben**:
+
+- Die Vorlagen waren private Aufnahmen bzw. Messenger-Screenshots. Telefon-
+  Oberfläche (Statusleiste, Uhrzeit-Bubble, Musik-Sticker) ist weggeschnitten,
+  die Bilder auf 900 px Breite gerechnet.
+- Eine Einwilligung der Abgebildeten nach § 22 KUG liegt nicht vor. Ohne diese
+  Einwilligung dürfen die Fotos auf der Live-Seite nicht stehen. Das Repository
+  ist öffentlich.
+- Inhaltlich zeigen sie kein Handwerk. Für "Die Arbeiter" auf einer
+  Sanierungsseite wären Aufnahmen auf der Baustelle das Überzeugende.
+
+**Entfernen:** den Block `CREW (NUR PROBEWEISE)` in `index.html`, den
+CSS-Abschnitt `crew` in `style.css` und die drei Dateien
+`assets/img/crew-test-*.jpg` löschen.
+
 ## Vor dem Livegang
 
 1. **Impressum prüfen.** Geschäftsführung (Günter Blöß) und USt-IdNr.
