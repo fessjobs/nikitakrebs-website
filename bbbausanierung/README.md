@@ -69,9 +69,11 @@ den das Unternehmen so bestätigen muss.
 - Die Vorlagen waren private Aufnahmen bzw. Messenger-Screenshots. Telefon-
   Oberfläche (Statusleiste, Uhrzeit-Bubble, Musik-Sticker) ist weggeschnitten,
   die Bilder auf 900 px Breite gerechnet.
-- Eine Einwilligung der Abgebildeten nach § 22 KUG liegt nicht vor. Ohne diese
-  Einwilligung dürfen die Fotos auf der Live-Seite nicht stehen. Das Repository
-  ist öffentlich.
+- Die Einwilligung der Abgebildeten nach § 22 KUG liegt laut Auftraggeber vor.
+  Das Repository ist öffentlich, die Bilder stehen damit dauerhaft in der
+  Git-Historie.
+- Das dritte Foto ist mit "Geschäftsführer" beschriftet. Der Name muss zum
+  Impressum passen — dort steht derzeit Günter Blöß.
 - Inhaltlich zeigen sie kein Handwerk. Für "Die Arbeiter" auf einer
   Sanierungsseite wären Aufnahmen auf der Baustelle das Überzeugende.
 
