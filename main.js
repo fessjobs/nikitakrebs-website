@@ -491,6 +491,7 @@
         $$('[data-sound-toggle]').forEach((b) => { if (b !== btn) { b.setAttribute('aria-pressed', 'false'); b.querySelector('span').textContent = 'Mit Ton ansehen'; } });
         vid.muted = false; vid.volume = 1; vid.currentTime = 0; vid.play().catch(() => {});
         btn.setAttribute('aria-pressed', 'true'); label.textContent = 'Ton aus';
+        if (window.umami) window.umami.track('video-mit-ton', { video: (vid.currentSrc || '').split('/').pop() });
       } else mute();
     });
     ScrollTrigger.create({ trigger: vid, start: 'top bottom', end: 'bottom top', onLeave: mute, onLeaveBack: mute });
