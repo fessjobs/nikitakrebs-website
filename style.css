@@ -580,3 +580,6 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .press__src{margin-top:22px;font-size:12.5px;color:var(--ink-3)}
 .press__dlg-link{display:block;text-align:center;padding:16px;background:var(--paper);color:var(--ink);font-weight:700;font-size:14px}
 .press__dlg-link:hover{color:var(--accent-text)}
+.callout__mail{margin-top:28px;font-size:clamp(15px,1.2vw,18px);color:var(--ink-2)}
+.callout__mail a{color:var(--ink);font-weight:700;border-bottom:1.5px solid var(--ink);padding-bottom:1px;transition:color .2s,border-color .2s}
+.callout__mail a:hover{color:var(--accent-text);border-color:var(--accent-text)}
