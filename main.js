@@ -326,7 +326,7 @@
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sec, start: 'top top', end: () => '+=' + getDist() * 1.05,
-        pin: $('.hz__pin', sec), scrub: isTouch ? true : 1, invalidateOnRefresh: true, anticipatePin: 1, fastScrollEnd: true,
+        pin: $('.hz__pin', sec), scrub: true, invalidateOnRefresh: true, anticipatePin: 0,
         onUpdate: (st) => { if (bg) bg.style.background = st.progress > 0.55 ? '#1A1D24' : '#0C0E12'; }
       }
     });
@@ -341,7 +341,7 @@
     });
     // cases: items drift in at different depths, title fades in
     $$('.hz__case', sec).forEach((el, i) => {
-      gsap.fromTo(el, { x: 60 + (i % 3) * 40, opacity: 0 }, { x: 0, opacity: 1, ease: 'none',
+      gsap.fromTo(el, { opacity: 0 }, { opacity: 1, ease: 'none',
         scrollTrigger: { containerAnimation: tl, trigger: el, start: 'left 100%', end: 'left 60%', scrub: true } });
     });
     $$('.hz__title, .hz__follow, .hz__quote', sec).forEach((el) => {
@@ -502,9 +502,9 @@
     if (!lines.length) return;
     lines.forEach((p) => { const l = p.getTotalLength(); gsap.set(p, { strokeDasharray: l, strokeDashoffset: l }); });
     const tl = gsap.timeline({ scrollTrigger: { trigger: '[data-org]', start: 'top 80%', end: 'top 30%', scrub: isTouch ? true : 0.6 } });
-    tl.from('[data-org-root]', { y: 24, opacity: 0, duration: 0.3 })
+    tl.from('[data-org-root]', { opacity: 0, duration: 0.3 })
       .to(lines, { strokeDashoffset: 0, duration: 0.5, ease: 'none', stagger: 0.05 }, 0.2)
-      .from('[data-org] .venture', { y: 40, opacity: 0, duration: 0.4, stagger: 0.08 }, 0.55);
+      .from('[data-org] .venture', { opacity: 0, duration: 0.4, stagger: 0.08 }, 0.55);
   })();
 
   /* ---------- Presse: Ausschnitt leicht mitbewegen + Lightbox ---------- */

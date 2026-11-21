@@ -537,3 +537,35 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
   .press__clip{order:-1;width:min(320px,82%)}
 }
 @media (max-width:1024px){.org__root{margin-bottom:0}.org__root::after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:28px;background:var(--ink)}.org .ventures__grid{margin-top:28px}}
+
+/* ---------- Firmen-Sektion passt auf einen Bildschirm ---------- */
+.ventures{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(84px,11vh,120px) var(--gutter) clamp(28px,4vh,48px)}
+.ventures .ventures__head{margin-bottom:clamp(14px,2.4vh,28px)}
+.ventures .sec-h{font-size:clamp(40px,min(6vw,8vh),96px)}
+.org__root{flex-direction:row;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap;width:auto;max-width:max-content;padding:14px 26px;background:var(--ink);color:var(--paper);border:0;border-radius:14px}
+.org__root:hover{transform:translateY(-2px);box-shadow:none}
+.org__kind{display:none}
+.org__name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,min(2vw,3.2vh),32px);letter-spacing:.01em;line-height:1}
+.org__meta{font-size:13px;color:rgba(245,244,239,.65)}
+.org__lines{height:clamp(32px,5vh,56px)}
+.org .ventures__grid{align-items:stretch}
+.org .venture::before{top:-6px}
+.org .venture__media{aspect-ratio:16/9}
+.org .venture__body{flex:1;gap:8px;padding:clamp(16px,2.2vh,26px) clamp(18px,1.8vw,28px)}
+.org .venture__name{font-size:clamp(24px,min(2.2vw,3.6vh),38px)}
+.org .venture p{font-size:14.5px;line-height:1.5}
+.org .venture__btn{margin-top:auto;padding:12px 18px;font-size:14px}
+@media (max-width:1024px){
+  .ventures{min-height:0;display:block}
+  .org__root{margin:0 auto}
+}
+
+/* ---------- Cases: incub:live + Plano versetzt untereinander ---------- */
+.hz__col--stack{width:min(30vw,420px);justify-content:center;gap:clamp(24px,4vh,48px)}
+.hz__case--stack{width:82%}
+.hz__case--shift{align-self:flex-end}
+@media (max-width:760px){.hz__col--stack{width:70vw}}
+
+/* ---------- Galerie: Farbe und Video ---------- */
+.collage__item--color img{filter:none!important}
+.collage__item video{width:100%;height:auto;display:block;aspect-ratio:9/16;object-fit:cover;background:var(--dark-2)}
