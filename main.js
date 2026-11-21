@@ -496,6 +496,29 @@
     ScrollTrigger.create({ trigger: vid, start: 'top bottom', end: 'bottom top', onLeave: mute, onLeaveBack: mute });
   });
 
+  /* ---------- Firmenstruktur: Linien zeichnen sich beim Scrollen ---------- */
+  (function () {
+    const lines = $$('[data-org-lines] path');
+    if (!lines.length) return;
+    lines.forEach((p) => { const l = p.getTotalLength(); gsap.set(p, { strokeDasharray: l, strokeDashoffset: l }); });
+    const tl = gsap.timeline({ scrollTrigger: { trigger: '[data-org]', start: 'top 80%', end: 'top 30%', scrub: isTouch ? true : 0.6 } });
+    tl.from('[data-org-root]', { y: 24, opacity: 0, duration: 0.3 })
+      .to(lines, { strokeDashoffset: 0, duration: 0.5, ease: 'none', stagger: 0.05 }, 0.2)
+      .from('[data-org] .venture', { y: 40, opacity: 0, duration: 0.4, stagger: 0.08 }, 0.55);
+  })();
+
+  /* ---------- Presse: Ausschnitt leicht mitbewegen + Lightbox ---------- */
+  (function () {
+    const clip = $('[data-press-clip]'), dlg = $('[data-press-dialog]');
+    if (clip && !isTouch) gsap.fromTo(clip, { y: 60 }, { y: -60, ease: 'none', scrollTrigger: { trigger: '.press', start: 'top bottom', end: 'bottom top', scrub: true } });
+    if (!dlg) return;
+    const close = () => dlg.close();
+    $$('[data-press-open]').forEach((b) => b.addEventListener('click', () => { dlg.showModal(); if (lenis) lenis.stop(); }));
+    $('[data-press-close]', dlg).addEventListener('click', close);
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); });
+    dlg.addEventListener('close', () => { if (lenis) lenis.start(); });
+  })();
+
   /* ---------- counter ---------- */
   $$('[data-count]').forEach((el) => {
     const target = +el.dataset.count;

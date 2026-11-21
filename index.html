@@ -48,7 +48,7 @@
   <div class="menu__inner">
     <nav class="menu__links">
       <a href="#weg" data-menu-link data-img="assets/img/poster-weg-reisevideos.jpg"><small>01</small>Der Weg</a>
-      <a href="#ventures" data-menu-link data-img="assets/img/poster-weg-frame.jpg"><small>02</small>Ventures</a>
+      <a href="#ventures" data-menu-link data-img="assets/img/poster-weg-frame.jpg"><small>02</small>Firmen</a>
       <a href="#arbeiten" data-menu-link data-img="assets/img/poster-work-eques-hr.jpg"><small>03</small>Cases</a>
       <a href="#galerie" data-menu-link data-img="assets/gallery/g13.jpg"><small>04</small>Galerie</a>
       <a href="#kontakt" data-menu-link data-img="assets/gallery/g13.jpg"><small>05</small>Kontakt</a>
@@ -167,42 +167,55 @@
 <!-- ============ VENTURES ============ -->
 <section class="ventures" id="ventures" data-nav-theme="light">
   <div class="ventures__head">
-    <h2 class="sec-h" data-reveal>Drei Ventures,<br>ein Ökosystem.</h2>
+    <h2 class="sec-h" data-reveal>Ein Venture,<br>drei Firmen.</h2>
   </div>
-  <div class="ventures__grid">
-    <a class="venture" href="https://incubgrid.io" target="_blank" rel="noopener" data-reveal data-venture>
-      <div class="venture__media venture__media--light">
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-grid-imagefilm.webp"><source src="assets/video/grid-imagefilm.mp4" type="video/mp4"></video>
-      </div>
-      <div class="venture__body">
-        <span class="venture__cat venture__cat--blue">Software-Agentur</span>
-        <span class="venture__name">incub:<b class="is-blue">GRID</b></span>
-        <p>Wir analysieren Abläufe und bauen die Software, die mittelständischen Unternehmen im Alltag Arbeit abnimmt.</p>
-        <span class="venture__btn">Mehr erfahren <i>→</i></span>
-      </div>
+  <div class="org" data-org>
+    <a class="org__root" href="https://incub-venture-website.vercel.app" target="_blank" rel="noopener" data-org-root>
+      <span class="org__kind">Holding</span>
+      <span class="org__name">incub:<b>Venture</b> GmbH</span>
+      <span class="org__meta">Monheim am Rhein · Beteiligungen &amp; Aufbau neuer Firmen</span>
     </a>
-    <a class="venture" href="https://incub-frame.de" target="_blank" rel="noopener" data-reveal data-venture>
-      <div class="venture__media">
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-ablauf-drehtag.webp"><source src="assets/video/ablauf-drehtag.mp4" type="video/mp4"></video>
-        <span class="venture__play"><i></i>Showreel ansehen</span>
-      </div>
-      <div class="venture__body">
-        <span class="venture__cat venture__cat--red">Medienproduktion</span>
-        <span class="venture__name">incub:<b class="is-red">FRAME</b></span>
-        <p>Imagefilme, Content und Markenauftritte für mittelständische Unternehmen.</p>
-        <span class="venture__btn">Mehr erfahren <i>→</i></span>
-      </div>
-    </a>
-    <a class="venture" href="https://incub-venture-website.vercel.app" target="_blank" rel="noopener" data-reveal data-venture>
-      <div class="venture__media"><video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-venture.webp"><source src="assets/video/venture-hero.mp4" type="video/mp4"></video></div>
-      <div class="venture__body">
-        <span class="venture__cat venture__cat--blue">Venture-Building &amp; Beteiligungen</span>
-        <span class="venture__name">incub:<b class="is-blue">VENTURE</b></span>
-        <p>Das Ökosystem hinter den Marken. Beteiligungen und der Aufbau neuer Unternehmen mit KI im Kern.</p>
-        <span class="venture__btn">Mehr erfahren <i>→</i></span>
-      </div>
-    </a>
-  </div>
+    <svg class="org__lines" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" data-org-lines>
+      <path d="M600 0 V60 H200 V120" />
+      <path d="M600 0 V120" />
+      <path d="M600 60 H1000 V120" />
+    </svg>
+    <div class="ventures__grid">
+      <a class="venture" href="https://incubgrid.io" target="_blank" rel="noopener" data-venture>
+        <div class="venture__media venture__media--light">
+          <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-grid-imagefilm.webp"><source src="assets/video/grid-imagefilm.mp4" type="video/mp4"></video>
+        </div>
+        <div class="venture__body">
+          <span class="venture__cat venture__cat--blue">Software</span>
+          <span class="venture__name">incub:<b class="is-blue">GRID</b></span>
+          <p>Wir analysieren Abläufe und bauen die Software, die mittelständischen Unternehmen im Alltag Arbeit abnimmt.</p>
+          <span class="venture__btn">Mehr erfahren <i>→</i></span>
+        </div>
+      </a>
+      <a class="venture" href="https://incub-frame.de" target="_blank" rel="noopener" data-venture>
+        <div class="venture__media">
+          <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-ablauf-drehtag.webp"><source src="assets/video/ablauf-drehtag.mp4" type="video/mp4"></video>
+          <span class="venture__play"><i></i>Showreel ansehen</span>
+        </div>
+        <div class="venture__body">
+          <span class="venture__cat venture__cat--red">Medienproduktion</span>
+          <span class="venture__name">incub:<b class="is-red">FRAME</b></span>
+          <p>Imagefilme, Content und Markenauftritte für mittelständische Unternehmen.</p>
+          <span class="venture__btn">Mehr erfahren <i>→</i></span>
+        </div>
+      </a>
+      <a class="venture" href="https://geiler-lachs.de" target="_blank" rel="noopener" data-venture>
+        <div class="venture__media">
+          <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-gl-kampagne.webp"><source src="assets/video/gl-kampagne.mp4" type="video/mp4"></video>
+        </div>
+        <div class="venture__body">
+          <span class="venture__cat venture__cat--lachs">Handel</span>
+          <span class="venture__name">Geiler <b class="is-lachs">Lachs</b></span>
+          <p>Unser Modelabel. Premium-Basics mit Augenzwinkern, verkauft über den eigenen Online-Shop.</p>
+          <span class="venture__btn">Mehr erfahren <i>→</i></span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -238,16 +251,31 @@
   </div>
 </section>
 
+<!-- ============ EXPLAIN: GEILER LACHS ============ -->
+<section class="explain explain--dark" id="lachs" data-nav-theme="dark" data-explain>
+  <div class="explain__inner">
+    <div class="explain__media" data-explain-media>
+      <video muted loop playsinline preload="none" data-explain-video data-autoplay poster="assets/img/poster-gl-kampagne.webp"><source src="assets/video/gl-kampagne.mp4" type="video/mp4"></video>
+    </div>
+    <div class="explain__text">
+      <span class="explain__eyebrow explain__eyebrow--lachs">03 · Handel</span>
+      <h2 class="explain__h" data-words>Mode, die sich nicht zu ernst nimmt.</h2>
+      <p class="explain__p" data-lines>Geiler Lachs ist unser Modelabel: Premium-Shirts mit dem gestickten Lachs im Blazer. Der Name entstand aus einem Witz zwischen Matthias und mir, inzwischen läuft daraus ein eigener Online-Shop. Gleichzeitig ist der Shop unser Testfeld für KI im E-Commerce, von der Kampagne bis zum Kundenservice.</p>
+      <a class="explain__link" href="https://geiler-lachs.de" target="_blank" rel="noopener">geiler-lachs.de <i>→</i></a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ EXPLAIN: VENTURE ============ -->
 <section class="explain explain--blue" id="venture" data-nav-theme="dark" data-explain>
-  <div class="explain__inner">
+  <div class="explain__inner explain__inner--flip">
     <div class="explain__media" data-explain-media>
       <video muted loop playsinline preload="none" data-explain-video data-autoplay poster="assets/img/poster-venture.webp"><source src="assets/video/venture-hero.mp4" type="video/mp4"></video>
     </div>
     <div class="explain__text">
-      <span class="explain__eyebrow explain__eyebrow--white">03 · Venture-Building</span>
+      <span class="explain__eyebrow explain__eyebrow--white">04 · Holding</span>
       <h2 class="explain__h" data-words>Das Ökosystem dahinter.</h2>
-      <p class="explain__p" data-lines>incub:VENTURE ist die Holding über FRAME und GRID: Beteiligungen und der Aufbau neuer Unternehmen mit KI im Kern. Gemeinsam mit Matthias Schapperth baue ich dort Firmen, die sich gegenseitig stärken. Software, Medien und Kapital aus einem Haus.</p>
+      <p class="explain__p" data-lines>incub:Venture ist die Holding über GRID, FRAME und Geiler Lachs: Beteiligungen und der Aufbau neuer Unternehmen mit KI im Kern. Gemeinsam mit Matthias Schapperth baue ich dort Firmen, die sich gegenseitig stärken. Software, Medien und Handel aus einem Haus.</p>
       <a class="explain__link" href="https://incub-venture-website.vercel.app" target="_blank" rel="noopener">incub:VENTURE <i>→</i></a>
     </div>
   </div>
@@ -283,8 +311,9 @@
       </div>
       <div class="hz__col">
       <figure class="hz__case hz__case--l hz__case--mid">
-        <figcaption>europersonal, 2025</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-europersonal.webp"><source src="assets/video/work-europersonal.mp4" type="video/mp4"></video>
+        <figcaption>incub:GRID, 2026</figcaption>
+        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-grid-case.webp" data-sound-video><source src="assets/video/grid-case.mp4" type="video/mp4"></video>
+        <button class="sound-btn" type="button" data-sound-toggle aria-pressed="false"><i></i><span>Mit Ton ansehen</span></button>
       </figure>
       </div>
       <div class="hz__col hz__col--narrow">
@@ -293,14 +322,14 @@
         <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp"><source src="assets/video/work-incublive.mp4" type="video/mp4"></video>
       </figure>
       <figure class="hz__case hz__case--s hz__case--bottom">
-        <figcaption>Personal Branding, 2025</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp"><source src="assets/video/personal-branding.mp4" type="video/mp4"></video>
+        <figcaption>incub:FRAME Reel I, 2026</figcaption>
+        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-frame-01.webp"><source src="assets/video/frame-01.mp4" type="video/mp4"></video>
       </figure>
       </div>
       <div class="hz__col hz__col--narrow">
       <figure class="hz__case hz__case--m hz__case--top">
-        <figcaption>incub:FRAME Reel I, 2026</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-frame-01.webp"><source src="assets/video/frame-01.mp4" type="video/mp4"></video>
+        <figcaption>Personal Branding, 2025</figcaption>
+        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp"><source src="assets/video/personal-branding.mp4" type="video/mp4"></video>
       </figure>
       <figure class="hz__case hz__case--m hz__case--bottom">
         <figcaption>incub:FRAME Reel II, 2026</figcaption>
@@ -309,19 +338,25 @@
       </div>
       <div class="hz__col">
       <figure class="hz__case hz__case--l hz__case--mid">
-        <figcaption>Ablauf Drehtag, 2026</figcaption>
+        <figcaption>Drehtag, 2026</figcaption>
         <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-ablauf-drehtag.webp"><source src="assets/video/ablauf-drehtag.mp4" type="video/mp4"></video>
       </figure>
       </div>
       <div class="hz__col hz__col--narrow">
       <figure class="hz__case hz__case--m hz__case--mid">
-        <figcaption>incub:FRAME Reel III, 2026</figcaption>
+        <figcaption>incub:live Imagefilm, 2026</figcaption>
         <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-frame-03.webp"><source src="assets/video/frame-03.mp4" type="video/mp4"></video>
+      </figure>
+      </div>
+      <div class="hz__col hz__col--narrow">
+      <figure class="hz__case hz__case--m hz__case--mid">
+        <figcaption>Plano, 2026</figcaption>
+        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-plano.webp"><source src="assets/video/plano.mp4" type="video/mp4"></video>
       </figure>
       </div>
       <div class="hz__col">
       <figure class="hz__case hz__case--xl hz__case--mid">
-        <figcaption>Imagefilm, 2026</figcaption>
+        <figcaption>incub:FRAME Imagefilm, 2026</figcaption>
         <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-eques-hr.webp" data-sound-video><source src="assets/video/imagefilm.mp4" type="video/mp4"></video>
         <button class="sound-btn" type="button" data-sound-toggle aria-pressed="false"><i></i><span>Mit Ton ansehen</span></button>
       </figure>
@@ -354,15 +389,38 @@
   <div class="partners__marquee" aria-hidden="true"><div class="partners__track" data-logo-track><img src="assets/logos/eques-hr.png" alt=""><img src="assets/logos/event-crue.png" alt=""><img src="assets/logos/fess-jobs.png" alt=""><img src="assets/logos/euro-personal.png" alt=""><img src="assets/logos/incub-live.png" alt=""><img src="assets/logos/schapperth-advisory.png" alt=""><img src="assets/logos/ecom-accelerator.png" alt=""><img src="assets/logos/eques-hr.png" alt=""><img src="assets/logos/event-crue.png" alt=""><img src="assets/logos/fess-jobs.png" alt=""><img src="assets/logos/euro-personal.png" alt=""><img src="assets/logos/incub-live.png" alt=""><img src="assets/logos/schapperth-advisory.png" alt=""><img src="assets/logos/ecom-accelerator.png" alt=""></div></div>
 </section>
 
+<!-- ============ PRESSE ============ -->
+<section class="press" id="presse" data-nav-theme="light">
+  <div class="press__inner">
+    <div class="press__text">
+      <svg class="press__logo" viewBox="0 0 520 150" role="img" aria-label="Kreiszeitung Wochenblatt">
+        <text x="260" y="36" text-anchor="middle" class="press__logo-top">KREISZEITUNG</text>
+        <rect x="14" y="54" width="492" height="86" fill="#D7262E"/>
+        <text x="260" y="118" text-anchor="middle" class="press__logo-main">Wochenblatt</text>
+      </svg>
+      <blockquote class="press__h" data-reveal>„Ohne KI geht nichts mehr“</blockquote>
+      <p class="press__p" data-reveal>Porträt im Magazin „Vor Ort“ der Kreiszeitung Wochenblatt: vom Zeitungsboten mit 14 über den Abschied vom Gymnasium bis zu drei Firmen, die alle auf KI setzen.</p>
+      <button class="btn btn--accent press__open" type="button" data-press-open data-reveal>Artikel lesen</button>
+    </div>
+    <button class="press__clip" type="button" data-press-open data-press-clip aria-label="Zeitungsartikel vergrößern">
+      <img src="assets/img/press-wochenblatt.webp" alt="Zeitungsartikel „Ohne KI geht nichts mehr“ über Nikita Krebs im Magazin Vor Ort" width="812" height="1176" loading="lazy">
+    </button>
+  </div>
+  <dialog class="press__dialog" data-press-dialog>
+    <button class="press__close" type="button" data-press-close aria-label="Schließen">×</button>
+    <img src="assets/img/press-wochenblatt.webp" alt="Zeitungsartikel in voller Größe" width="812" height="1176">
+  </dialog>
+</section>
+
 <!-- ============ COLLAGE GALLERY ============ -->
 <section class="collage" id="galerie" data-collage data-nav-theme="light">
   <div class="collage__bg" aria-hidden="true"><video muted loop playsinline autoplay preload="metadata" data-collage-bg><source src="assets/video/collage-bg.mp4" type="video/mp4"></video></div>
   <div class="collage__stage">
     <figure class="collage__item collage__item--l" style="--x:42%;--y:4%;--w:26vw;--mx:4%;--my:1%;--mw:54vw" data-speed="0.5">
-      <figcaption>Hamburg, 2025</figcaption><img src="assets/gallery/w/g03-800.webp" srcset="assets/gallery/w/g03-800.webp 800w, assets/gallery/w/g03-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Hamburg, 2025" loading="lazy">
+      <figcaption>Wien, 2026</figcaption><img src="assets/gallery/w/g03-800.webp" srcset="assets/gallery/w/g03-800.webp 800w, assets/gallery/w/g03-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Wien, 2026" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--p" style="--x:6%;--y:10%;--w:11vw;--mx:58%;--my:8%;--mw:38vw" data-speed="1.2">
-      <figcaption>Sommer, 2025</figcaption><img src="assets/gallery/w/g13-800.webp" srcset="assets/gallery/w/g13-800.webp 800w, assets/gallery/w/g13-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Sommer, 2025" loading="lazy">
+      <figcaption>1vs10 Set, 2025</figcaption><img src="assets/gallery/w/g18-800.webp" srcset="assets/gallery/w/g18-800.webp 800w, assets/gallery/w/g18-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="1vs10 Set, 2025" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--l" style="--x:62%;--y:36%;--w:14vw;--mx:2%;--my:18%;--mw:52vw" data-speed="0.9">
       <figcaption>Studio, 2025</figcaption><img src="assets/gallery/w/g11-800.webp" srcset="assets/gallery/w/g11-800.webp 800w, assets/gallery/w/g11-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Studio, 2025" loading="lazy">
@@ -371,19 +429,19 @@
       <figcaption>Set, 2024</figcaption><img src="assets/gallery/w/g05-800.webp" srcset="assets/gallery/w/g05-800.webp 800w, assets/gallery/w/g05-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Set, 2024" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--p" style="--x:78%;--y:12%;--w:10vw;--mx:6%;--my:50%;--mw:40vw" data-speed="1.4">
-      <figcaption>Off Set, 2025</figcaption><img src="assets/gallery/w/g16-800.webp" srcset="assets/gallery/w/g16-800.webp 800w, assets/gallery/w/g16-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Off Set, 2025" loading="lazy">
+      <figcaption>Unterwegs, 2026</figcaption><img src="assets/gallery/w/g19-800.webp" srcset="assets/gallery/w/g19-800.webp 800w, assets/gallery/w/g19-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Unterwegs, 2026" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--l" style="--x:4%;--y:58%;--w:13vw;--mx:50%;--my:56%;--mw:48vw" data-speed="0.8">
       <figcaption>Dreh, 2025</figcaption><img src="assets/gallery/w/g02-800.webp" srcset="assets/gallery/w/g02-800.webp 800w, assets/gallery/w/g02-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Dreh, 2025" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--p" style="--x:34%;--y:66%;--w:10vw;--mx:4%;--my:62%;--mw:40vw" data-speed="1.1">
-      <figcaption>Backstage, 2024</figcaption><img src="assets/gallery/w/g08-800.webp" srcset="assets/gallery/w/g08-800.webp 800w, assets/gallery/w/g08-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Backstage, 2024" loading="lazy">
+      <figcaption>Event, 2026</figcaption><img src="assets/gallery/w/g08-800.webp" srcset="assets/gallery/w/g08-800.webp 800w, assets/gallery/w/g08-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Event, 2026" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--p" style="--x:72%;--y:62%;--w:12vw;--mx:58%;--my:63%;--mw:38vw" data-speed="0.6">
-      <figcaption>Abend, 2025</figcaption><img src="assets/gallery/w/g14-800.webp" srcset="assets/gallery/w/g14-800.webp 800w, assets/gallery/w/g14-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Abend, 2025" loading="lazy">
+      <figcaption>Straßendreh, 2026</figcaption><img src="assets/gallery/w/g20-800.webp" srcset="assets/gallery/w/g20-800.webp 800w, assets/gallery/w/g20-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Straßendreh, 2026" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--p" style="--x:14%;--y:84%;--w:11vw;--mx:4%;--my:86%;--mw:44vw" data-speed="1.3">
-      <figcaption>Studio, 2024</figcaption><img src="assets/gallery/w/g10-800.webp" srcset="assets/gallery/w/g10-800.webp 800w, assets/gallery/w/g10-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Studio, 2024" loading="lazy">
+      <figcaption>1vs10 Dreh, 2025</figcaption><img src="assets/gallery/w/g21-800.webp" srcset="assets/gallery/w/g21-800.webp 800w, assets/gallery/w/g21-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="1vs10 Dreh, 2025" loading="lazy">
     </figure>
     <figure class="collage__item collage__item--p" style="--x:60%;--y:88%;--w:10vw;--mx:54%;--my:88%;--mw:40vw" data-speed="0.9">
       <figcaption>Set, 2024</figcaption><img src="assets/gallery/w/g07-800.webp" srcset="assets/gallery/w/g07-800.webp 800w, assets/gallery/w/g07-1400.webp 1400w" sizes="(max-width:760px) 60vw, 34vw" alt="Set, 2024" loading="lazy">
