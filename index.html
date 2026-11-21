@@ -153,7 +153,7 @@
     <li class="exe__row" data-exe-row>
       <div class="exe__year">2025</div>
       <div class="exe__text"><h3>Medienproduktion &amp; Personal Branding</h3><p>Aus dem Können wurde ein Angebot: Menschen und Marken sichtbar machen. Konzept, Dreh und Schnitt aus einer Hand.</p></div>
-      <div class="exe__media"><video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp" data-exe-video data-autoplay><source src="assets/video/personal-branding.mp4" type="video/mp4"></video></div>
+      <div class="exe__media"><video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-personal-branding.webp" data-exe-video><source src="assets/video/personal-branding-web.mp4" type="video/mp4"></video></div>
     </li>
     <li class="exe__row" data-exe-row>
       <div class="exe__year">2026</div>
@@ -171,14 +171,11 @@
   </div>
   <div class="org" data-org>
     <a class="org__root" href="https://incub-venture-website.vercel.app" target="_blank" rel="noopener" data-org-root>
+      <img class="org__mark" src="assets/img/incub-venture-mark.png" alt="" width="160" height="145">
       <span class="org__name">incub:Venture GmbH</span>
       <span class="org__meta">Beteiligungen &amp; Aufbau neuer Firmen</span>
     </a>
-    <svg class="org__lines" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" data-org-lines>
-      <path d="M600 0 V60 H200 V120" />
-      <path d="M600 0 V120" />
-      <path d="M600 60 H1000 V120" />
-    </svg>
+    <svg class="org__lines" aria-hidden="true" data-org-lines><path pathLength="1"/><path pathLength="1"/><path pathLength="1"/></svg>
     <div class="ventures__grid">
       <a class="venture" href="https://incubgrid.io" target="_blank" rel="noopener" data-venture>
         <div class="venture__media venture__media--light">
@@ -328,7 +325,7 @@
       <div class="hz__col hz__col--narrow">
       <figure class="hz__case hz__case--m hz__case--top">
         <figcaption>Personal Branding, 2025</figcaption>
-        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-work-incublive.webp"><source src="assets/video/personal-branding.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" data-autoplay poster="assets/img/poster-personal-branding.webp"><source src="assets/video/personal-branding-web.mp4" type="video/mp4"></video>
       </figure>
       <figure class="hz__case hz__case--m hz__case--bottom">
         <figcaption>incub:FRAME Reel II, 2026</figcaption>
@@ -397,7 +394,11 @@
       </svg>
       <blockquote class="press__h" data-reveal>„Ohne KI geht nichts mehr“</blockquote>
       <p class="press__p" data-reveal>Porträt im Magazin „Vor Ort“ der Kreiszeitung Wochenblatt: vom Zeitungsboten mit 14 über den Abschied vom Gymnasium bis zu drei Firmen, die alle auf KI setzen.</p>
-      <button class="btn btn--accent press__open" type="button" data-press-open data-reveal>Artikel lesen</button>
+      <div class="press__actions" data-reveal>
+        <a class="btn btn--accent" href="https://epaper.kreiszeitung-wochenblatt.de/p/spezialausgaben/19-11-26/r/6/10-11/10424/2518196" target="_blank" rel="noopener">Im E-Paper lesen</a>
+        <button class="press__zoom" type="button" data-press-open>Ausschnitt vergrößern</button>
+      </div>
+      <p class="press__src">Quelle: Kreiszeitung Wochenblatt, Spezialausgabe „Vor Ort“ vom 19.11.2026</p>
     </div>
     <button class="press__clip" type="button" data-press-open data-press-clip aria-label="Zeitungsartikel vergrößern">
       <img src="assets/img/press-wochenblatt.webp" alt="Zeitungsartikel „Ohne KI geht nichts mehr“ über Nikita Krebs im Magazin Vor Ort" width="812" height="1176" loading="lazy">
@@ -406,6 +407,7 @@
   <dialog class="press__dialog" data-press-dialog data-lenis-prevent>
     <button class="press__close" type="button" data-press-close aria-label="Schließen">×</button>
     <img src="assets/img/press-wochenblatt.webp" alt="Zeitungsartikel in voller Größe" width="812" height="1176">
+    <a class="press__dlg-link" href="https://epaper.kreiszeitung-wochenblatt.de/p/spezialausgaben/19-11-26/r/6/10-11/10424/2518196" target="_blank" rel="noopener">Originalartikel im E-Paper öffnen ↗</a>
   </dialog>
 </section>
 

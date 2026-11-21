@@ -496,15 +496,30 @@
     ScrollTrigger.create({ trigger: vid, start: 'top bottom', end: 'bottom top', onLeave: mute, onLeaveBack: mute });
   });
 
-  /* ---------- Firmenstruktur: Linien zeichnen sich beim Scrollen ---------- */
+  /* ---------- Firmenstruktur: Linien aus den echten Positionen, zeichnen sich beim Scrollen ---------- */
   (function () {
-    const lines = $$('[data-org-lines] path');
-    if (!lines.length) return;
-    lines.forEach((p) => { const l = p.getTotalLength(); gsap.set(p, { strokeDasharray: l, strokeDashoffset: l }); });
+    const svg = $('[data-org-lines]'), root = $('[data-org-root]');
+    if (!svg || !root) return;
+    const paths = $$('path', svg), cards = $$('[data-org] .venture');
+    function build() {
+      const sb = svg.getBoundingClientRect();
+      if (!sb.width) return;
+      const W = sb.width, H = sb.height, rb = root.getBoundingClientRect();
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      const rx = rb.left + rb.width / 2 - sb.left, mid = H / 2;
+      cards.forEach((c, i) => {
+        const cb = c.getBoundingClientRect(), cx = cb.left + cb.width / 2 - sb.left;
+        if (paths[i]) paths[i].setAttribute('d', `M${rx.toFixed(1)},0 V${mid.toFixed(1)} H${cx.toFixed(1)} V${H.toFixed(1)}`);
+      });
+    }
+    build();
+    addEventListener('resize', build);
+    ScrollTrigger.addEventListener('refresh', build);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
     const tl = gsap.timeline({ scrollTrigger: { trigger: '[data-org]', start: 'top 80%', end: 'top 30%', scrub: isTouch ? true : 0.6 } });
-    tl.from('[data-org-root]', { opacity: 0, duration: 0.3 })
-      .to(lines, { strokeDashoffset: 0, duration: 0.5, ease: 'none', stagger: 0.05 }, 0.2)
-      .from('[data-org] .venture', { opacity: 0, duration: 0.4, stagger: 0.08 }, 0.55);
+    tl.from(root, { opacity: 0, duration: 0.3 })
+      .to(paths, { strokeDashoffset: 0, duration: 0.5, ease: 'none', stagger: 0.05 }, 0.2)
+      .from(cards, { opacity: 0, duration: 0.4, stagger: 0.08 }, 0.55);
   })();
 
   /* ---------- Presse: Ausschnitt leicht mitbewegen + Lightbox ---------- */
