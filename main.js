@@ -273,11 +273,12 @@
 
   /* ---------- menu ---------- */
   const menu = $('[data-menu]'), toggle = $('[data-menu-toggle]'), menuImg = $('[data-menu-img]');
+  if (matchMedia('(max-width: 1024px)').matches) $$('a[href="#ventures"]').forEach((l) => l.setAttribute('href', '#frame'));
   let menuOpen = false;
   gsap.set('[data-menu-link]', { y: 60, opacity: 0 });
   gsap.set('.menu__foot a', { y: 10, opacity: 0 });
-  const menuTl = gsap.timeline({ paused: true, onReverseComplete: () => gsap.set(menu, { visibility: 'hidden' }) })
-    .set(menu, { visibility: 'visible' })
+  const menuTl = gsap.timeline({ paused: true, onReverseComplete: () => gsap.set(menu, { visibility: 'hidden', display: 'none' }) })
+    .set(menu, { display: 'block', visibility: 'visible' })
     .fromTo(menu, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power4.inOut' })
     .to('[data-menu-link]', { y: 0, opacity: 0.55, duration: 0.7, stagger: 0.06, ease: 'power4.out' }, '-=0.35')
     .to('.menu__foot a', { y: 0, opacity: 1, duration: 0.4, stagger: 0.05 }, '-=0.4');
@@ -463,10 +464,10 @@
     const sec = $('[data-collage]');
     if (!sec) return;
     {
-      const amp = matchMedia('(min-width: 761px)').matches ? 160 : 36;
+      const amp = matchMedia('(min-width: 761px)').matches ? 160 : 0;
       $$('.collage__item', sec).forEach((el) => {
         const sp = parseFloat(el.dataset.speed || 1);
-        gsap.fromTo(el, { y: amp * sp }, { y: -amp * sp, ease: 'none',
+        if (amp) gsap.fromTo(el, { y: amp * sp }, { y: -amp * sp, ease: 'none',
           scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: true } });
         gsap.from(el, { opacity: 0, duration: 1, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 95%' } });
       });

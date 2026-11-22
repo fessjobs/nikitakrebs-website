@@ -583,3 +583,46 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
 .callout__mail{margin-top:28px;font-size:clamp(15px,1.2vw,18px);color:var(--ink-2)}
 .callout__mail a{color:var(--ink);font-weight:700;border-bottom:1.5px solid var(--ink);padding-bottom:1px;transition:color .2s,border-color .2s}
 .callout__mail a:hover{color:var(--accent-text);border-color:var(--accent-text)}
+
+
+/* ==========================================================================
+   Mobil-Fixes 22.11.
+   ========================================================================== */
+
+/* Menü: geschlossen ganz aus dem Layout, sonst färbt iOS-Safari die untere Leiste schwarz */
+.menu{display:none}
+
+/* Galerie → Kontakt: weicher Übergang aus dem Blau statt harter Kante */
+.callout::before{content:"";position:absolute;inset:0 0 auto 0;height:min(26vh,240px);background:linear-gradient(#1B2540,rgba(27,37,64,0));opacity:0;transition:opacity .9s ease;pointer-events:none;z-index:0}
+.collage.is-dark + .callout::before{opacity:1}
+.callout__inner{z-index:1}
+
+/* Firmenstruktur (incub:Venture + 3 Firmen mit Linien) nur ab Laptop */
+@media (max-width:1024px){
+  .ventures{display:none}
+}
+
+@media (max-width:760px){
+  /* „Kunden“-Schriftzug passt in die Breite */
+  .partners__script{font-size:25vw;left:6%;top:3%}
+
+  /* Galerie: Fotos im Fluss statt übereinander, Zitate dazwischen */
+  .collage__stage{height:auto;display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:row dense;gap:34px 16px;align-items:start;padding:110px var(--gutter) 120px}
+  .collage__item{position:static;width:auto;min-width:0;max-width:none;order:1}
+  .collage__item--l{grid-column:1 / -1}
+  .collage__item:nth-child(n+5){order:3}
+  .collage__item:nth-child(n+8){order:5}
+  .collage__item:nth-child(10){grid-column:1 / -1}
+  .collage__quote{position:static;transform:none;width:auto;grid-column:1 / -1;margin:30px 0}
+  .collage__quote--1{order:2}
+  .collage__quote--2{order:4}
+
+  /* Presse: Logo mittig über dem Artikel, Artikel klein als Vorschau */
+  .press__text{display:contents}
+  .press__inner{justify-items:center;text-align:center;gap:26px}
+  .press__logo{order:-2;margin:0 auto;width:min(240px,64%)}
+  .press__clip{order:-1;width:min(210px,56%);transform:rotate(2deg)}
+  .press__p{margin:0 auto}
+  .press__actions{justify-content:center}
+  .press__src{margin-top:0}
+}
