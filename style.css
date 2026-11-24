@@ -645,3 +645,8 @@ body.menu-open .nav__burger span:last-child{width:26px;transform:translateY(-4.7
   .press__media-grid{grid-template-columns:1fr}
   .press__item,.press__item + .press__item{padding-left:0;padding-right:0;border-left:0}
 }
+
+/* 24.11.: In den Medien ohne Linien; Zeitungsausschnitt nur ab Laptop */
+.press__media-grid{border-top:0;gap:clamp(48px,6vw,90px)}
+.press__item,.press__item + .press__item{border:0;padding:0}
+@media (max-width:1024px){.press__clip{display:none}}
